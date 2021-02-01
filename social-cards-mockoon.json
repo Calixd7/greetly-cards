@@ -1,0 +1,641 @@
+{
+    "source": "mockoon:1.8.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 10,
+                "name": "Demo social card API",
+                "endpointPrefix": "api",
+                "latency": 0,
+                "port": 3000,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "Create a user",
+                        "method": "post",
+                        "endpoint": "auth/users/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"id\": 1,\n    \"username\": \"{{ body 'username' 'testuser' }}\"\n}",
+                                "latency": 50,
+                                "statusCode": "201",
+                                "label": "Success",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get token for username and password",
+                        "method": "post",
+                        "endpoint": "auth/token/login/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"non_field_errors\": [\n    \"Unable to log in with provided credentials.\"\n  ]\n}",
+                                "latency": 0,
+                                "statusCode": "400",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"auth_token\": \"testtoken\"\n}",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "body",
+                                        "modifier": "password",
+                                        "value": "test",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get my user info",
+                        "method": "get",
+                        "endpoint": "auth/users/me/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"detail\": \"Invalid token.\"\n}",
+                                "latency": 0,
+                                "statusCode": "400",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"id\": 1,\n    \"username\": \"testuser\"\n}",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get a list of cards from my friends",
+                        "method": "get",
+                        "endpoint": "cards/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": {{ int 2 20 }},\n                \"username\": \"{{ lowercase (firstName) }}\"\n            },\n            \"url\": \"http://localhost:3000/api/cards/{{@index}}/\",\n            \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n            \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n            \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n            \"message\": \"{{lorem 20}}\",\n            \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}\n",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get a list of all cards",
+                        "method": "get",
+                        "endpoint": "cards/all/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": {{ int 2 20 }},\n                \"username\": \"{{ lowercase (firstName) }}\"\n            },\n            \"url\": \"http://localhost:3000/api/cards/{{@index}}/\",\n            \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n            \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n            \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n            \"message\": \"{{lorem 20}}\",\n            \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}\n",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get a list of my cards",
+                        "method": "get",
+                        "endpoint": "cards/me/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": 1,\n                \"username\": \"testuser\"\n            },\n            \"url\": \"http://localhost:3000/api/cards/{{@index}}/\",\n            \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n            \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n            \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n            \"message\": \"{{lorem 20}}\",\n            \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Create card",
+                        "method": "post",
+                        "endpoint": "cards/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"author\": {\n        \"id\": 1,\n        \"username\": \"testuser\"\n    },\n    \"url\": \"http://localhost:3000/api/cards/{{ int 100 200 }}/\",\n    \"color\": \"{{ body 'color' }}\",\n    \"font\": \"{{ body 'font' }}\",\n    \"border\": \"{{ body 'border' }}\",\n    \"message\": \"{{ body 'message' }}\",\n    \"posted_at\": \"{{ now }}\"\n}\n",
+                                "latency": 0,
+                                "statusCode": "201",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get one card",
+                        "method": "get",
+                        "endpoint": "cards/:id/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"id\": {{ urlParam 'id'}},\n    \"author\": {\n        \"id\": {{ int 2 20 }},\n        \"username\": \"{{ lowercase (firstName) }}\"\n    },\n    \"url\": \"http://localhost:3000/api/cards/{{ urlParam 'id'}}/\",\n    \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n    \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n    \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n    \"message\": \"{{lorem 20}}\",\n    \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-04:00' }}\"\n}\n",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Update card",
+                        "method": "patch",
+                        "endpoint": "cards/:id/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"author\": {\n        \"id\": 1,\n        \"username\": \"testuser\"\n    },\n    \"id\": {{ urlParam 'id'}},\n    \"url\": \"http://localhost:3000/api/cards/{{ urlParam 'id'}}/\",\n    \"color\": \"{{ body 'color' }}\",\n    \"font\": \"{{ body 'font' }}\",\n    \"border\": \"{{ body 'border' }}\",\n    \"message\": \"{{ body 'message' }}\",\n    \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-04:00' }}\"\n}\n",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Delete card",
+                        "method": "delete",
+                        "endpoint": "cards/:id/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{}\n",
+                                "latency": 0,
+                                "statusCode": "204",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Get a list of my friends",
+                        "method": "get",
+                        "endpoint": "friends/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "[\n{{#repeat 10}}\n    {\n        \"id\": {{ int 2 20 }},\n        \"username\": \"{{ lowercase (firstName) }}\"\n    }\n{{/repeat}}\n]",
+                                "latency": 0,
+                                "statusCode": "200",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Add a friend",
+                        "method": "post",
+                        "endpoint": "friends/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n    \"id\": {{ body 'id' }},\n    \"username\": \"{{ lowercase (firstName) }}\"\n}\n",
+                                "latency": 0,
+                                "statusCode": "201",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "Remove",
+                        "method": "delete",
+                        "endpoint": "friends/:userId/",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{}",
+                                "latency": 0,
+                                "statusCode": "401",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": []
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{}\n",
+                                "latency": 0,
+                                "statusCode": "204",
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "header",
+                                        "modifier": "Authorization",
+                                        "value": "Token testtoken",
+                                        "isRegex": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "enabled": true
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

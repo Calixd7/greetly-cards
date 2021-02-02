@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djoser',
+    'rest_framework.authtoken',
     
     # Third-party
     'debug_toolbar',

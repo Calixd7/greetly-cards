@@ -1,4 +1,5 @@
 import './App.css'
+import Login from './components/Login'
 
 function App () {
   return (
@@ -6,6 +7,9 @@ function App () {
       <header className='App-header'>
         Our Kickass App
       </header>
+      <div>
+        <Login />
+      </div>
     </div>
   )
 }

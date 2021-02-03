@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import axios from 'axios'
+import { login } from '../api'
 
-function Login () {
+function Login ({ setAuth }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   function handleSubmit (event) {
     event.preventDefault()
-    // console.log('user: ', username)
-    // console.log('password: ', password)
+    login(username, password)
+      .then(data => {
+        setAuth(username, data)
+        console.log(setAuth())
+      })
   }
 
   return (

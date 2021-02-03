@@ -2,3 +2,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+}

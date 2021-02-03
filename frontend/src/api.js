@@ -6,10 +6,9 @@ const API = axios.create({
 
 export function login (username, password) {
   return API
-    .post('users/', { // using Mokoon
+    .post('user/', {
       username: username,
       password: password
     })
-    .then(result => result.data)
-  console.log(data)
+    .then(results => results.data)
 }

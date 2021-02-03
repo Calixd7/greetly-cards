@@ -23,7 +23,8 @@
 }
 
 .nav-bar {
-  right: 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .main-content {

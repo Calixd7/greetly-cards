@@ -5,6 +5,8 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home'
 import Create from './components/Create'
+import Explore from './components/Explore'
+import Profile from './components/Profile'
 
 function App () {
   const [username, setUsername] = useState('')
@@ -42,7 +44,13 @@ function App () {
                   <Link to='/home'>Home</Link>
                 </div>
                 <div>
-                  <Link to='/create'>Create New Card</Link>
+                  <Link to='/profile'>Profile</Link>
+                </div>
+                <div>
+                  <Link to='/create'>Create</Link>
+                </div>
+                <div>
+                  <Link to='/explore'>Explore</Link>
                 </div>
               </nav>
             </div>
@@ -62,8 +70,14 @@ function App () {
               <Route path='/home'>
                 <Home />
               </Route>
+              <Route path='/profile'>
+                <Profile />
+              </Route>
               <Route path='/create'>
                 <Create />
+              </Route>
+              <Route path='/explore'>
+                <Explore />
               </Route>
             </Switch>
           </div>

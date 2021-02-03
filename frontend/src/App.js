@@ -25,7 +25,37 @@ function App () {
         <header className='App-header'>
           <div className='header-content'>
             <div className='top-row-header'>
-              <h1>Kickass Cards</h1>
+              <div class='hero'>
+                <h1>Greetly<span>- Card Maker -</span><span>Make custom greeting cards for any occasion</span></h1>
+                <nav class='slidemenu'>
+                  <Link to='/home'>
+                    <input type='radio' name='slideItem' id='slide-item-1' class='slide-toggle' checked />
+                    <label for='slide-item-1'><p class='material-icons'>home</p><span>Home</span></label>
+                  </Link>
+
+                  <Link to='/profile'>
+                    <input type='radio' name='slideItem' id='slide-item-2' class='slide-toggle' />
+                    <label for='slide-item-2'><p class='material-icons'>face</p><span>Profile</span></label>
+                  </Link>
+
+                  <Link to='/create'>
+                    <input type='radio' name='slideItem' id='slide-item-3' class='slide-toggle' />
+                    <label for='slide-item-3'><p class='material-icons'>create</p><span>Create</span></label>
+                  </Link>
+
+                  <Link to='/explore'>
+                    <input type='radio' name='slideItem' id='slide-item-4' class='slide-toggle' />
+                    <label for='slide-item-4'><p class='material-icons'>search</p><span>Explore</span></label>
+                  </Link>
+                  <div class='clear' />
+
+                  <div class='slider'>
+                    <div class='bar' />
+                  </div>
+
+                </nav>
+
+              </div>
               {
             isLoggedIn
               ? (

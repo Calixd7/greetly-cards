@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'rest_framework.authtoken',
+    'corsheaders',
     
     # Third-party
     'debug_toolbar',
@@ -57,6 +58,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -150,3 +153,10 @@ REST_FRAMEWORK = {
          'rest_framework.permissions.IsAuthenticated',
     ]
 }
+CORS_ALLOW_ALL_ORIGINS = True
+
+import django_on_heroku
+django_on_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
+
+heroku config:set SECRET_KEY=$(date | md5)

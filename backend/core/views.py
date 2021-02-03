@@ -10,3 +10,5 @@ class UserRequestViewSet(APIView):
         }
         serializer = UserSerializer(request.user, context=serializer_context)
         return Response(data=serializer.data)
+
+        

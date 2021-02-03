@@ -1,8 +1,4 @@
 import { useState } from 'react'
-<<<<<<< HEAD
-import axios from 'axios'
-=======
->>>>>>> page-creation
 import { login } from '../api'
 
 function Login ({ setAuth }) {
@@ -14,7 +10,6 @@ function Login ({ setAuth }) {
     event.preventDefault()
     login(username, password)
       .then(data => {
-<<<<<<< HEAD
         // console.log(data)
         if (data && data.auth_token) {
           setAuth(username, data.auth_token)
@@ -22,10 +17,6 @@ function Login ({ setAuth }) {
       })
       .catch(error => {
         setErrors(error.message)
-=======
-        setAuth(username, data)
-        console.log(setAuth())
->>>>>>> page-creation
       })
   }
 

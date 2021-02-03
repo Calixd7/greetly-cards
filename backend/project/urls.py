@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from core import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/users/', views.UserRequestViewSet.as_view(),name='user-detail'),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.authtoken')),
-
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include(router.urls)),
 ]
 if settings.DEBUG:
     import debug_toolbar

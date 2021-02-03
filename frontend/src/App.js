@@ -21,9 +21,10 @@ function App () {
     <Router>
       <div className='App'>
         <header className='App-header'>
-          <div className='top-row-header'>
-            <h1>Kickass Cards</h1>
-            {
+          <div className='header-content'>
+            <div className='top-row-header'>
+              <h1>Kickass Cards</h1>
+              {
             isLoggedIn
               ? (
                 <span>Hello, {username} <button onClick={() => setToken(null)}>Log out</button></span>
@@ -34,34 +35,39 @@ function App () {
                 </span>
                 )
           }
-          </div>
-          <div className='bottom-row-header'>
-            <nav className='nav-bar'>
-              <div>
-                <Link to='/create'>Create New Card</Link>
-              </div>
-            </nav>
+            </div>
+            <div className='bottom-row-header'>
+              <nav className='nav-bar'>
+                <div>
+                  <Link to='/home'>Home</Link>
+                </div>
+                <div>
+                  <Link to='/create'>Create New Card</Link>
+                </div>
+              </nav>
+            </div>
           </div>
         </header>
-
-        <div>
-          <Switch>
-            <Route path='/login'>
-              <Login isLoggedIn={isLoggedIn} setAuth={setAuth} />
-            </Route>
-            <Route path='/register'>
-              <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
-            </Route>
-            <Route path='/'>
-              <Home />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path='/create'>
-              <Create />
-            </Route>
-          </Switch>
-        </div>
+        <main className='main-content'>
+          <div>
+            <Switch>
+              <Route path='/login'>
+                <Login isLoggedIn={isLoggedIn} setAuth={setAuth} />
+              </Route>
+              <Route path='/register'>
+                <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path='/home'>
+                <Home />
+              </Route>
+              <Route path='/create'>
+                <Create />
+              </Route>
+            </Switch>
+          </div>
+        </main>
       </div>
     </Router>
   )

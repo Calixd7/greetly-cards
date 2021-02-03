@@ -6,16 +6,27 @@
 .App-header {
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  padding: 20px;
-  background-color: #678;
+  background-color: #955;
+  position: sticky;
+
+}
+
+.header-content {
+  margin: 20px 20px 0;
+  padding: 10px;
 }
 
 .top-row-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .nav-bar {
   right: 0;
+}
+
+.main-content {
+  margin: 20px;
+  padding: 20px;
 }

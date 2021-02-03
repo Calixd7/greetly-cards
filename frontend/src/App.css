@@ -5,7 +5,17 @@
 
 .App-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 20px;
   padding: 20px;
+  background-color: #678;
+}
+
+.top-row-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar {
+  right: 0;
 }

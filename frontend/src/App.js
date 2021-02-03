@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-ro
 import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home'
+import Create from './components/Create'
 
 function App () {
-  const [username, setUsername] = useState()
+  const [username, setUsername] = useState('')
   const [token, setToken] = useState()
-  const [navigation, setNavigation] = useState('home')
 
   function setAuth (username, token) {
     setUsername(username)
@@ -21,8 +21,9 @@ function App () {
     <Router>
       <div className='App'>
         <header className='App-header'>
-          <h1>Kickass Cards</h1>
-          {
+          <div className='top-row-header'>
+            <h1>Kickass Cards</h1>
+            {
             isLoggedIn
               ? (
                 <span>Hello, {username} <button onClick={() => setToken(null)}>Log out</button></span>
@@ -33,6 +34,14 @@ function App () {
                 </span>
                 )
           }
+          </div>
+          <div className='bottom-row-header'>
+            <nav className='nav-bar'>
+              <div>
+                <Link to='/create'>Create New Card</Link>
+              </div>
+            </nav>
+          </div>
         </header>
 
         <div>
@@ -46,7 +55,11 @@ function App () {
             <Route path='/'>
               <Home />
             </Route>
-
+          </Switch>
+          <Switch>
+            <Route path='/create'>
+              <Create />
+            </Route>
           </Switch>
         </div>
       </div>

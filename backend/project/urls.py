@@ -20,6 +20,8 @@ from core import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
+router.register('cards', views.CardViewSet, basename='card')
+
 
 
 urlpatterns = [

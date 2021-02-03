@@ -2,17 +2,17 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    pass
+    name= models.CharField(max_length=255,)
+    followed_users = models.ManyToManyField(to='self', symmetrical=False, blank=True, related_name='followers')
+     
 
-# class Followers(models.Model):
-
-
-class card(models.Model):
+class Card(models.Model):
     author = models.ForeignKey(to=User,on_delete=models.CASCADE,related_name="cards" )
     message = models.TextField()
     public = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
     genre = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+
 
 
 

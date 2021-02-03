@@ -12,6 +12,10 @@ django-debug-toolbar = "*"
 werkzeug = "*"
 django-environ = "*"
 djangorestframework = "*"
+django-cors-headers = "*"
+psycopg2-binary = "*"
+django-on-heroku = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"

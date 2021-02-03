@@ -2,3 +2,32 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  background-color: #955;
+  position: sticky;
+
+}
+
+.header-content {
+  margin: 20px 20px 0;
+  padding: 10px;
+}
+
+.top-row-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.main-content {
+  margin: 20px;
+  padding: 20px;
+}

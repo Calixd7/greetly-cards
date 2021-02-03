@@ -20,8 +20,8 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/test/', views.UserRequestViewSet.as_view(),name='user-detail'),
-    path('auth/', include('djoser.urls')),
+    path('auth/users/', views.UserRequestViewSet.as_view(),name='user-detail'),
+    path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.authtoken')),
 
 ]

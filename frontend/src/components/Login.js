@@ -25,7 +25,7 @@ function Login ({ setAuth }) {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         {errors && (
-          <div>{errors}</div>
+          <div className='errors'>{errors}</div>
         )}
         <label htmlFor='username'>Username</label>
         <input

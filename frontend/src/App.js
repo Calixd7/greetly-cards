@@ -65,8 +65,6 @@ function App () {
               <Route path='/register'>
                 <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
               </Route>
-            </Switch>
-            <Switch>
               <Route path='/home'>
                 <Home />
               </Route>

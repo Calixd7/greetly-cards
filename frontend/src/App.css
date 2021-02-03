@@ -1,7 +1,9 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  height: 100%;
 }
+
 
 .errors {
   color: white;
@@ -17,12 +19,14 @@
   flex-direction: column;
   background-color: #955;
   position: sticky;
+  height: auto;
 
 }
 
 .header-content {
   margin: 20px 20px 0;
   padding: 10px;
+  height: 100%;
 }
 
 .top-row-header {
@@ -39,4 +43,51 @@
 .main-content {
   margin: 20px;
   padding: 20px;
+  height: 90%;
+}
+
+.page-content {
+  /* border: 2px solid; */
+  width: 100%;
+  height: auto;
+  
+}
+
+.create-card-content {
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
+}
+
+.upper-palette-card-editor-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+}
+
+.upper-palette {
+  border: 2px solid;
+  margin: 5px;
+  padding: 10px;
+  width: 95%;
+  height: 25%;
+}
+
+.card-editor-display {
+  border: 2px solid;
+  margin: 5px;
+  width: 95%;
+  height: 75%;
+}
+
+.side-palette {
+  border: 2px solid;
+  width: 25%;
+  height: 95%;
+  margin: 5px;
+}
+
+.palette-btns {
+  height: fit-content;
 }

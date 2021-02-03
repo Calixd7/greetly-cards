@@ -1,6 +1,6 @@
 function Profile () {
   return (
-    <div>
+    <div className='page-content'>
       <h3>Profile page</h3>
       <p>This page is all about something. . .</p>
       <p>Gotta love in your life . . . this app don't care about that</p>

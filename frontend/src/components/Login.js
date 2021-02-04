@@ -22,8 +22,8 @@ function Login ({ setAuth }) {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className='log-reg-header'>Login</h2>
+      <form className='log-reg-header-form' onSubmit={handleSubmit}>
         {errors && (
           <div className='errors'>{errors}</div>
         )}

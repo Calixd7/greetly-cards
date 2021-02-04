@@ -11,6 +11,11 @@
   right: 10px;
 }
 
+.log-reg-header, .log-reg-header-form {
+  padding-left: 20px;
+  margin: 20px;
+}
+
 .errors {
   color: white;
   background-color: red;

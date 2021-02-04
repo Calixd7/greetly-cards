@@ -54,7 +54,7 @@ function Register ({ isLoggedIn, setAuth }) {
           />
         </div>
 
-        <button type='submit'>Register</button>
+        <button className='log-reg-button' type='submit'>Register</button>
       </form>
     </div>
   )

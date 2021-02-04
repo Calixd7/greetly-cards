@@ -8,10 +8,14 @@ import Create from './components/Create'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import CardList from './components/CardList'
+import createPersistedState from 'use-persisted-state'
+
+const useUsername = createPersistedState('username')
+const useToken = createPersistedState('token')
 
 function App () {
-  const [username, setUsername] = useState('')
-  const [token, setToken] = useState()
+  const [username, setUsername] = useUsername()
+  const [token, setToken] = useToken()
 
   function setAuth (username, token) {
     setUsername(username)

@@ -17,12 +17,12 @@ function CardList ({ token }) {
     <div>
       <h2>Cards</h2>
       <div>
-        <Link to='/create-card'>Create a New Card</Link>
+        <Link to='/create'>Create a New Card</Link>
       </div>
       <ul>
         {cards.map(card => (
           <li key={card.url}>
-            <Link to={`/c/${card.pk}`}>{card.name}</Link>
+            <Link to='/c/{card.pk}'>{card.name}</Link>
           </li>
         ))}
       </ul>

@@ -26,8 +26,8 @@ function Register ({ isLoggedIn, setAuth }) {
 
   return (
     <div className='Register'>
-      <h2>Register or <Link to='/login'>Login</Link></h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className='log-reg-header'>Register or <Link to='/login'>Login</Link></h2>
+      <form className='log-reg-header-form' onSubmit={handleSubmit}>
         {errors && (
           <div className='errors'>{errors}</div>
         )}

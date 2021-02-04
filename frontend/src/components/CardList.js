@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getCards } from '../api'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
@@ -16,10 +16,13 @@ function CardList ({ token }) {
   return (
     <div>
       <h2>Cards</h2>
+      <div>
+        <Link to='/create-card'>Create a New Card</Link>
+      </div>
       <ul>
         {cards.map(card => (
-          <li key={card.title}>
-            {card.message}
+          <li key={card.url}>
+            <Link to={`/c/${card.pk}`}>{card.name}</Link>
           </li>
         ))}
       </ul>

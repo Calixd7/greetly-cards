@@ -40,7 +40,7 @@ function App () {
 
             <Link to='/profile'>
               <input type='radio' name='slideItem' id='slide-item-2' className='slide-toggle' />
-              <label for='slide-item-2'><p className='material-icons'>face</p><span>Profile</span></label>
+              <label for='slide-item-2'><p className='material-icons'>face</p><span>My Cards</span></label>
             </Link>
 
             <Link to='/create'>

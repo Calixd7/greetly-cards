@@ -10,7 +10,7 @@ function CardList ({ token }) {
   }, [token])
 
   if (!token) {
-    return <Redirect to='/Home' />
+    return <Redirect to='/Login' />
   }
 
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 function Create ({ token, username }) {
@@ -8,22 +8,18 @@ function Create ({ token, username }) {
 
   function handleSubmit (event) {
     event.preventDefault()
-    // setGenre('birthday')
-  }
-
-  useEffect(() => {
+    setGenre('birthday')
     axios.post('https://social-ecard.herokuapp.com/api/cards/',
       {
-        genre: 'birthday',
-        message: 'Hello World',
-        title: 'Greetings',
-        author: 'Dan'
+        genre: genre,
+        message: message,
+        title: title
       }, {
         headers: {
           Authorization: `Token ${token}`
         }
       })
-  }, [])
+  }
 
   return (
     <div className='page-content create-card-content'>

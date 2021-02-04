@@ -1,19 +1,23 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-function Create ({ token }) {
-  const [author, setAuthor] = useState('')
+function Create ({ token, username }) {
+  const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
+  const [genre, setGenre] = useState('')
 
   function handleSubmit (event) {
     event.preventDefault()
+    // setGenre('birthday')
   }
 
   useEffect(() => {
     axios.post('https://social-ecard.herokuapp.com/api/cards/',
       {
-        author: author,
-        message: message
+        genre: 'birthday',
+        message: 'Hello World',
+        title: 'Greetings',
+        author: 'Dan'
       }, {
         headers: {
           Authorization: `Token ${token}`
@@ -30,11 +34,11 @@ function Create ({ token }) {
         <div className='card-editor-display'>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor='author'>Author</label>
+              <label htmlFor='title'>Title</label>
               <input
                 type='text'
-                value={author}
-                onChange={e => setAuthor(e.target.value)}
+                value={title}
+                onChange={e => setTitle(e.target.value)}
               />
             </div>
             <div>
@@ -51,7 +55,7 @@ function Create ({ token }) {
       </div>
       <div className='side-palette'>
 
-        <div>{author}</div>
+        <div>{title}</div>
         <div>{message}</div>
       </div>
 

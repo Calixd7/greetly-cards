@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Create from './components/Create'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
+import CardList from './components/CardList'
 
 function App () {
   const [username, setUsername] = useState('')
@@ -48,6 +49,11 @@ function App () {
               <label for='slide-item-4'><p className='material-icons'>search</p><span>Explore</span></label>
             </Link>
 
+            <Link to='/card-list'>
+              <input type='radio' name='slideItem' id='slide-item-4' className='slide-toggle' />
+              <label for='slide-item-4'><p className='material-icons'>search</p><span>CardList</span></label>
+            </Link>
+
           </nav>
 
         </div>
@@ -82,10 +88,13 @@ function App () {
               <Profile />
             </Route>
             <Route path='/create'>
-              <Create token={token} />
+              <Create token={token} username={username} />
             </Route>
             <Route path='/explore'>
               <Explore />
+            </Route>
+            <Route path='/card-list'>
+              <CardList token={token} />
             </Route>
           </Switch>
         </div>

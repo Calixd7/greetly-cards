@@ -51,11 +51,12 @@ export function register (username, password) {
     })
 }
 
-// export function login (username, password) {
-//   return (axios
-//     .post('http://localhost:3000/api/auth/users/', {
-//       username: username,
-//       password: password
-//     })
-//     .then((result) => result.data))
-// }
+export function getCards (token) {
+  return axios.get('https://social-ecard.herokuapp.com/api/cards/',
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}

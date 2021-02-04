@@ -29,7 +29,7 @@ function App () {
           <nav className='slidemenu'>
 
             <Link to='/home'>
-              <input type='radio' name='slideItem' id='slide-item-1' className='slide-toggle' defaultChecked />
+              <input type='radio' name='slideItem' id='slide-item-1' className='slide-toggle' />
               <label for='slide-item-1'><p className='material-icons'>home</p><span>Home</span></label>
             </Link>
 
@@ -49,10 +49,6 @@ function App () {
             </Link>
 
             <div className='clear' />
-
-            <div className='slider'>
-              <div className='bar' />
-            </div>
 
           </nav>
 

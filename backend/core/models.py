@@ -8,6 +8,7 @@ class User(AbstractUser):
 
 class Card(models.Model):
     author = models.ForeignKey(to=User,on_delete=models.CASCADE,related_name="cards" )
+    title = models.CharField(max_length=255)
     message = models.TextField()
     public = models.BooleanField(default=True)
     genre = models.CharField(max_length=255)

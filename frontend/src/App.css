@@ -5,6 +5,12 @@
 	padding: 0;
 }
 
+.register-and-login {
+  position:absolute;
+  top:10px;
+  right: 10px;
+}
+
 .errors {
   color: white;
   background-color: red;
@@ -14,7 +20,7 @@
 
 }
 
-.hero {
+.header {
 	height: 50vh;
 	background: linear-gradient(45deg, rgba(255,175,189,.7), rgba(100,216,243,.7), rgba(234,236,198,.7), rgba(245,146,176,.7), rgba(52,219,216,.7)) 0 0 / 1000% no-repeat, url(https://picsum.photos/g/2000/1200?image=443) 0 0 / cover no-repeat;
 	-webkit-animation: gradientAnimation 40s ease infinite;
@@ -52,16 +58,16 @@ h1 span {
 	font-weight: 300;
 }
 
-.clear{
+.clear {
   clear: both;
 }
 
 
-.slide-toggle{
+.slide-toggle {
   display: none;
 }
 
-.slidemenu{
+.slidemenu {
   font-family: arial, sans-serif;
   max-width: 300px;
   margin: 0px auto;
@@ -69,7 +75,7 @@ h1 span {
   padding: 190px;
 }
 
-.slidemenu label{
+.slidemenu label {
   width: 25%;
   text-align: center;
   display: block;
@@ -79,17 +85,17 @@ h1 span {
 
 }
 
-.slidemenu label:hover{
+.slidemenu label:hover {
   cursor: pointer;
   color: #666;
 }
 
-.slidemenu label span{
+.slidemenu label span {
   display: block;
   padding: 10px;    
 }
 
-.slidemenu label .material-icons{
+.slidemenu label .material-icons {
   font-size: 20px;
   border: solid 2px #333;
   text-align: center;
@@ -101,9 +107,7 @@ h1 span {
   border-radius: 50%;
 }
 
-/*Bar Style*/
-
-.slider{
+.slider {
   width: 100%;
   height: 5px;
   display: block;
@@ -112,13 +116,12 @@ h1 span {
   border-radius: 5px;
 }
 
-.slider .bar{
+.slider .bar {
   width: 25%;
   height: 5px;
   background: #333;
   border-radius: 5px;
 }
-
 
 .slidemenu label, .slider .bar {
   transition: all 500ms ease-in-out;
@@ -126,7 +129,7 @@ h1 span {
   -moz-transition: all 500ms ease-in-out;
 }
 
-.slidemenu .slide-toggle:checked + label{
+.slidemenu .slide-toggle:checked + label {
   opacity: 1;
 }
 

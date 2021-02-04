@@ -22,95 +22,80 @@ function App () {
   return (
     <Router>
       <div className='App'>
-        <header className='App-header'>
-          <div className='header-content'>
-            <div className='top-row-header'>
-              <div class='hero'>
-                <h1>Greetly<span>- Card Maker -</span><span>Make custom greeting cards for any occasion</span></h1>
-                <nav class='slidemenu'>
-                  <Link to='/home'>
-                    <input type='radio' name='slideItem' id='slide-item-1' class='slide-toggle' checked />
-                    <label for='slide-item-1'><p class='material-icons'>home</p><span>Home</span></label>
-                  </Link>
+        <div className='header'>
 
-                  <Link to='/profile'>
-                    <input type='radio' name='slideItem' id='slide-item-2' class='slide-toggle' />
-                    <label for='slide-item-2'><p class='material-icons'>face</p><span>Profile</span></label>
-                  </Link>
+          <h1>Greetly<span>- Card Maker -</span><span>Make custom greeting cards for any occasion</span></h1>
 
-                  <Link to='/create'>
-                    <input type='radio' name='slideItem' id='slide-item-3' class='slide-toggle' />
-                    <label for='slide-item-3'><p class='material-icons'>create</p><span>Create</span></label>
-                  </Link>
+          <nav class='slidemenu'>
 
-                  <Link to='/explore'>
-                    <input type='radio' name='slideItem' id='slide-item-4' class='slide-toggle' />
-                    <label for='slide-item-4'><p class='material-icons'>search</p><span>Explore</span></label>
-                  </Link>
-                  <div class='clear' />
+            <Link to='/home'>
+              <input type='radio' name='slideItem' id='slide-item-1' class='slide-toggle' checked />
+              <label for='slide-item-1'><p class='material-icons'>home</p><span>Home</span></label>
+            </Link>
 
-                  <div class='slider'>
-                    <div class='bar' />
-                  </div>
+            <Link to='/profile'>
+              <input type='radio' name='slideItem' id='slide-item-2' class='slide-toggle' />
+              <label for='slide-item-2'><p class='material-icons'>face</p><span>Profile</span></label>
+            </Link>
 
-                </nav>
+            <Link to='/create'>
+              <input type='radio' name='slideItem' id='slide-item-3' class='slide-toggle' />
+              <label for='slide-item-3'><p class='material-icons'>create</p><span>Create</span></label>
+            </Link>
 
-              </div>
-              {
-            isLoggedIn
-              ? (
-                <span>Hello, {username} <button onClick={() => setToken(null)}>Log out</button></span>
-                )
-              : (
-                <span>
-                  <Link to='/login'>Login</Link> or <Link to='/register'>Register</Link>
-                </span>
-                )
-          }
+            <Link to='/explore'>
+              <input type='radio' name='slideItem' id='slide-item-4' class='slide-toggle' />
+              <label for='slide-item-4'><p class='material-icons'>search</p><span>Explore</span></label>
+            </Link>
+
+            <div class='clear' />
+
+            <div class='slider'>
+              <div class='bar' />
             </div>
-            <div className='bottom-row-header'>
-              <nav className='nav-bar'>
-                <div>
-                  <Link to='/home'>Home</Link>
-                </div>
-                <div>
-                  <Link to='/profile'>Profile</Link>
-                </div>
-                <div>
-                  <Link to='/create'>Create</Link>
-                </div>
-                <div>
-                  <Link to='/explore'>Explore</Link>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </header>
-        <main className='main-content'>
-          <div>
-            <Switch>
-              <Route path='/login'>
-                <Login isLoggedIn={isLoggedIn} setAuth={setAuth} />
-              </Route>
-              <Route path='/register'>
-                <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
-              </Route>
-              <Route path='/home'>
-                <Home />
-              </Route>
-              <Route path='/profile'>
-                <Profile />
-              </Route>
-              <Route path='/create'>
-                <Create />
-              </Route>
-              <Route path='/explore'>
-                <Explore />
-              </Route>
-            </Switch>
-          </div>
-        </main>
+
+          </nav>
+
+        </div>
+
+        <div className='register-and-login'>
+          {isLoggedIn
+            ? (
+              <span>Hello, {username} <button onClick={() => setToken(null)}>Log out</button></span>
+              )
+            : (
+              <span>
+                <Link to='/login'>Login</Link> or <Link to='/register'>Register</Link>
+              </span>
+              )}
+        </div>
+
       </div>
+
+      <main className='main-content'>
+        <div>
+          <Switch>
+            <Route path='/login'>
+              <Login isLoggedIn={isLoggedIn} setAuth={setAuth} />
+            </Route>
+            <Route path='/register'>
+              <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
+            </Route>
+            <Route path='/home'>
+              <Home />
+            </Route>
+            <Route path='/profile'>
+              <Profile />
+            </Route>
+            <Route path='/create'>
+              <Create />
+            </Route>
+            <Route path='/explore'>
+              <Explore />
+            </Route>
+          </Switch>
+        </div>
+      </main>
     </Router>
   )
 }

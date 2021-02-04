@@ -43,7 +43,7 @@ function Login ({ setAuth }) {
           id='password'
           onChange={event => setPassword(event.target.value)}
         />
-        <button type='submit'>Log in</button>
+        <button className='log-reg-button' type='submit'>Log in</button>
       </form>
 
     </div>

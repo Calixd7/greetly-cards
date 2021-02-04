@@ -11,9 +11,32 @@
   right: 10px;
 }
 
-.log-reg-header, .log-reg-header-form {
+.log-reg-header {
   padding-left: 20px;
   margin: 20px;
+}
+
+.log-reg-header-form {
+  padding-left: 20px;
+  margin: 20px;
+  width: 30%;
+}
+
+.log-reg-button {
+  margin: 20px;
+  margin-left: 0px;
+  padding: 10px;
+  
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .errors {

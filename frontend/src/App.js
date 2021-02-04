@@ -88,7 +88,7 @@ function App () {
               <Profile />
             </Route>
             <Route path='/create'>
-              <Create />
+              <Create token={token} />
             </Route>
             <Route path='/explore'>
               <Explore />

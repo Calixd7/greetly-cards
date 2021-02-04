@@ -6,14 +6,15 @@ from rest_framework.viewsets import ModelViewSet
 from core.models import Card
 from .serializers import CardSerializer, UserSerializer
 
+class UserViewSet(ModelViewSet):
+    serializer_class = UserSerializer
+    
+    def get_queryset(self):
+        return User.objects.all()
 
-class UserRequestViewSet(APIView):
-    def get(self, request):
-        serializer_context = {
-            'request': request,
-        }
-        serializer = UserSerializer(request.user, context=serializer_context)
-        return Response(data=serializer.data)
+    def perform_create(self, serializer):
+        return serializer.save(self.request.user)
+
 
 class CardViewSet(ModelViewSet):
     
@@ -21,4 +22,4 @@ class CardViewSet(ModelViewSet):
     serializer_class = CardSerializer
 
     def perform_create(self, serializer):
-        serializer.save()
+        serializer.save(author=self.request.user)

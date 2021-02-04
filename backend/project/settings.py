@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
     'corsheaders',
-    
+
     
     # Third-party
     'debug_toolbar',

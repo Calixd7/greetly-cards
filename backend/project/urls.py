@@ -21,12 +21,12 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('cards', views.CardViewSet, basename='card')
+router.register('users',views.UserViewSet, basename='user'),
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/users/', views.UserRequestViewSet.as_view(),name='user-detail'),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.authtoken')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

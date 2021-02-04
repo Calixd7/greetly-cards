@@ -9,4 +9,4 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
     author = UserSerializer(read_only=True)
     class Meta:
         model = Card
-        fields = ['url', 'author', 'circle', 'genre','message', 'created_at']
+        fields = ['url', 'author', "title", 'genre', 'message', 'created_at']

@@ -48,8 +48,6 @@ function App () {
               <label for='slide-item-4'><p className='material-icons'>search</p><span>Explore</span></label>
             </Link>
 
-            <div className='clear' />
-
           </nav>
 
         </div>

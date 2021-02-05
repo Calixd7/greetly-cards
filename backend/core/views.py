@@ -10,9 +10,9 @@ from rest_framework import permissions
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
 
- class IsAuthorOrReadOnly(permissions.BasePermission):
+class IsAuthorOrReadOnly(permissions.BasePermission):
      
-      def has_permission(self, request, view):
+    def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
             return True
         if request.user.is_authenticated:

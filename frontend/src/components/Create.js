@@ -13,7 +13,8 @@ function Create ({ token, handleDone }) {
 
   function handleSubmit (event) {
     event.preventDefault()
-    createCard(token, title)
+    setGenre('birthday')
+    createCard(token, title, message, genre)
       .then(card => {
         handleDone(card)
       })

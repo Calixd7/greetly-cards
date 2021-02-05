@@ -52,11 +52,38 @@ export function register (username, password) {
 }
 
 export function getCards (token) {
-  return axios.get('https://social-ecard.herokuapp.com/api/cards/',
-    {
+  return API
+    .get('https://social-ecard.herokuapp.com/api/cards/',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+    .then(res => res.data)
+}
+
+export function createCard (token, name) {
+  return API.post('cards/', {
+    name: name
+  }, {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  })
+    .then(response => response.data)
+}
+
+export function getCard (token, pk) {
+  return API
+    .get(`cards/${pk}/`, {
       headers: {
         Authorization: `Token ${token}`
       }
     })
-    .then(res => res.data)
+    .then(response => response.data)
 }
+
+// export function createCards (token) {
+//   return API
+//     .post('cards/')
+// }

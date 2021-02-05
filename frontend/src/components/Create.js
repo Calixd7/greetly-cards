@@ -1,29 +1,38 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
+import { Redirect } from 'react-router-dom'
+import { createCard } from '../api'
 
-function Create ({ token, username }) {
+function Create ({ token, handleDone }) {
   const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
   const [genre, setGenre] = useState('')
 
-  function handleSubmit (event) {
-    event.preventDefault()
-    // setGenre('birthday')
+  if (!token) {
+    return <Redirect to='/login' />
   }
 
-  useEffect(() => {
-    axios.post('https://social-ecard.herokuapp.com/api/cards/',
-      {
-        genre: 'birthday',
-        message: 'Hello World',
-        title: 'Greetings',
-        author: 'Dan'
-      }, {
-        headers: {
-          Authorization: `Token ${token}`
-        }
+  function handleSubmit (event) {
+    event.preventDefault()
+    createCard(token, title)
+      .then(card => {
+        handleDone(card)
       })
-  }, [])
+  }
+
+  // function handleSubmit (event) {
+  //   event.preventDefault()
+  //   setGenre('birthday')
+  //   axios.post('https://social-ecard.herokuapp.com/api/cards/',
+  //     {
+  //       genre: genre,
+  //       message: message,
+  //       title: title
+  //     }, {
+  //       headers: {
+  //         Authorization: `Token ${token}`
+  //       }
+  //     })
+  // }
 
   return (
     <div className='page-content create-card-content'>
@@ -49,7 +58,7 @@ function Create ({ token, username }) {
                 onChange={e => setMessage(e.target.value)}
               />
             </div>
-            <button type='submit'>Submit</button>
+            <button type='submit'>Save Card</button>
           </form>
         </div>
       </div>

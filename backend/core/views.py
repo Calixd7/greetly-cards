@@ -53,7 +53,7 @@ class CardViewSet(ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def all(self, request):
-        cards = Card.objects.all()
+        cards = Card.objects.all().order_by('created_at')
         page = self.paginate_queryset(cards)
         if page is not None:
             serializer = self.get_serializer(page, many=True)
@@ -61,9 +61,18 @@ class CardViewSet(ModelViewSet):
         serializer = CardSerializer(cards, many=True, context={'request': request})
         return Response(serializer.data)
 
-    # @action(detail=False, methods=['get'])
-    # def me (self, request):
+    @action(detail=False, methods=['get'])
+    def me (self, request):
+        queryset = Card.objects.filter(author=request.user).order_by('created_at')
 
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+        
 
 
 

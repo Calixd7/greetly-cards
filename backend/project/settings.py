@@ -153,11 +153,13 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
          'rest_framework.permissions.IsAuthenticated',
     ]
+    'PAGE_SIZE':
+    10,
+
 }
 CORS_ALLOW_ALL_ORIGINS = True
 
-'PAGE_SIZE':
-    10,
+
 
 import django_on_heroku
 django_on_heroku.settings(locals())

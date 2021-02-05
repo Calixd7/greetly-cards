@@ -61,6 +61,9 @@ class CardViewSet(ModelViewSet):
         serializer = CardSerializer(cards, many=True, context={'request': request})
         return Response(serializer.data)
 
+    @action(detail=False, methods=['get'])
+    def me (self, requestt )
+
 
 
 

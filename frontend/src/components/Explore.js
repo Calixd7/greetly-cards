@@ -1,4 +1,10 @@
-function Explore () {
+import { Redirect } from 'react-router-dom'
+
+function Explore ({ token }) {
+  if (!token) {
+    return <Redirect to='/login' />
+  }
+
   return (
     <div className='page-content'>
       <div>

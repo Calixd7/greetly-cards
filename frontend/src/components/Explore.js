@@ -1,4 +1,4 @@
-function Explore () {
+function Explore ({ token }) {
   return (
     <div className='page-content'>
       <div>

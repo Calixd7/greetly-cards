@@ -62,7 +62,8 @@ class CardViewSet(ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=['get'])
-    def me (self, requestt )
+    def me (self, request):
+        
 
 
 

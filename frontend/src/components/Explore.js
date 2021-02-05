@@ -1,3 +1,5 @@
+create-card-detail-page
+
 import { Redirect } from 'react-router-dom'
 
 function Explore ({ token }) {
@@ -5,6 +7,7 @@ function Explore ({ token }) {
     return <Redirect to='/login' />
   }
 
+main
   return (
     <div className='page-content'>
       <div>

@@ -8,6 +8,7 @@ import Create from './components/Create'
 import Explore from './components/Explore'
 import Profile from './components/Profile'
 import CardList from './components/CardList'
+import CardDetail from './components/CardDetail'
 import createPersistedState from 'use-persisted-state'
 
 const useUsername = createPersistedState('username')
@@ -95,10 +96,13 @@ function App () {
               <Create token={token} username={username} />
             </Route>
             <Route path='/explore'>
-              <Explore />
+              <Explore token={token} />
             </Route>
             <Route path='/card-list'>
               <CardList token={token} />
+            </Route>
+            <Route path='/c/:pk'>
+              <CardDetail token={token} />
             </Route>
           </Switch>
         </div>

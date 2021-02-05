@@ -53,7 +53,7 @@ export function register (username, password) {
 
 export function getCards (token) {
   return API
-    .get('https://social-ecard.herokuapp.com/api/cards/',
+    .get('cards/',
       {
         headers: {
           Authorization: `Token ${token}`
@@ -62,9 +62,11 @@ export function getCards (token) {
     .then(res => res.data)
 }
 
-export function createCard (token, name) {
+export function createCard (token, title, message, genre) {
   return API.post('cards/', {
-    name: name
+    title: title,
+    message: message,
+    genre: genre
   }, {
     headers: {
       Authorization: `Token ${token}`
@@ -82,8 +84,3 @@ export function getCard (token, pk) {
     })
     .then(response => response.data)
 }
-
-// export function createCards (token) {
-//   return API
-//     .post('cards/')
-// }

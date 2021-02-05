@@ -13,26 +13,11 @@ function Create ({ token, handleDone }) {
 
   function handleSubmit (event) {
     event.preventDefault()
-    createCard(token, title)
+    createCard(token, title, message, genre)
       .then(card => {
         handleDone(card)
       })
   }
-
-  // function handleSubmit (event) {
-  //   event.preventDefault()
-  //   setGenre('birthday')
-  //   axios.post('https://social-ecard.herokuapp.com/api/cards/',
-  //     {
-  //       genre: genre,
-  //       message: message,
-  //       title: title
-  //     }, {
-  //       headers: {
-  //         Authorization: `Token ${token}`
-  //       }
-  //     })
-  // }
 
   return (
     <div className='page-content create-card-content'>
@@ -56,6 +41,14 @@ function Create ({ token, handleDone }) {
                 type='text'
                 value={message}
                 onChange={e => setMessage(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor='genre'>Genre</label>
+              <input
+                type='text'
+                value={genre}
+                onChange={e => setGenre(e.target.value)}
               />
             </div>
             <button type='submit'>Save Card</button>

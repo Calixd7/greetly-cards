@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getCards } from '../api'
 import { Redirect, Link } from 'react-router-dom'
 import Create from './Create'
+import CardDetail from './CardDetail'
 
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
@@ -14,7 +15,7 @@ function CardList ({ token }) {
   }
 
   if (!token) {
-    return <Redirect to='/Login' />
+    return <Redirect to='/login' />
   }
 
   return (
@@ -34,7 +35,7 @@ function CardList ({ token }) {
       <ul>
         {cards.map(card => (
           <li key={card.url}>
-            <Link to='/c/{card.pk}'>{card.title}</Link>
+            <Link to={`/c/${card.pk}`}>{card.title}</Link>
           </li>
         ))}
       </ul>

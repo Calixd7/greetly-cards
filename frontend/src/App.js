@@ -101,6 +101,9 @@ function App () {
             <Route path='/card-list'>
               <CardList token={token} />
             </Route>
+            <Route path='/c/:pk'>
+              <CardDetail token={token} />
+            </Route>
           </Switch>
         </div>
       </main>

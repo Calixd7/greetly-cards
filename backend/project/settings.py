@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from pathlib import Path
 
+
 import environ
 
 env = environ.Env(
@@ -150,12 +151,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
        'rest_framework.authentication.TokenAuthentication',
  ],
+
     'DEFAULT_PERMISSION_CLASSES': [
          'rest_framework.permissions.IsAuthenticated',
     ]
-    'PAGE_SIZE':
-    10,
 
+    'PAGE_SIZE':10,
 }
 CORS_ALLOW_ALL_ORIGINS = True
 

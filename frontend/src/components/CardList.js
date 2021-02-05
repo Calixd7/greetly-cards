@@ -14,7 +14,7 @@ function CardList ({ token }) {
   }
 
   if (!token) {
-    return <Redirect to='/Login' />
+    return <Redirect to='/login' />
   }
 
   return (

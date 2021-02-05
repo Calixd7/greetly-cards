@@ -65,8 +65,8 @@ export function getCards (token) {
 export function createCard (token, title, message, genre) {
   return API.post('cards/', {
     title: title,
-    genre: genre,
-    message: message
+    message: message,
+    genre: genre
   }, {
     headers: {
       Authorization: `Token ${token}`

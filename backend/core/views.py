@@ -7,6 +7,25 @@ from core.models import Card
 from .serializers import CardSerializer, UserSerializer
 from django.core.exceptions import PermissionDenied
 from rest_framework import permissions
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import action
+
+ class IsAuthorOrReadOnly(permissions.BasePermission):
+     
+      def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        if request.user.is_authenticated:
+            return True
+
+        return False
+
+        def has_object_permission(self, request, view, obj):
+            if request.method in permissions.SAFE_METHODS:
+                return True
+
+            return obj.author == request.user
+
 
 
 class UserViewSet(ModelViewSet):
@@ -20,13 +39,30 @@ class UserViewSet(ModelViewSet):
 
 
 class CardViewSet(ModelViewSet):
-    
-    queryset = Card.objects.all()
+
     serializer_class = CardSerializer
-ef perform_create(self, serializer):
-        if not self.request.user.is_authenticated:
-            raise PermissionDenied()
+    permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticated]
+    queryset = Card.objects.all()
+    
+    def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+    
+    
+    def get_queryset(self):
+        return Card.objects.filter(author=self.request.user)
+
+    @action(detail=False, methods=['get'])
+    def all(self, request):
+        cards = Card.objects.all()
+        page = self.paginate_queryset(cards)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        serializer = CardSerializer(cards, many=True, context={'request': request})
+        return Response(serializer.data)
+
+
+
 
 
     

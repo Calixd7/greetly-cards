@@ -1,21 +1,28 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { createCard } from '../api'
 
 function Create ({ token, handleDone }) {
   const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
   const [genre, setGenre] = useState('')
+  const history = useHistory()
+
+  console.log('handle done', handleDone)
 
   if (!token) {
     return <Redirect to='/login' />
   }
 
-  function handleSubmit (event) {
+  function handleCardCreate (event) {
     event.preventDefault()
     createCard(token, title, message, genre)
       .then(card => {
-        handleDone(card)
+        if (handleDone) {
+          handleDone(card)
+        } else {
+          history.push('/card-list')
+        }
       })
   }
 
@@ -26,7 +33,7 @@ function Create ({ token, handleDone }) {
           <div>Drag & Drop palette</div>
         </div>
         <div className='card-editor-display'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleCardCreate}>
             <div>
               <label htmlFor='title'>Title</label>
               <input

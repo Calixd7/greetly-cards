@@ -53,13 +53,17 @@ export function register (username, password) {
 
 export function getCards (token) {
   return API
-    .get('cards/',
+    .get('cards/me/?limit=50&offset=0',
       {
         headers: {
           Authorization: `Token ${token}`
         }
       })
-    .then(res => res.data)
+    // .then(res => res.data.results)
+    .then(res => {
+      console.log('cards in api', res.data.results)
+      return res.data.results
+    })
 }
 
 export function createCard (token, title, message, genre) {
@@ -73,6 +77,7 @@ export function createCard (token, title, message, genre) {
     }
   })
     .then(response => response.data)
+    // .then(response => console.log('create card api', response.data))
 }
 
 export function getCard (token, pk) {
@@ -83,4 +88,25 @@ export function getCard (token, pk) {
       }
     })
     .then(response => response.data)
+}
+
+export function updateCard (token, pk, json) {
+  console.log('token in update function', token)
+  return API
+    .put(`cards/${pk}/`, json, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data.results)
+}
+
+export function deleteCard (token, pk) {
+  return API
+    .delete(`cards/${pk}/`, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
 }

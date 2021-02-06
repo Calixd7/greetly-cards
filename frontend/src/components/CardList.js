@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import { getCards } from '../api'
 import { Redirect, Link } from 'react-router-dom'
 import Create from './Create'
-import CardDetail from './CardDetail'
 
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
+
+  // console.log('cards in cardlist', cards)
 
   useEffect(updateCards, [token])
 
@@ -25,6 +26,7 @@ function CardList ({ token }) {
         {isCreating
           ? <Create
               token={token} handleDone={(newCard) => {
+                console.log('card in handleDone function in CardList', newCard)
                 setIsCreating(false)
                 setCards([...cards, newCard])
               }}

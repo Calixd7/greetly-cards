@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Redirect, useParams, Link, useHistory } from 'react-router-dom'
-import { getCard, deleteCard, updateCard } from '../api'
+import { useParams, Link, useHistory } from 'react-router-dom'
+import { getCard, deleteCard, updateCard, unsplashApi } from '../api'
 
 function CardDetail ({ token }) {
   const { pk } = useParams()
@@ -8,18 +8,18 @@ function CardDetail ({ token }) {
   const [isDeleting, setIsDeleting] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [newMessage, setNewMessage] = useState('')
+  const [imageQuery, setImageQuery] = useState('')
+  const [imageDisplay, setImageDisplay] = useState([])
   const history = useHistory()
 
   useEffect(() => {
     getCard(token, pk)
       .then(card => setCard(card))
   }, [token, pk])
-  console.log('card in CardDetail', card)
 
   function handleMessageUpdate (event) {
     event.preventDefault()
     setIsEditing(false)
-    console.log('handleMessage token', token)
     updateCard(token, pk, { message: newMessage })
       .then(card => {
         setCard(card)
@@ -34,6 +34,21 @@ function CardDetail ({ token }) {
       .then(card => history.push('/card-list'))
   }
 
+  function handleImgSearch (event) {
+    event.preventDefault()
+    unsplashApi(event).then(data => setImageDisplay(data))
+    // {
+    // data.map(datum => console.log(datum.urls.full))
+    // data.map(datum => (
+    //   setImageDisplay(datum.urls.full)
+    // data.map(datum => {
+    //   const images = datum
+    //   return console.log('images', images)
+    // })
+    // ))
+    // })
+  }
+  console.log('img display', imageDisplay)
   const editingCard = (
     <div>
       <form onSubmit={handleMessageUpdate}>
@@ -55,18 +70,17 @@ function CardDetail ({ token }) {
   return (
     <div>
       {card && (
-        <div>
+        <div className='edit-card-main'>
+          <div>
+            <div className='card-container'>{card.message}</div>
+          </div>
           <div>
             <div>
-              Card detail page: Display Card here
+              <button type='button' onClick={() => setIsEditing(true)}>Edit message</button>
             </div>
-            <div>{card.message}</div>
-          </div>
-          <div>
-            <button type='button' onClick={() => setIsEditing(true)}>Edit message</button>
-          </div>
-          <div>
-            <button type='button' onClick={() => setIsDeleting(true)}>Delete card</button>
+            <div>
+              <button type='button' onClick={() => setIsDeleting(true)}>Delete card</button>
+            </div>
           </div>
           {(isEditing && editingCard) || (isDeleting && deletingCard)}
           <p>
@@ -75,6 +89,22 @@ function CardDetail ({ token }) {
         </div>
 
       )}
+      <div>
+        <div>
+          <div className='display-images-container'>
+            {imageDisplay.map(image => (
+              <div key={image.id}>
+                <img src={image.urls.raw} width='600' height='350' alt='images' />
+              </div>
+            ))}
+
+          </div>
+        </div>
+        <form className='input-btn-form' onSubmit={handleImgSearch}>
+          <input type='text' placeholder='search background image' value={imageQuery} onChange={e => setImageQuery(e.target.value)} />
+          <button type='submit'>Search Image</button>
+        </form>
+      </div>
     </div>
   )
 }

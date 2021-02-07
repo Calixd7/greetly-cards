@@ -40,7 +40,7 @@ function CardList ({ token }) {
       </div>
       <div>
         {cards.map(card => (
-          <div key={card.url} className='card-list-card-container'>
+          <div key={card.url} className='card-container'>
             <div>
               {card.title}
             </div>

@@ -36,19 +36,12 @@ function CardDetail ({ token }) {
 
   function handleImgSearch (event) {
     event.preventDefault()
-    unsplashApi(event).then(data => setImageDisplay(data))
-    // {
-    // data.map(datum => console.log(datum.urls.full))
-    // data.map(datum => (
-    //   setImageDisplay(datum.urls.full)
-    // data.map(datum => {
-    //   const images = datum
-    //   return console.log('images', images)
-    // })
-    // ))
-    // })
+    unsplashApi(imageQuery).then(data => setImageDisplay(data.results))
   }
+
+  console.log('imgQuery', imageQuery)
   console.log('img display', imageDisplay)
+
   const editingCard = (
     <div>
       <form onSubmit={handleMessageUpdate}>

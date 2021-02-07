@@ -158,18 +158,18 @@ h1 span {
   
 }
 
-.card-container-background-color {
-  background-color: #678;
-}
-
-.card-conatiner-background-img {
-  background-image: url();
+.message-input-field {
+  background: none;
+  border: none;
+  border-width: 0;
+  outline: 0;
 }
 
 .input-btn-form {
   display: flex;
   margin: 20px;
   padding: 20px;
+  align-items: center;
 }
 
 .side-palette {
@@ -183,6 +183,8 @@ h1 span {
 
 .palette-object {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .object-title {
@@ -191,9 +193,19 @@ h1 span {
   font-weight: bold;
 }
 
+.object-value-container {
+  display: flex;
+  align-items: center;
+}
+
 .object-value {
   margin: 5px;
   padding: 2px;
+}
+
+.select-tag {
+  width: 150px;
+  height: fit-content;
 }
 
 /* ************************ */

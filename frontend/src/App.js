@@ -37,27 +37,27 @@ function App () {
 
             <Link to='/home'>
               <input type='radio' name='slideItem' id='slide-item-1' className='slide-toggle' />
-              <label for='slide-item-1'><p className='material-icons'>home</p><span>Home</span></label>
+              <label htmlFor='slide-item-1'><p className='material-icons'>home</p><span>Home</span></label>
             </Link>
 
             <Link to='/card-list'>
               <input type='radio' name='slideItem' id='slide-item-4' className='slide-toggle' />
-              <label for='slide-item-4'><p className='material-icons'>search</p><span>My Cards</span></label>
+              <label htmlFor='slide-item-4'><p className='material-icons'>search</p><span>My Cards</span></label>
             </Link>
 
             {/* <Link to='/profile'>
               <input type='radio' name='slideItem' id='slide-item-2' className='slide-toggle' />
-              <label for='slide-item-2'><p className='material-icons'>face</p><span>My Cards</span></label>
+              <label htmlFor='slide-item-2'><p className='material-icons'>face</p><span>My Cards</span></label>
             </Link> */}
 
             <Link to='/create'>
               <input type='radio' name='slideItem' id='slide-item-3' className='slide-toggle' />
-              <label for='slide-item-3'><p className='material-icons'>create</p><span>Create</span></label>
+              <label htmlFor='slide-item-3'><p className='material-icons'>create</p><span>Create</span></label>
             </Link>
 
             <Link to='/explore'>
               <input type='radio' name='slideItem' id='slide-item-4' className='slide-toggle' />
-              <label for='slide-item-4'><p className='material-icons'>search</p><span>Explore</span></label>
+              <label htmlFor='slide-item-4'><p className='material-icons'>search</p><span>Explore</span></label>
             </Link>
 
           </nav>

@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
 
+
 * {
 	margin: 0;
 	padding: 0;
@@ -131,7 +132,12 @@ h1 span {
   border-radius: 50%;
 }
 
-.card-list-card-container {
+.edit-card-main{
+  display: flex;
+
+}
+
+.card-container {
   border: 2px solid;
   margin: 20px 20px 20px 80px;
   padding: 5px;
@@ -141,6 +147,29 @@ h1 span {
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  
 }
 
+.card-container-background-color {
+  background-color: #678;
+}
 
+.card-conatiner-background-img {
+  background-image: url();
+}
+
+.input-btn-form {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+}
+
+.display-images-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.images {
+  margin: 10px;
+
+}

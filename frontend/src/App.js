@@ -1,6 +1,6 @@
-import { useState } from 'react'
+
 import './App.css'
-import { BrowserRouter as Router, Link, Switch, Route, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home'

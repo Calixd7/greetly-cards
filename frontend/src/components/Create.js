@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
-import { createCard } from '../api'
+import { createCard, unsplashApi } from '../api'
 // import { countCards } from './CardList'
 
 function Create ({ token, handleDone }) {
-  const [title, setTitle] = useState('')
+  // const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
   const [genre, setGenre] = useState('')
+  const [imageQuery, setImageQuery] = useState('')
+  const [imageDisplay, setImageDisplay] = useState([])
+  const [selectedImage, setSelectedImage] = useState([])
   const history = useHistory()
-
-  console.log('handle done', handleDone)
 
   if (!token) {
     return <Redirect to='/login' />
@@ -17,7 +18,7 @@ function Create ({ token, handleDone }) {
 
   function handleCardCreate (event) {
     event.preventDefault()
-    createCard(token, title, message, genre)
+    createCard(token, message, genre)
       .then(card => {
         // countCards()
         if (handleDone) {
@@ -28,46 +29,54 @@ function Create ({ token, handleDone }) {
       })
   }
 
+  function handleImgSearch (event) {
+    event.preventDefault()
+    unsplashApi(imageQuery).then(data => setImageDisplay(data.results))
+  }
+
   return (
     <div className='page-content create-card-content'>
-      <div className='upper-palette-card-editor-container'>
-        <div className='upper-palette'>
-          <div>Drag & Drop palette</div>
-        </div>
-        <div className='card-editor-display'>
+      <div className='card-editor-side-palette-container'>
+        <div className='edit-card-main'>
           <form onSubmit={handleCardCreate}>
-            <div>
-              <label htmlFor='title'>Title</label>
-              <input
-                type='text'
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor='message'>Message</label>
+            <div className='card-container'>
+              <label htmlFor='message' />
               <input
                 type='text'
                 value={message}
+                placeholder='Message'
                 onChange={e => setMessage(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor='genre'>Genre</label>
-              <input
-                type='text'
-                value={genre}
-                onChange={e => setGenre(e.target.value)}
               />
             </div>
             <button type='submit'>Save Card</button>
           </form>
         </div>
+        <div className='side-palette'>
+          <div className='palette-object'>
+            <div className='object-title'>Font</div>
+            <div className='object-value'>selection</div>
+          </div>
+          <div className='palette-object'>
+            <div className='object-title'>Background Color</div>
+            <div className='object-value'>selection</div>
+          </div>
+        </div>
       </div>
-      <div className='side-palette'>
+      <div>
+        <div>
+          <div className='display-images-container'>
+            {imageDisplay.map(image => (
+              <div className='images' key={image.id} onClick={() => setSelectedImage(image.urls.small)}>
+                <img src={image.urls.small} alt='images' />
+              </div>
+            ))}
 
-        <div>{title}</div>
-        <div>{message}</div>
+          </div>
+        </div>
+        <form className='input-btn-form' onSubmit={handleImgSearch}>
+          <input type='text' placeholder='search background image' value={imageQuery} onChange={e => setImageQuery(e.target.value)} />
+          <button type='submit'>Search Image</button>
+        </form>
       </div>
 
     </div>

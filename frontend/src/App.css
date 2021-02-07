@@ -132,6 +132,14 @@ h1 span {
   border-radius: 50%;
 }
 
+/* ************************ */
+/* Create card styles on Create.js */
+/* ************************ */
+
+.card-editor-side-palette-container {
+  display: flex;
+}
+
 .edit-card-main{
   display: flex;
 
@@ -163,6 +171,34 @@ h1 span {
   margin: 20px;
   padding: 20px;
 }
+
+.side-palette {
+  border: 2px solid;
+  position: absolute;
+  right: 0;
+  top: 400px;
+  height: 60%;
+  width: 20%;
+}
+
+.palette-object {
+  display: flex;
+}
+
+.object-title {
+  margin: 5px;
+  padding: 2px;
+  font-weight: bold;
+}
+
+.object-value {
+  margin: 5px;
+  padding: 2px;
+}
+
+/* ************************ */
+/* Img search on Create.js */
+/* ************************ */
 
 .display-images-container {
   display: flex;

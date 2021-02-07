@@ -18,16 +18,16 @@ function Explore ({ token }) {
 
   return (
     <div className='page-content'>
-        <h3>All users cards here by genre:</h3>
-        <ul>
-          {cards.map(card => (
-            <li key={card.url}>
-              {card.genre}
-            </li>
-          )
-          )}
-        </ul>
-      </div>
+      <h3>All users cards here by genre:</h3>
+      <ul>
+        {cards.map(card => (
+          <li key={card.url}>
+            {card.genre}
+          </li>
+        )
+        )}
+      </ul>
+    </div>
   )
 }
 

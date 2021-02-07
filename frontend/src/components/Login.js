@@ -21,7 +21,7 @@ function Login ({ setAuth }) {
   }
 
   return (
-    <div>
+    <div className='page-container'>
       <h2 className='log-reg-header'>Login</h2>
       <form className='log-reg-header-form' onSubmit={handleSubmit}>
         {errors && (

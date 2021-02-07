@@ -60,7 +60,7 @@ function CardDetail ({ token }) {
   )
 
   return (
-    <div>
+    <div className='page-container'>
       {card && (
         <div className='edit-card-main'>
           <div>

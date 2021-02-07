@@ -29,7 +29,7 @@ function Create ({ token, handleDone }) {
   }
 
   return (
-    <div className='page-content create-card-content'>
+    <div className='page-container page-content create-card-content'>
       <div className='upper-palette-card-editor-container'>
         <div className='upper-palette'>
           <div>Drag & Drop palette</div>

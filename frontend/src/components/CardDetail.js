@@ -10,8 +10,10 @@ function CardDetail ({ token }) {
   const [newMessage, setNewMessage] = useState('')
   const [imageQuery, setImageQuery] = useState('')
   const [imageDisplay, setImageDisplay] = useState([])
+  const [selectedImage, setSelectedImage] = useState([])
   const history = useHistory()
 
+  console.log('selected image', selectedImage)
   useEffect(() => {
     getCard(token, pk)
       .then(card => setCard(card))
@@ -39,9 +41,6 @@ function CardDetail ({ token }) {
     unsplashApi(imageQuery).then(data => setImageDisplay(data.results))
   }
 
-  console.log('imgQuery', imageQuery)
-  console.log('img display', imageDisplay)
-
   const editingCard = (
     <div>
       <form onSubmit={handleMessageUpdate}>
@@ -65,7 +64,15 @@ function CardDetail ({ token }) {
       {card && (
         <div className='edit-card-main'>
           <div>
-            <div className='card-container'>{card.message}</div>
+            <div className={`
+            card-container 
+            ${!selectedImage
+            ? 'card-container-background-color'
+            : { backgroundImage: `url(${selectedImage})` }
+            }`}
+            >
+              {card.message}
+            </div>
           </div>
           <div>
             <div>
@@ -86,8 +93,8 @@ function CardDetail ({ token }) {
         <div>
           <div className='display-images-container'>
             {imageDisplay.map(image => (
-              <div key={image.id}>
-                <img src={image.urls.raw} width='600' height='350' alt='images' />
+              <div className='images' key={image.id} onClick={() => setSelectedImage(image.urls.small)}>
+                <img src={image.urls.small} alt='images' />
               </div>
             ))}
 

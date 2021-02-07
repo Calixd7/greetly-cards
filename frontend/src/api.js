@@ -111,9 +111,4 @@ export function deleteCard (token, pk) {
 export function unsplashApi (input) {
   return axios.get(`https://api.unsplash.com/photos/?client_id=TlQHhYwlF1gKtsQqX6twCM-WUusQSXgDFW1AhVOgat8&query=${input}&orientation=landscape`)
     .then(res => res.data)
-  // {
-  // const data = res.data
-  // // data.map(datum => datum.urls.full)
-  // data.map(datum => console.log(datum.urls.full))
-    // })
 }

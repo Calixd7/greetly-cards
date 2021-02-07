@@ -10,8 +10,9 @@ function Home () {
       <p className='p1'>Design custom greeting cards for any occasion.</p>
       {/* <img className='image-hp-card' src={getWellCard} alt='getWellCard' /> */}
       <p className='p2'>Add images, styles and greetings to craft your perfect message.</p>
-      <p className='p3'><Link to='/login'>Log in</Link> or <Link to='/register'>Register</Link> to get started!</p>
+      {/* <p className='p3'><Link to='/login'>Log in</Link> or <Link to='/register'>Register</Link> to get started!</p> */}
 
+      <img className='image-hp-card' src={getWellCard} alt='getWellCard' />
       <Link className='signup-button' to='/register'><button className='signup-button'>Sign up here!</button></Link>
 
     </div>

@@ -6,7 +6,7 @@ const API = axios.create({
 
 export function login (username, password) {
   return API
-    .post('auth/token/login/', { // using deployed API!!!
+    .post('auth/token/login/', {
       username: username,
       password: password
     })
@@ -61,7 +61,6 @@ export function getCards (token) {
       })
     // .then(res => res.data.results)
     .then(res => {
-      console.log('cards in api', res.data.results)
       return res.data.results
     })
 }
@@ -77,7 +76,6 @@ export function createCard (token, title, message, genre) {
     }
   })
     .then(response => response.data)
-    // .then(response => console.log('create card api', response.data))
 }
 
 export function getCard (token, pk) {
@@ -91,7 +89,6 @@ export function getCard (token, pk) {
 }
 
 export function updateCard (token, pk, json) {
-  console.log('token in update function', token)
   return API
     .put(`cards/${pk}/`, json, {
       headers: {

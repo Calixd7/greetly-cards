@@ -131,5 +131,16 @@ h1 span {
   border-radius: 50%;
 }
 
+.card-list-card-container {
+  border: 2px solid;
+  margin: 20px 20px 20px 80px;
+  padding: 5px;
+  width: 43rem;
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
 
 

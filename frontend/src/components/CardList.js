@@ -6,13 +6,17 @@ import Create from './Create'
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
+  const [cardListLength, setCardListLength] = useState(0)
 
-  // console.log('cards in cardlist', cards)
+  // function CountCards (cards) {
+  //   setCardListLength(cards.length)
+  // }
 
   useEffect(updateCards, [token])
 
   function updateCards () {
     getCards(token).then(cards => setCards(cards))
+    setCardListLength(cards.length)
   }
 
   if (!token) {
@@ -22,11 +26,11 @@ function CardList ({ token }) {
   return (
     <div className='CardList'>
       <h2>My Cards</h2>
+      <div>Number of Cards: {cardListLength}</div>
       <div>
         {isCreating
           ? <Create
               token={token} handleDone={(newCard) => {
-                console.log('card in handleDone function in CardList', newCard)
                 setIsCreating(false)
                 setCards([...cards, newCard])
               }}
@@ -34,13 +38,19 @@ function CardList ({ token }) {
           : (<button onClick={() => setIsCreating(true)}>Create New Card</button>)}
 
       </div>
-      <ul>
+      <div>
         {cards.map(card => (
-          <li key={card.url}>
-            <Link to={`/c/${card.pk}`}>{card.title}</Link>
-          </li>
+          <div key={card.url} className='card-list-card-container'>
+            <div>
+              {card.title}
+            </div>
+            <div>
+              <Link to={`/c/${card.pk}`}>{card.message}</Link>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+
     </div>
   )
 }

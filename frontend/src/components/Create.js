@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
 import { createCard } from '../api'
+// import { countCards } from './CardList'
 
 function Create ({ token, handleDone }) {
   const [title, setTitle] = useState('')
@@ -18,6 +19,7 @@ function Create ({ token, handleDone }) {
     event.preventDefault()
     createCard(token, title, message, genre)
       .then(card => {
+        // countCards()
         if (handleDone) {
           handleDone(card)
         } else {

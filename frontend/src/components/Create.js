@@ -15,6 +15,8 @@ function Create ({ token, handleDone }) {
   const [selectedFontWeight, setSelectedFontWeight] = useState('Regular')
   const [selectedFontStyle, setSelectedFontStyle] = useState('Regular')
   const [selectedFontAlignment, setSelectedFontAlignment] = useState('Left')
+  const [selectedFontBackgroundColor, setSelectedFontBackgroundColor] = useState('none')
+  const [selectedFontBackgroundOpacity, setSelectedFontBackgroundOpacity] = useState('none')
   const [selectedMessagePlacement, setSelectedMessagePlacement] = useState('center')
   const [selectedImage, setSelectedImage] = useState([])
   const [selectedBackgroundColor, setSelectedBackgroundColor] = useState('none')
@@ -74,7 +76,10 @@ function Create ({ token, handleDone }) {
                   fontSize: `${selectedFontSize}px`,
                   fontWeight: `${selectedFontWeight}`,
                   fontStyle: `${selectedFontStyle}`,
-                  textAlign: `${selectedFontAlignment}`
+                  textAlign: `${selectedFontAlignment}`,
+                  border: 'none',
+                  backgroundColor: `${selectedFontBackgroundColor}`,
+                  opacity: `${selectedFontBackgroundOpacity}`
                 }}
                 type='text'
                 value={message}
@@ -94,6 +99,10 @@ function Create ({ token, handleDone }) {
                 <option value='Playfair Display, serif'>Playfair Display</option>
                 <option value='Dancing Script, cursive'>Dancing Script</option>
                 <option value='Inconsolata, monospace'>Inconsolata</option>
+                <option value='Merriweather, serif'>Merriweather</option>
+                <option value='Oswald, sans-serif'>Oswald</option>
+                <option value='Libre Baskerville, serif'>Libre Baskerville</option>
+
               </select>
             </div>
             <div className='object-value-container'>
@@ -140,6 +149,30 @@ function Create ({ token, handleDone }) {
                 <option value='center'>Center</option>
                 <option value='right'>Right</option>
               </select>
+            </div>
+            <div className='object-value-container'>
+              <div className='object-value'>Text Background</div>
+              <select className='select-tag' value={selectedFontBackgroundColor} onChange={e => setSelectedFontBackgroundColor(e.currentTarget.value)}>
+                <option value='#000000'>Black</option>
+                <option value='#FFFFFF'>White</option>
+                <option value='#FF0000'>Red</option>
+                <option value='#00FF00'>Green</option>
+                <option value='#FFFFFF'>White</option>
+                <option value='#0000FF'>Blue</option>
+                <option value='#FFFF00'>Yellow</option>
+                <option value='#00FFFF'>Cyan</option>
+                <option value='#FF00FF'>Magenta</option>
+              </select>
+            </div>
+            <div className='object-value-container'>
+              <div className='object-value'>Opacity
+                <select className='select-tag' value={selectedFontBackgroundOpacity} onChange={e => setSelectedFontBackgroundOpacity(e.currentTarget.value)}>
+                  <option value='none'>none</option>
+                  {calculateOpacityOptions().map(num =>
+                    <option key={num} value={num}>{num}</option>
+                  )}
+                </select>
+              </div>
             </div>
             <div className='object-value-container'>
               <div className='object-value'>Message Placement</div>

@@ -90,9 +90,9 @@ function App () {
             <Route path='/home'>
               <Home isLoggedIn={isLoggedIn} />
             </Route>
-            <Route path='/profile'>
+            {/* <Route path='/profile'>
               <Profile />
-            </Route>
+            </Route> */}
             <Route path='/create'>
               <Create token={token} username={username} />
             </Route>

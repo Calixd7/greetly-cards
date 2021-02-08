@@ -20,52 +20,37 @@ function CardList ({ token }) {
   }
 
   return (
-    <div className='CardList'>
-      <h2>My Cards</h2>
-      <div>Number of Cards: {cardListLength}</div>
-      <div>
-        {isCreating
-          ? <Create
-              token={token} handleDone={(newCard) => {
-                setIsCreating(false)
-                setCards([...cards, newCard])
-              }}
-            />
-          : (<button onClick={() => setIsCreating(true)}>Create New Card</button>)}
+    <div className='page-container'>
+      <div className='CardList'>
+        <h2>My Cards</h2>
+        <div>Number of Cards: {cardListLength}</div>
+        <div>
+          {isCreating
+            ? <Create
+                token={token} handleDone={(newCard) => {
+                  setIsCreating(false)
+                  setCards([...cards, newCard])
+                }}
+              />
+            : (<button onClick={() => setIsCreating(true)}>Create New Card</button>)}
+
+        </div>
+        <div>
+          {cards.map(card => (
+            <div key={card.url} className='card-container'>
+              <div>
+                {card.title}
+              </div>
+              <div>
+                <Link to={`/c/${card.pk}`}>{card.message}</Link>
+              </div>
+            </div>
+          ))}
+        </div>
 
       </div>
-      <div>
-        {cards.map(card => (
-          <div key={card.url} className='card-container'>
-            <div>
-              {card.title}
-            </div>
-            <div>
-              <Link to={`/c/${card.pk}`}>{card.message}</Link>
-            </div>
-          </div>
-        ))}
-      </div>
-
     </div>
   )
 }
 
 export default CardList
-
-//   return (
-//     <div>
-//       <h2>Cards</h2>
-//       <div>
-//         <Link to='/create'>Create a New Card</Link>
-//       </div>
-//       <ul>
-//         {cards.map(card => (
-//           <li key={card.url}>
-//             <Link to='/c/{card.pk}'>{card.name}</Link>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   )
-// }

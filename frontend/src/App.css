@@ -206,36 +206,45 @@ h1 span {
 }
 
 .image-hp-card {
-  opacity: .8;
-  margin-left: 100px;
+  margin-left: 0px;
   position: relative;
   display: inline-block;
 }
 
+.image-styling {
+  height: 200px;
+  width: 100%;
+  opacity: .7;
+}
+
 .signup-button {
-  padding: 40px;
-  margin: 28px;
   position: absolute;
-  right: 0;
-  left: 0;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 5;
 }
 .button-style {
-  background: black;
-  color: white;
+
+  padding: 20px;
+  font-size: large;
+  border-radius: 20px;
 }
 
 .p1{
   margin-top: 110px;
   margin-bottom:200px;
   margin-left: 120px;
+  font-size: large;
 }
 .p3 {
   margin: 50px;
   margin-left: 230px;
+  font-size: large;
 }
 
 .p2 {
   margin: 80px;
   margin-left: 80px;
+  font-size: large;
 }

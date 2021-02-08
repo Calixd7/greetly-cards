@@ -230,7 +230,19 @@ h1 span {
 }
 
 .palette-input-btn-form {
-  margin: 10px;
+  margin: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.img-search-input{
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.img-search-btn {
+  margin-left: 10px;
+  height: fit-content;
 }
 
 /* ************************ */

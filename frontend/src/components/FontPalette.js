@@ -1,6 +1,6 @@
 import { calculateFontSizes, calculateOpacityOptions } from '../functions'
 
-function FontSidePalette ({ selectedFont, setSelectedFont, selectedFontColor, setSelectedFontColor, selectedFontSize, setSelectedFontSize, selectedFontWeight, setSelectedFontWeight, selectedFontStyle, setSelectedFontStyle, selectedFontAlignment, setSelectedFontAlignment, selectedFontBackgroundColor, setSelectedFontBackgroundColor, selectedFontBackgroundOpacity, setSelectedFontBackgroundOpacity, selectedMessagePlacement, setSelectedMessagePlacement }) {
+function FontPalette ({ selectedFont, setSelectedFont, selectedFontColor, setSelectedFontColor, selectedFontSize, setSelectedFontSize, selectedFontWeight, setSelectedFontWeight, selectedFontStyle, setSelectedFontStyle, selectedFontAlignment, setSelectedFontAlignment, selectedFontBackgroundColor, setSelectedFontBackgroundColor, selectedFontBackgroundOpacity, setSelectedFontBackgroundOpacity, selectedMessagePlacement, setSelectedMessagePlacement }) {
   return (
     <div className='palette-object'>
       <div className='object-title'>Font</div>
@@ -103,4 +103,4 @@ function FontSidePalette ({ selectedFont, setSelectedFont, selectedFontColor, se
   )
 }
 
-export default FontSidePalette
+export default FontPalette

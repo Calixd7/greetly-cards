@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
 import { createCard, unsplashApi } from '../api'
 import { calculateFontSizes, calculateOpacityOptions } from '../functions'
-import FrontSidePalette from './FontSidePalette'
+import FontPalette from './FontPalette'
+import CardBackgroundPalette from './CardBackgroundPalette'
+import CardSettingsPalette from './CardSettingsPalette'
 // import { countCards } from './CardList'
 
 function Create ({ token, handleDone }) {
@@ -49,110 +51,52 @@ function Create ({ token, handleDone }) {
   }
 
   return (
-    <div className='page-content create-card-content'>
-      <div className='card-editor-side-palette-container'>
-        <div className='edit-card-main'>
-          <form onSubmit={handleCardCreate}>
-            <div
-              className='create-card-container'
-              style={selectedBackgroundColor !== 'none'
-                ? { backgroundColor: `${selectedBackgroundColor}` }
-                : {
-                    backgroundImage: `url(${selectedImage})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    opacity: `${selectedBackgroundOpacity}`
+    <div className='create-content-images-container'>
+      <div className='page-content create-card-content'>
+        <div className='card-editor-side-palette-container'>
+          <div className='edit-card-main'>
+            <form onSubmit={handleCardCreate}>
+              <div
+                className='create-card-container'
+                style={selectedBackgroundColor !== 'none'
+                  ? { backgroundColor: `${selectedBackgroundColor}` }
+                  : {
+                      backgroundImage: `url(${selectedImage})`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      opacity: `${selectedBackgroundOpacity}`
+                    }}
+              >
+                <label htmlFor='message' />
+                <input
+                  className='message-input-field'
+                  style={{
+                    fontFamily: `${selectedFont}`,
+                    color: `${selectedFontColor}`,
+                    fontSize: `${selectedFontSize}px`,
+                    fontWeight: `${selectedFontWeight}`,
+                    fontStyle: `${selectedFontStyle}`,
+                    textAlign: `${selectedFontAlignment}`,
+                    border: 'none',
+                    background: `${selectedFontBackgroundColor}`,
+                    opacity: `${selectedFontBackgroundOpacity}`
                   }}
-              // style={{
-              //   alignItems: `${selectedMessagePlacement}`
-              // }}
+                  type='text'
+                  value={message}
+                  placeholder='Message'
+                  onChange={e => setMessage(e.target.value)}
+                />
+              </div>
+              <button type='submit'>Save Card</button>
+            </form>
+          </div>
+          <div className='side-palette'>
+            <FontPalette selectedFont={selectedFont} setSelectedFont={setSelectedFont} selectedFontColor={selectedFontColor} setSelectedFontColor={setSelectedFontColor} selectedFontSize={selectedFontSize} setSelectedFontSize={setSelectedFontSize} selectedFontWeight={selectedFontWeight} setSelectedFontWeight={setSelectedFontWeight} selectedFontStyle={selectedFontStyle} setSelectedFontStyle={setSelectedFontStyle} selectedFontAlignment={selectedFontAlignment} setSelectedFontAlignment={setSelectedFontAlignment} selectedFontBackgroundColor={selectedFontBackgroundColor} setSelectedFontBackgroundColor={setSelectedFontBackgroundColor} selectedFontBackgroundOpacity={selectedFontBackgroundOpacity} setSelectedFontBackgroundOpacity={setSelectedFontBackgroundOpacity} selectedMessagePlacement={selectedMessagePlacement} setSelectedMessagePlacement={setSelectedMessagePlacement} />
 
-            >
-              <label htmlFor='message' />
-              <input
-                className='message-input-field'
-                style={{
-                  fontFamily: `${selectedFont}`,
-                  color: `${selectedFontColor}`,
-                  fontSize: `${selectedFontSize}px`,
-                  fontWeight: `${selectedFontWeight}`,
-                  fontStyle: `${selectedFontStyle}`,
-                  textAlign: `${selectedFontAlignment}`,
-                  border: 'none',
-                  background: `${selectedFontBackgroundColor}`,
-                  opacity: `${selectedFontBackgroundOpacity}`
-                }}
-                type='text'
-                value={message}
-                placeholder='Message'
-                onChange={e => setMessage(e.target.value)}
-              />
-            </div>
-            <button type='submit'>Save Card</button>
-          </form>
-        </div>
-        <div className='side-palette'>
-          <FrontSidePalette selectedFont={selectedFont} setSelectedFont={setSelectedFont} selectedFontColor={selectedFontColor} setSelectedFontColor={setSelectedFontColor} selectedFontSize={selectedFontSize} setSelectedFontSize={setSelectedFontSize} selectedFontWeight={selectedFontWeight} setSelectedFontWeight={setSelectedFontWeight} selectedFontStyle={selectedFontStyle} setSelectedFontStyle={setSelectedFontStyle} selectedFontAlignment={selectedFontAlignment} setSelectedFontAlignment={setSelectedFontAlignment} selectedFontBackgroundColor={selectedFontBackgroundColor} setSelectedFontBackgroundColor={setSelectedFontBackgroundColor} selectedFontBackgroundOpacity={selectedFontBackgroundOpacity} setSelectedFontBackgroundOpacity={setSelectedFontBackgroundOpacity} selectedMessagePlacement={selectedMessagePlacement} setSelectedMessagePlacement={setSelectedMessagePlacement} />
+            <CardBackgroundPalette selectedBackgroundColor={selectedBackgroundColor} setSelectedBackgroundColor={setSelectedBackgroundColor} setSelectedImage={setSelectedImage} imageQuery={imageQuery} setImageQuery={setImageQuery} selectedBackgroundOpacity={selectedBackgroundOpacity} setSelectedBackgroundOpacity={setSelectedBackgroundOpacity} handleImgSearch={handleImgSearch} />
 
-          <div className='palette-object'>
-            <div className='object-title'>Card Background</div>
-            <div className='background-objects'>
-              <div className='object-value-container'>
-                <div className='object-value'>Color
-                  <select className='select-tag' value={selectedBackgroundColor} onChange={e => { setSelectedBackgroundColor(e.currentTarget.value); setSelectedImage([]) }}>
-                    <option value='none'>none</option>
-                    <option value='#678'>Grey</option>
-                    <option value='#F1FAEE'>Honeydew</option>
-                    <option value='#457B9D'>Celadon Blue</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <form className='palette-input-btn-form' onSubmit={handleImgSearch}>
-                  {/* <label className=''>Image</label> */}
-                  <input type='text' placeholder='search background image' value={imageQuery} onChange={e => setImageQuery(e.target.value)} />
-                  <button type='submit'>Search Image</button>
-                </form>
-              </div>
-              <div className='object-value-container'>
-                <div className='object-value'>Opacity
-                  <select className='select-tag' value={selectedBackgroundOpacity} onChange={e => setSelectedBackgroundOpacity(e.currentTarget.value)}>
-                    <option value='none'>none</option>
-                    {calculateOpacityOptions().map(num =>
-                      <option key={num} value={num}>{num}</option>
-                    )}
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div className='palette-object'>
-              <div className='object-title'>Card Details</div>
-              <div className='object-value-container'>
-                <div className='object-value'>Genre</div>
-              </div>
-              <select className='select-tag' value={selectedGenre} onChange={e => setSelectedGenre(e.currentTarget.value)}>
-                <option value='none'>none</option>
-                <option value='birthday'>Birthday</option>
-                <option value='thank-you'>Thank You</option>
-                <option value='invitation'>Invitation</option>
-                <option value='greeting'>Greeting</option>
-                <option value='photo-card'>Photo Card</option>
-                <option value='wedding'>Wedding</option>
-                <option value='engagement'>Engagement</option>
-                <option value='love'>Love</option>
-                <option value='congratulations'>Congratulations</option>
-                <option value='graduation'>Graduation</option>
-                <option value='sympathy'>Sympathy</option>
-                <option value='encouragement'>Encouragement</option>
-              </select>
-              <div className='object-value-container'>
-                <div className='object-value'>Access</div>
-              </div>
-              <select className='select-tag' value={selectedAccess} onChange={e => setSelectedAccess(e.currentTarget.value)}>
-                <option value='private'>Private</option>
-                <option value='public'>Public</option>
-              </select>
-            </div>
+            <CardSettingsPalette selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} selectedAccess={selectedAccess} setSelectedAccess={setSelectedAccess} />
+
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import panaramic from '../images/panaramic.jpg'
+import gratefulCard from '../images/gratefulCard.jpg'
 import getWellCard from '../images/getWellCard.jpg'
 import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ function Home ({ isLoggedIn }) {
       <div className='background' />
       <h2 className='homepage-header'>Welcome to Greetly</h2>
       <p className='p1'>Design custom greeting cards in minutes, using our professionaly designed card templates.</p>
-      {/* <img className='image-hp-card' src={getWellCard} alt='getWellCard' /> */}
+      <img className='image2-hp-card' src={gratefulCard} alt='gratefulCard' width='400' height='300' />
       <p className='p2'>Add images, styles and greetings to craft your perfect message.</p>
       <p className='p3'><Link to='/login'>Log in</Link> or <Link to='/register'>Register</Link> to get started! Then...</p>
       <p className='p4'><span className='number'>1</span> Navigate to the Create page and design your custom greeting card. </p>

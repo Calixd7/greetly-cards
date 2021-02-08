@@ -7,7 +7,6 @@ import { calculateFontSizes, calculateOpacityOptions } from '../functions'
 function Create ({ token, handleDone }) {
   // const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
-  const [genre, setGenre] = useState('')
   const [imageQuery, setImageQuery] = useState('')
   const [imageDisplay, setImageDisplay] = useState([])
   const [selectedFont, setSelectedFont] = useState('Playfair Display, serif')
@@ -20,6 +19,8 @@ function Create ({ token, handleDone }) {
   const [selectedImage, setSelectedImage] = useState([])
   const [selectedBackgroundColor, setSelectedBackgroundColor] = useState('none')
   const [selectedBackgroundOpacity, setSelectedBackgroundOpacity] = useState('none')
+  const [selectedAccess, setSelectedAccess] = useState('private')
+  const [selectedGenre, setSelectedGenre] = useState('none')
   const history = useHistory()
 
   if (!token) {
@@ -28,7 +29,7 @@ function Create ({ token, handleDone }) {
 
   function handleCardCreate (event) {
     event.preventDefault()
-    createCard(token, message, genre)
+    createCard(token, message)
       .then(card => {
         // countCards()
         if (handleDone) {
@@ -165,7 +166,7 @@ function Create ({ token, handleDone }) {
               </div>
               <div>
                 <form className='palette-input-btn-form' onSubmit={handleImgSearch}>
-                  <label className=''>Image</label>
+                  {/* <label className=''>Image</label> */}
                   <input type='text' placeholder='search background image' value={imageQuery} onChange={e => setImageQuery(e.target.value)} />
                   <button type='submit'>Search Image</button>
                 </form>
@@ -180,6 +181,34 @@ function Create ({ token, handleDone }) {
                   </select>
                 </div>
               </div>
+            </div>
+            <div className='palette-object'>
+              <div className='object-title'>Card Details</div>
+              <div className='object-value-container'>
+                <div className='object-value'>Genre</div>
+              </div>
+              <select className='select-tag' value={selectedGenre} onChange={e => setSelectedGenre(e.currentTarget.value)}>
+                <option value='none'>none</option>
+                <option value='birthday'>Birthday</option>
+                <option value='thank-you'>Thank You</option>
+                <option value='invitation'>Invitation</option>
+                <option value='greeting'>Greeting</option>
+                <option value='photo-card'>Photo Card</option>
+                <option value='wedding'>Wedding</option>
+                <option value='engagement'>Engagement</option>
+                <option value='love'>Love</option>
+                <option value='congratulations'>Congratulations</option>
+                <option value='graduation'>Graduation</option>
+                <option value='sympathy'>Sympathy</option>
+                <option value='encouragement'>Encouragement</option>
+              </select>
+              <div className='object-value-container'>
+                <div className='object-value'>Access</div>
+              </div>
+              <select className='select-tag' value={selectedAccess} onChange={e => setSelectedAccess(e.currentTarget.value)}>
+                <option value='private'>Private</option>
+                <option value='public'>Public</option>
+              </select>
             </div>
           </div>
         </div>

@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import { login } from '../api'
+import { Redirect } from 'react-router-dom'
 
-function Login ({ setAuth }) {
+function Login ({ isLoggedIn, setAuth }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState()
 
-  function handleSubmit (event) {
+  if (isLoggedIn) {
+    return <Redirect to='/home' />
+  }
+
+  function handleSubmit (event, isLoggedIn) {
     event.preventDefault()
     login(username, password)
       .then(data => {
@@ -18,6 +23,9 @@ function Login ({ setAuth }) {
       .catch(error => {
         setErrors(error.message)
       })
+    if (isLoggedIn) {
+      return <Redirect to='/home' />
+    }
   }
 
   return (

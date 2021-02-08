@@ -8,7 +8,7 @@ function Register ({ isLoggedIn, setAuth }) {
   const [errors, setErrors] = useState()
 
   if (isLoggedIn) {
-    return <Redirect to='/home' />
+    return <Redirect to='/login' />
   }
 
   function handleSubmit (event) {

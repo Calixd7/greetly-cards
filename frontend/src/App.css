@@ -138,6 +138,7 @@ h1 span {
 
 .card-editor-side-palette-container {
   display: flex;
+  background-color: rgb(219, 217, 217);
 }
 
 .edit-card-main{
@@ -170,12 +171,17 @@ h1 span {
 }
 
 .side-palette {
-  border: 2px solid;
+  /* border: 2px solid; */
   position: absolute;
   right: 10px;
   top: 400px;
   height: 60%;
   width: 35%;
+  /* background-image: url('./images-dan/card-envelope.jpeg');
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  background-color: green; */
+  background-color: rgb(127, 138, 153);
 }
 
 .palette-object {
@@ -252,6 +258,7 @@ h1 span {
 .display-images-container {
   display: flex;
   flex-wrap: wrap;
+  background-color: rgb(219, 217, 217);
 }
 
 .images {

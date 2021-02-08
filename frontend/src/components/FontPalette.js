@@ -25,7 +25,6 @@ function FontPalette ({ selectedFont, setSelectedFont, selectedFontColor, setSel
               <option value='#FFFFFF'>White</option>
               <option value='#FF0000'>Red</option>
               <option value='#00FF00'>Green</option>
-              <option value='#FFFFFF'>White</option>
               <option value='#0000FF'>Blue</option>
               <option value='#FFFF00'>Yellow</option>
               <option value='#00FFFF'>Cyan</option>

@@ -18,7 +18,7 @@ class Card(models.Model):
     weight = models.CharField(max_length=100, default="", null=True)
     alignment = models.CharField (max_length=100, default="", null=True)
     textboxalignment = models.CharField(max_length=100, default="", null=True)
-    image = models.ImageField(null=True)
+    image = models.ImageField(upload_to="images_posted/", null=True)
     Access = models.BooleanField(default=True)
     genre = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

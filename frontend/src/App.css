@@ -170,18 +170,34 @@ h1 span {
 }
 
 .side-palette {
-  /* border: 2px solid; */
+  border: 2px solid;
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 400px;
   height: 60%;
-  width: 25%;
+  width: 35%;
 }
 
 .palette-object {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.left-right-container {
+  display: flex;
+}
+
+.palette-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.palette-right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .object-title {
@@ -198,11 +214,13 @@ h1 span {
 .object-value {
   margin: 5px;
   padding: 2px;
+  font-size: smaller;
 }
 
 .select-tag {
-  width: 150px;
+  width: fit-content;
   height: fit-content;
+  font-size: smaller;
 }
 
 .background-objects {

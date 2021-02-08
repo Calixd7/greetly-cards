@@ -16,6 +16,7 @@
 .log-reg-header {
   padding-left: 20px;
   margin: 20px;
+  margin-top: 70px;
 }
 
 .log-reg-header-form {
@@ -28,7 +29,11 @@
   margin: 20px;
   margin-left: 0px;
   padding: 10px;
-  
+}
+
+.logout-button {
+  padding: 12px;
+  border-radius: 8px;
 }
 
 input[type=text], input[type=password] {
@@ -51,10 +56,10 @@ input[type=text], input[type=password] {
 }
 
 .header {
-	height: 50vh;
+	height: 60vh;
 	background: linear-gradient(45deg, rgba(255,175,189,.7), rgba(100,216,243,.7), rgba(234,236,198,.7), rgba(245,146,176,.7), rgba(52,219,216,.7)) 0 0 / 1000% no-repeat, url('./images/ribbonTable.jpg') 0 0 / cover no-repeat;  
-	-webkit-animation: gradientAnimation 60s ease infinite;
-	animation: gradientAnimation 60s ease infinite;
+	-webkit-animation: gradientAnimation 90s ease infinite;
+	animation: gradientAnimation 90s ease infinite;
 }
 /* https://picsum.photos/g/2000/1200?image=443 */
 
@@ -98,7 +103,7 @@ h1 span {
   max-width: 300px;
   margin: 0px auto;
   overflow: hidden;
-  padding: 182px;
+  padding: 198px;
 }
 
 .slidemenu label {
@@ -215,7 +220,7 @@ h1 span {
 .image-styling {
   height: 200px;
   width: 100%;
-  opacity: .9;
+  opacity: .7;
 }
 
 .signup-button {

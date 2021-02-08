@@ -16,7 +16,7 @@ django-cors-headers = "*"
 psycopg2-binary = "*"
 django-on-heroku = "*"
 gunicorn = "*"
-djoser = "*"
+djoser = "2.0.5"
 pillow = "*"
 
 [requires]

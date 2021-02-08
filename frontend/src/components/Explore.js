@@ -1,21 +1,33 @@
-
+import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
+import { getCards } from '../api'
 
 function Explore ({ token }) {
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    getCards(token)
+      .then(cards => setCards(cards))
+  }, [token])
+
+  console.log(cards)
+
   if (!token) {
     return <Redirect to='/login' />
   }
 
   return (
     <div className='page-content'>
-      <div>
-        <h2>this is where folx can look around for friends or explore some genres</h2>
-        <h2>. . . </h2>
-        <h2>genres are like birthday, anniversary, happy taco tuesday day, etc.</h2>
-        <h2>Just a little reminder note for everyone</h2>🤪
-      </div>
+      <h3>All users cards here by genre:</h3>
+      <ul>
+        {cards.map(card => (
+          <li key={card.url}>
+            {card.genre}
+          </li>
+        )
+        )}
+      </ul>
     </div>
-
   )
 }
 

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+
 import './App.css'
-import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home'
@@ -9,6 +9,7 @@ import Explore from './components/Explore'
 import Profile from './components/Profile'
 import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
+import Delete from './components/Delete'
 import createPersistedState from 'use-persisted-state'
 
 const useUsername = createPersistedState('username')
@@ -103,6 +104,9 @@ function App () {
             </Route>
             <Route path='/c/:pk'>
               <CardDetail token={token} />
+            </Route>
+            <Route path='/c/:pk'>
+              <Delete token={token} />
             </Route>
           </Switch>
         </div>

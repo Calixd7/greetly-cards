@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react'
 import { getCards } from '../api'
 import { Redirect, Link } from 'react-router-dom'
 import Create from './Create'
-import CardDetail from './CardDetail'
 
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
+  const [cardListLength, setCardListLength] = useState(0)
 
   useEffect(updateCards, [token])
 
   function updateCards () {
     getCards(token).then(cards => setCards(cards))
+    setCardListLength(cards.length)
   }
 
   if (!token) {
@@ -21,6 +22,7 @@ function CardList ({ token }) {
   return (
     <div className='CardList'>
       <h2>My Cards</h2>
+      <div>Number of Cards: {cardListLength}</div>
       <div>
         {isCreating
           ? <Create
@@ -32,13 +34,19 @@ function CardList ({ token }) {
           : (<button onClick={() => setIsCreating(true)}>Create New Card</button>)}
 
       </div>
-      <ul>
+      <div>
         {cards.map(card => (
-          <li key={card.url}>
-            <Link to={`/c/${card.pk}`}>{card.title}</Link>
-          </li>
+          <div key={card.url} className='card-container'>
+            <div>
+              {card.title}
+            </div>
+            <div>
+              <Link to={`/c/${card.pk}`}>{card.message}</Link>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+
     </div>
   )
 }

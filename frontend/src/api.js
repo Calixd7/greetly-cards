@@ -6,7 +6,7 @@ const API = axios.create({
 
 export function login (username, password) {
   return API
-    .post('auth/token/login/', { // using deployed API!!!
+    .post('auth/token/login/', {
       username: username,
       password: password
     })
@@ -53,13 +53,16 @@ export function register (username, password) {
 
 export function getCards (token) {
   return API
-    .get('cards/',
+    .get('cards/me/?limit=50&offset=0',
       {
         headers: {
           Authorization: `Token ${token}`
         }
       })
-    .then(res => res.data)
+    // .then(res => res.data.results)
+    .then(res => {
+      return res.data.results
+    })
 }
 
 export function createCard (token, title, message, genre) {
@@ -83,4 +86,36 @@ export function getCard (token, pk) {
       }
     })
     .then(response => response.data)
+}
+
+export function updateCard (token, pk, json) {
+  return API
+    .put(`cards/${pk}/`, json, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data.results)
+}
+
+export function deleteCard (token, pk) {
+  return API
+    .delete(`cards/${pk}/`, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
+// *********************************
+//      Unsplash API Request
+// *********************************
+
+const accessKey = 'TlQHhYwlF1gKtsQqX6twCM-WUusQSXgDFW1AhVOgat8'
+const secretKey = 'mo2cz5JNJfiM6W-HpVMUfMMQa7P_48maYN_e9r8HBIU'
+
+export function unsplashApi (input) {
+  return axios.get(`https://api.unsplash.com/search/photos/?client_id=${accessKey}&query=${input}&orientation=landscape`)
+    .then(res => res.data)
 }

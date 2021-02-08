@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
 
+
 * {
 	margin: 0;
 	padding: 0;
@@ -131,5 +132,136 @@ h1 span {
   border-radius: 50%;
 }
 
+/* ************************ */
+/* Create card styles on Create.js */
+/* ************************ */
 
+.card-editor-side-palette-container {
+  display: flex;
+  background-color: rgb(219, 217, 217);
+}
 
+.edit-card-main{
+  display: flex;
+
+}
+
+.create-card-container {
+  border: 2px solid;
+  margin: 20px 20px 20px 80px;
+  padding: 5px;
+  width: 43rem;
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  
+}
+
+.message-input-field {
+  
+}
+
+.input-btn-form {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  align-items: center;
+}
+
+.side-palette {
+  /* border: 2px solid; */
+  position: absolute;
+  right: 10px;
+  top: 400px;
+  height: 60%;
+  width: 35%;
+  /* background-image: url('./images-dan/card-envelope.jpeg');
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  background-color: green; */
+  background-color: rgb(127, 138, 153);
+}
+
+.palette-object {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-right-container {
+  display: flex;
+}
+
+.palette-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.palette-right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.object-title {
+  margin: 5px;
+  padding: 2px;
+  font-weight: bold;
+}
+
+.object-value-container {
+  display: flex;
+  align-items: center;
+}
+
+.object-value {
+  margin: 5px;
+  padding: 2px;
+  font-size: smaller;
+}
+
+.select-tag {
+  width: fit-content;
+  height: fit-content;
+  font-size: smaller;
+}
+
+.background-objects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.palette-input-btn-form {
+  margin: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.img-search-input{
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.img-search-btn {
+  margin-left: 10px;
+  height: fit-content;
+}
+
+/* ************************ */
+/* Img search on Create.js */
+/* ************************ */
+
+.display-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(219, 217, 217);
+}
+
+.images {
+  margin: 10px;
+
+}

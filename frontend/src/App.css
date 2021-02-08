@@ -138,6 +138,7 @@ h1 span {
 
 .card-editor-side-palette-container {
   display: flex;
+  background-color: rgb(219, 217, 217);
 }
 
 .edit-card-main{
@@ -159,10 +160,7 @@ h1 span {
 }
 
 .message-input-field {
-  background: none;
-  border: none;
-  border-width: 0;
-  outline: 0;
+  
 }
 
 .input-btn-form {
@@ -175,16 +173,37 @@ h1 span {
 .side-palette {
   /* border: 2px solid; */
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 400px;
   height: 60%;
-  width: 25%;
+  width: 35%;
+  /* background-image: url('./images-dan/card-envelope.jpeg');
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  background-color: green; */
+  background-color: rgb(127, 138, 153);
 }
 
 .palette-object {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.left-right-container {
+  display: flex;
+}
+
+.palette-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.palette-right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .object-title {
@@ -201,11 +220,13 @@ h1 span {
 .object-value {
   margin: 5px;
   padding: 2px;
+  font-size: smaller;
 }
 
 .select-tag {
-  width: 150px;
+  width: fit-content;
   height: fit-content;
+  font-size: smaller;
 }
 
 .background-objects {
@@ -215,7 +236,19 @@ h1 span {
 }
 
 .palette-input-btn-form {
-  margin: 10px;
+  margin: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.img-search-input{
+  margin-right: 10px;
+  height: fit-content;
+}
+
+.img-search-btn {
+  margin-left: 10px;
+  height: fit-content;
 }
 
 /* ************************ */
@@ -225,6 +258,7 @@ h1 span {
 .display-images-container {
   display: flex;
   flex-wrap: wrap;
+  background-color: rgb(219, 217, 217);
 }
 
 .images {

@@ -175,14 +175,6 @@ h1 span {
 
 }
 
-.image-hp-card {
-  opacity: .8;
-  height: 300px;
-  width: 200px;
-  margin-left: 100px;
-  position: absolute;
-}
-
 .page-container {
   width: 100%;
   height: 100%;
@@ -213,10 +205,24 @@ h1 span {
   
 }
 
+.image-hp-card {
+  opacity: .8;
+  margin-left: 100px;
+  position: relative;
+  display: inline-block;
+}
+
 .signup-button {
-  padding: 12px;
-  margin: 55px;
-  margin-bottom: 50px;
+  padding: 40px;
+  margin: 28px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 5;
+}
+.button-style {
+  background: black;
+  color: white;
 }
 
 .p1{

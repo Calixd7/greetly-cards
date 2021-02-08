@@ -11,9 +11,9 @@ function Home ({ isLoggedIn }) {
       {/* <img className='image-hp-card' src={getWellCard} alt='getWellCard' /> */}
       <p className='p2'>Add images, styles and greetings to craft your perfect message.</p>
       <p className='p3'><Link to='/login'>Log in</Link> or <Link to='/register'>Register</Link> to get started! Then...</p>
-      <p className='p4'>1. Navigate to the Create page and design your custom greeting card. </p>
-      <p className='p5'>2. Save your card.  Share it or keep it to yourself.</p>
-      <p className='p6'>3. Explore other user's cards and connect with your favorite creative greeting card makers.</p>
+      <p className='p4'><span className='number'>1</span> Navigate to the Create page and design your custom greeting card. </p>
+      <p className='p5'><span className='number'>2</span> Save your card.  Share it or keep it to yourself.</p>
+      <p className='p6'><span className='number'>3</span> Explore other user's cards and connect with your favorite creative greeting card makers.</p>
       <div className='image-hp-card'>
         <div className='signup-button'>
           {isLoggedIn

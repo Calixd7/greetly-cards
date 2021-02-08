@@ -217,8 +217,9 @@ h1 span {
 }
 
 .homepage-header {
-  padding-top: 30px;
+  padding-top: 40px;
   padding-left: 50px;
+  font-size: 200%;
   
 }
 
@@ -232,7 +233,7 @@ h1 span {
   height: 400px;
   width: 300px;
   opacity: .7;
-  padding-left: 50px;
+  padding-left: 100px;
 }
 
 .signup-button {
@@ -242,8 +243,8 @@ h1 span {
   /* transform: translate(-50%, -50%); */
   z-index: 5;
 }
-.button-style {
 
+.button-style {
   padding: 20px;
   font-size: large;
   border-radius: 20px;
@@ -253,35 +254,45 @@ h1 span {
   margin-top: 110px;
   margin-bottom:150px;
   margin-left: 120px;
-  font-size: large;
+  font-size: 140%;
 }
 
 .p2 {
   margin: 80px;
   margin-left: 80px;
-  font-size: large;
+  font-size: 140%;
 }
 
 .p3 {
   margin: 90px;
   margin-left: 240px;
-  font-size: large;
+  font-size: 140%;
 }
 
 .p4 {
-  font-size: large;
+  font-size: 140%;
   margin-left: 200px;
   margin-bottom: 70px;
 }
 
 .p5 {
-  font-size: large;
+  font-size: 140%;
   margin-left: 200px;
   margin-bottom: 70px;
 }
 
 .p6 {
-  font-size: large;
+  font-size: 140%;
   margin-left: 200px;
   margin-bottom: 100px;
+}
+
+.number {
+  border-radius: 50%;
+  padding: 5px 10px 5px 10px;
+  text-align:center;
+  font-size: large;
+  /* background-color: rgba(0, 0, 0, 0.644); */
+  background-color: rgb(85, 12, 85);
+  color: white;
 }

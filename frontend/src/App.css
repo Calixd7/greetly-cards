@@ -138,7 +138,7 @@ h1 span {
 
 .card-editor-side-palette-container {
   display: flex;
-  background-color: rgb(219, 217, 217);
+  background-color: #36454F;
 }
 
 .edit-card-main{
@@ -147,7 +147,7 @@ h1 span {
 }
 
 .create-card-container {
-  border: 2px solid;
+  /* border: 2px solid; */
   margin: 20px 20px 20px 80px;
   padding: 5px;
   width: 43rem;
@@ -156,7 +156,8 @@ h1 span {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  
+  box-shadow: 3px 3px 5px 1px #678;
+  border-radius: 5px;
 }
 
 .message-input-field {
@@ -173,15 +174,32 @@ h1 span {
 .side-palette {
   /* border: 2px solid; */
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 400px;
   height: 60%;
   width: 35%;
+  border-radius: 5px;
   /* background-image: url('./images-dan/card-envelope.jpeg');
   background-repeat: no-repeat;
   background-blend-mode: screen;
   background-color: green; */
   background-color: rgb(127, 138, 153);
+  opacity: .8;
+}
+
+/* ************************ */
+/* Font styles portion of palette in Create.js */
+/* ************************ */
+
+.font-upper-middle-lower-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.font-row {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5px;
 }
 
 .palette-object {
@@ -258,7 +276,7 @@ h1 span {
 .display-images-container {
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(219, 217, 217);
+  background-color: #36454F;
 }
 
 .images {

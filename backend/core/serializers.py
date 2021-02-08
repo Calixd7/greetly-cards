@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import User, Card
+from .models import User, Card, UserFollowing
   
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'name', "following", "followers"]
+        fields = ['id', 'username', 'name' ]
 
     
 
@@ -16,4 +16,11 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', "pk", 'author', 'genre', "public",'message', 'created_at', "size", "color", "style", "font", "weight", "alignment", "textboxalignment","image"]
 
 
+class UserFollowingSerializer (serializers.ModelSerializer):
+    
+    class Meta:
+        model = UserFollowing 
+        fields = ['user', "following_user"]
+        read_only_fields = ['user']
 
+    

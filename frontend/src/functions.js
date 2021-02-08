@@ -7,6 +7,15 @@ export function calculateFontSizes () {
   return sizeOptions
 }
 
+export function calculateOpacityOptions () {
+  const opacityOptions = []
+
+  for (let i = 1; i < 10; i++) {
+    opacityOptions.push(i / 10)
+  }
+  return opacityOptions
+}
+
 // export function CountCards (cards) {
 //   setCardListLength(cards.length)
 // }

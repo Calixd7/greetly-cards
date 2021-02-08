@@ -1,9 +1,8 @@
-import holidayCard from '../images/holidayCard.jpg'
 import panaramic from '../images/panaramic.jpg'
-import getWellCard from '../images/getWellCard.jpg'
+// import getWellCard from '../images/getWellCard.jpg'
 import { Link } from 'react-router-dom'
 
-function Home () {
+function Home ({ isLoggedIn }) {
   return (
     <div className='home-page-container'>
       <div className='background' />
@@ -17,8 +16,18 @@ function Home () {
       <p className='p6'>3. Explore other user's cards and connect with your favorite creative greeting card makers.</p>
       <div className='image-hp-card'>
         <div className='signup-button'>
-          {/* <img className='image-hp-card' src={getWellCard} alt='getWellCard' /> */}
-          <Link to='/register'><button className='button-style'>Create a Card</button></Link>
+          {isLoggedIn
+            ? (
+              <span>
+                <Link to='/create'><button className='button-style'>Create a Card</button></Link>
+              </span>
+              )
+            : (
+              <span>
+                <Link to='/register'><button className='button-style'>Create a Card</button></Link>
+              </span>
+              )}
+          {/* <Link to='/register'><button className='button-style'>Create a Card</button></Link> */}
         </div>
         <img src={panaramic} alt='panaramic' className='image-styling' />
       </div>

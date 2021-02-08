@@ -88,7 +88,7 @@ function App () {
               <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
             </Route>
             <Route path='/home'>
-              <Home />
+              <Home isLoggedIn={isLoggedIn} />
             </Route>
             <Route path='/profile'>
               <Profile />

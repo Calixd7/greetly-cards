@@ -22,7 +22,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('cards', views.CardViewSet, basename='card')
 router.register('users',views.UserViewSet, basename='user'),
-router.register("followers", views.UserFollowingViewSet, basename="following")
+router.register("followers", views.UserFollowingViewSet, basename="follower")
 
 
 urlpatterns = [

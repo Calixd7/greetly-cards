@@ -1,4 +1,6 @@
-function FontSidePalette () {
+import { calculateFontSizes, calculateOpacityOptions } from '../functions'
+
+function FontSidePalette ({ selectedFont, setSelectedFont, selectedFontColor, setSelectedFontColor, selectedFontSize, setSelectedFontSize, selectedFontWeight, setSelectedFontWeight, selectedFontStyle, setSelectedFontStyle, selectedFontAlignment, setSelectedFontAlignment, selectedFontBackgroundColor, setSelectedFontBackgroundColor, selectedFontBackgroundOpacity, setSelectedFontBackgroundOpacity, selectedMessagePlacement, setSelectedMessagePlacement }) {
   return (
     <div className='palette-object'>
       <div className='object-title'>Font</div>
@@ -62,11 +64,11 @@ function FontSidePalette () {
       <div className='object-value-container'>
         <div className='object-value'>Text Background</div>
         <select className='select-tag' value={selectedFontBackgroundColor} onChange={e => setSelectedFontBackgroundColor(e.currentTarget.value)}>
+          <option value='none'>none</option>
           <option value='#000000'>Black</option>
           <option value='#FFFFFF'>White</option>
           <option value='#FF0000'>Red</option>
           <option value='#00FF00'>Green</option>
-          <option value='#FFFFFF'>White</option>
           <option value='#0000FF'>Blue</option>
           <option value='#FFFF00'>Yellow</option>
           <option value='#00FFFF'>Cyan</option>

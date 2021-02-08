@@ -71,7 +71,7 @@ function App () {
               )
             : (
               <span>
-                <Link to='/login'>Login</Link> or <Link to='/register'>Register</Link>
+                <Link to='/login'><button className='log-button'>Login</button></Link> or <Link to='/register'><button className='reg-button'>Register</button></Link>
               </span>
               )}
         </div>

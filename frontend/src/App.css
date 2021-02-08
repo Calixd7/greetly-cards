@@ -36,6 +36,17 @@
   border-radius: 8px;
 }
 
+.log-button {
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 0px;
+}
+
+.reg-button {
+  padding: 10px;
+  border-radius: 8px;
+}
+
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;

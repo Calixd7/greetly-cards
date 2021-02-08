@@ -211,7 +211,7 @@ h1 span {
   z-index: -1;
   background: url('./images/gratefulCard.jpg');
   background-size: 1500px;
-  opacity: .25;
+  opacity: .20;
   width: 100%;
   height: 100%;
 }
@@ -227,6 +227,7 @@ h1 span {
   margin-left: 0px;
   position: relative;
   display: inline-block;
+  margin-bottom: 50px;
 }
 
 .image-styling {

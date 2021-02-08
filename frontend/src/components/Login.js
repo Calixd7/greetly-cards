@@ -23,9 +23,6 @@ function Login ({ isLoggedIn, setAuth }) {
       .catch(error => {
         setErrors(error.message)
       })
-    if (isLoggedIn) {
-      return <Redirect to='/home' />
-    }
   }
 
   return (

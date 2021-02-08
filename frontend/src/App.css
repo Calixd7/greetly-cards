@@ -335,29 +335,31 @@ h1 span {
 }
 
 .image-hp-card {
-  margin-left: 0px;
+  margin-left: 150px;
   position: relative;
   display: inline-block;
   margin-bottom: 50px;
+  box-shadow: 10px 5px 5px grey;
 }
 
 .image2-hp-card {
   margin-left: 300px;
   border-radius: 5px;
+  box-shadow: 10px 5px 5px grey;
 }
 
 .image-styling {
   height: 400px;
   width: 300px;
-  opacity: .7;
-  padding-left: 100px;
+  /* opacity: .7; */
+  border-radius: 5px;
 }
 
 .signup-button {
   position: absolute;
   top: 70%;
   left: 50%;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
   z-index: 5;
 }
 
@@ -369,7 +371,7 @@ h1 span {
 
 .p1{
   margin-top: 110px;
-  margin-bottom:15px;
+  margin-bottom:25px;
   margin-left: 120px;
   font-size: 140%;
 }
@@ -377,7 +379,7 @@ h1 span {
 .p2 {
   margin: 80px;
   margin-left: 80px;
-  margin-top: 15px;
+  margin-top: 25px;
   font-size: 140%;
 }
 

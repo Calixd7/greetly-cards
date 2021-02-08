@@ -17,6 +17,7 @@ psycopg2-binary = "*"
 django-on-heroku = "*"
 gunicorn = "*"
 djoser = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"

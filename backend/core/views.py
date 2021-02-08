@@ -1,10 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserSerializer
 from rest_framework.request import Request
 from rest_framework.viewsets import ModelViewSet
-from core.models import Card
-from .serializers import CardSerializer, UserSerializer
+from core.models import Card, User, UserFollowing
+from .serializers import CardSerializer, UserSerializer, UserFollowingSerializer
 from django.core.exceptions import PermissionDenied
 from rest_framework import permissions
 from rest_framework.pagination import PageNumberPagination
@@ -20,11 +19,11 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
         return False
 
-        def has_object_permission(self, request, view, obj):
-            if request.method in permissions.SAFE_METHODS:
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
                 return True
 
-            return obj.author == request.user
+        return obj.author == request.user
 
 
 
@@ -72,10 +71,14 @@ class CardViewSet(ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
-        
+class UserFollowingViewSet(ModelViewSet):
+    serializer_class = UserFollowingSerializer
 
+    def get_queryset(self):
+        return self.request.user.following.all()
 
-
+    def perform_create(self, serializer):
+        return serializer.save(user=self.request.user)
 
 
     

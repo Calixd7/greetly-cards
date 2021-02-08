@@ -8,10 +8,6 @@ function CardList ({ token }) {
   const [isCreating, setIsCreating] = useState(false)
   const [cardListLength, setCardListLength] = useState(0)
 
-  // function CountCards (cards) {
-  //   setCardListLength(cards.length)
-  // }
-
   useEffect(updateCards, [token])
 
   function updateCards () {

@@ -132,12 +132,20 @@ h1 span {
   border-radius: 50%;
 }
 
+/* ************************ */
+/* Create card styles on Create.js */
+/* ************************ */
+
+.card-editor-side-palette-container {
+  display: flex;
+}
+
 .edit-card-main{
   display: flex;
 
 }
 
-.card-container {
+.create-card-container {
   border: 2px solid;
   margin: 20px 20px 20px 80px;
   padding: 5px;
@@ -150,19 +158,69 @@ h1 span {
   
 }
 
-.card-container-background-color {
-  background-color: #678;
-}
-
-.card-conatiner-background-img {
-  background-image: url();
+.message-input-field {
+  background: none;
+  border: none;
+  border-width: 0;
+  outline: 0;
 }
 
 .input-btn-form {
   display: flex;
   margin: 20px;
   padding: 20px;
+  align-items: center;
 }
+
+.side-palette {
+  /* border: 2px solid; */
+  position: absolute;
+  right: 0;
+  top: 400px;
+  height: 60%;
+  width: 25%;
+}
+
+.palette-object {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.object-title {
+  margin: 5px;
+  padding: 2px;
+  font-weight: bold;
+}
+
+.object-value-container {
+  display: flex;
+  align-items: center;
+}
+
+.object-value {
+  margin: 5px;
+  padding: 2px;
+}
+
+.select-tag {
+  width: 150px;
+  height: fit-content;
+}
+
+.background-objects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.palette-input-btn-form {
+  margin: 10px;
+}
+
+/* ************************ */
+/* Img search on Create.js */
+/* ************************ */
 
 .display-images-container {
   display: flex;

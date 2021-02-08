@@ -67,7 +67,7 @@ function CardDetail ({ token }) {
             <div className={`
             card-container 
             ${!selectedImage
-            ? 'card-container-background-color'
+            ? 'backgroundColor: #678'
             : { backgroundImage: `url(${selectedImage})` }
             }`}
             >

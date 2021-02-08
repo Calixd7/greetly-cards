@@ -1,5 +1,5 @@
 import panaramic from '../images/panaramic.jpg'
-// import getWellCard from '../images/getWellCard.jpg'
+import getWellCard from '../images/getWellCard.jpg'
 import { Link } from 'react-router-dom'
 
 function Home ({ isLoggedIn }) {
@@ -29,7 +29,8 @@ function Home ({ isLoggedIn }) {
               )}
           {/* <Link to='/register'><button className='button-style'>Create a Card</button></Link> */}
         </div>
-        <img src={panaramic} alt='panaramic' className='image-styling' />
+        {/* <img src={panaramic} alt='panaramic' className='image-styling' /> */}
+        <img src={getWellCard} alt='getWellCard' className='image-styling' />
       </div>
     </div>
   )

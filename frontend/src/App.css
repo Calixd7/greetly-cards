@@ -52,10 +52,11 @@ input[type=text], input[type=password] {
 
 .header {
 	height: 50vh;
-	background: linear-gradient(45deg, rgba(255,175,189,.7), rgba(100,216,243,.7), rgba(234,236,198,.7), rgba(245,146,176,.7), rgba(52,219,216,.7)) 0 0 / 1000% no-repeat, url(https://picsum.photos/g/2000/1200?image=443) 0 0 / cover no-repeat;
-	-webkit-animation: gradientAnimation 40s ease infinite;
-	animation: gradientAnimation 40s ease infinite;
+	background: linear-gradient(45deg, rgba(255,175,189,.7), rgba(100,216,243,.7), rgba(234,236,198,.7), rgba(245,146,176,.7), rgba(52,219,216,.7)) 0 0 / 1000% no-repeat, url('./images/ribbonTable.jpg') 0 0 / cover no-repeat;  
+	-webkit-animation: gradientAnimation 60s ease infinite;
+	animation: gradientAnimation 60s ease infinite;
 }
+/* https://picsum.photos/g/2000/1200?image=443 */
 
 @-webkit-keyframes gradientAnimation {
 	0%   { background-position: 0% 30%, 0 0;}

@@ -125,6 +125,16 @@ export function follow (token, id) {
     .then(response => response.data)
 }
 
+export function unfollow (token, id) {
+  return API
+    .delete('followers/id', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(response => response.data)
+}
+
 export function updateCard (token, pk, json) {
   return API
     .put(`cards/${pk}/`, json, {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Redirect, Link, useParams } from 'react-router-dom'
-import { getPublicCards, follow } from '../api'
+import { Redirect, Link } from 'react-router-dom'
+import { getPublicCards, follow, unfollow } from '../api'
 
 function Explore ({ token }) {
   const [cards, setCards] = useState([])
@@ -17,9 +17,19 @@ function Explore ({ token }) {
   }
 
   //  touser is followee, fromuser is follower
-  // since fromuser logged in dont need as a parameter
-  //  user={card.author.username}
-  // TOGGLE ENDPOINT: /follow/author_id=<someId> if you are not following, follow, else unfollow
+
+  // onclick follow if not followed, unfollow if followed
+  // if not following (somehow need to use userId as unique key):
+  // follow(token, userId)
+  // .then(data => {
+  //   console.log(data)
+  // }) else {
+  //   unfollow(token, userId)
+  //   .then(data => {
+  //     console.log(data)
+  //   })
+  // }
+
   function handleFollow (event, userId) {
     event.preventDefault()
     follow(token, userId)

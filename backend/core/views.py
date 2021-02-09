@@ -77,10 +77,13 @@ class UserFollowingViewSet(ModelViewSet):
     serializer_class = UserFollowingSerializer
 
     def get_queryset(self):
+        return self.request.user.following.all()
+
+    def get_queryset(self):
         return self.request.user.followers.all()
 
     def perform_create(self, serializer):
-        return serializer.save(user=self.request.user)
+        return serializer.save(fromuser=self.request.user)
 
 
     

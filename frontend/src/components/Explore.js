@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, useParams } from 'react-router-dom'
 import { getPublicCards, follow } from '../api'
 
 function Explore ({ token }) {
@@ -16,11 +16,15 @@ function Explore ({ token }) {
     return <Redirect to='/login' />
   }
 
-  // const user={card.author.username}
-  // const following_user= will equal user name of logged in user
-  function handleFollow (event) {
+  // I need to define user and following_user.  User is followee, fu us follower
+  // might not need latter as argument since following_user already logged in
+  // where and how do i define these.  Do they need to be in state
+  //  user={card.author.username}
+  //  following_user= will equal user name of logged in user.  put in state...or useParams?  since getting from url
+  // TOGGLE ENDPOINT: /follow?author_id=<someId> if you are not following, follow, else unfollow
+  function handleFollow (event, userId) {
     event.preventDefault()
-    follow(token, user, following_user)
+    follow(token, userId)
       .then(data => {
         console.log(data)
       })
@@ -61,7 +65,7 @@ function Explore ({ token }) {
               </div>
             </Link>
           </div>
-          <div onClick={handleFollow}>
+          <div onClick={(event) => handleFollow(event, card.author.id)}>
             {card.author.username}
           </div>
         </div>

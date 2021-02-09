@@ -34,7 +34,7 @@ function Create ({ token, handleDone }) {
 
   function handleCardCreate (event) {
     event.preventDefault()
-    createCard(token, message)
+    createCard(token, selectedGenre, selectedAccess, message, selectedFontSize, selectedFontColor, selectedFontStyle, selectedFont, selectedFontWeight, selectedFontAlignment, selectedMessagePlacement)
       .then(card => {
         // countCards()
         if (handleDone) {
@@ -50,6 +50,19 @@ function Create ({ token, handleDone }) {
     unsplashApi(imageQuery).then(data => { setImageDisplay(data.results); setImageQuery('') })
   }
 
+  const cardStyle = {
+    alignItems: selectedMessagePlacement
+  }
+
+  if (selectedBackgroundColor !== 'none') {
+    cardStyle.backgroundColor = selectedBackgroundColor
+  } else {
+    cardStyle.backgroundImage = `url(${selectedImage})`
+    cardStyle.backgroundRepeat = 'no-repeat'
+    cardStyle.backgroundSize = 'cover'
+    cardStyle.opacity = selectedBackgroundOpacity
+  }
+
   return (
     <div className='create-content-images-container'>
       <div className='page-content create-card-content'>
@@ -58,14 +71,7 @@ function Create ({ token, handleDone }) {
             <form onSubmit={handleCardCreate}>
               <div
                 className='create-card-container'
-                style={selectedBackgroundColor !== 'none'
-                  ? { backgroundColor: `${selectedBackgroundColor}` }
-                  : {
-                      backgroundImage: `url(${selectedImage})`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                      opacity: `${selectedBackgroundOpacity}`
-                    }}
+                style={cardStyle}
               >
                 <label htmlFor='message' />
                 <input

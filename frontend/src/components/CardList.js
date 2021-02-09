@@ -3,6 +3,9 @@ import { getCards } from '../api'
 import { Redirect, Link } from 'react-router-dom'
 import Create from './Create'
 
+// save for later if we need the syntax
+{ /* <Link to={`/c/${card.pk}`}>{card.message}</Link> */ }
+
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
@@ -38,12 +41,27 @@ function CardList ({ token }) {
         <div>
           {cards.map(card => (
             <div key={card.url} className='card-container'>
-              <div>
-                {card.title}
+              <div className='edit-card-main'>
+                <div
+                  className='create-card-container'
+                  // style={cardStyle}
+                >
+                  <div
+                    className='message-input-field'
+                    style={{
+                      fontFamily: `${card.font}`,
+                      color: `${card.color}`,
+                      fontSize: `${card.size}px`,
+                      fontWeight: `${card.weight}`,
+                      fontStyle: `${card.style}`,
+                      textAlign: `${card.alignment}`
+
+                    }}
+                  />
+                  {card.message}
+                </div>
               </div>
-              <div>
-                <Link to={`/c/${card.pk}`}>{card.message}</Link>
-              </div>
+              <div />
             </div>
           ))}
         </div>

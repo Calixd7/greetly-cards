@@ -65,7 +65,7 @@ export function getCards (token) {
     })
 }
 
-export function createCard (token, genre, access, message, size, color, style, font, weight, alignment, textboxalignment) {
+export function createCard (token, genre, access, message, size, color, style, font, weight, alignment, textboxalignment, image, textbackgroundopacity, backgroundopacity, backgroundcolor, textbackgroundcolor) {
   return API.post('cards/', {
     genre: genre,
     access: access,
@@ -76,7 +76,12 @@ export function createCard (token, genre, access, message, size, color, style, f
     font: font,
     weight: weight,
     alignment: alignment,
-    textboxalignment: textboxalignment
+    textboxalignment: textboxalignment,
+    image: image,
+    textbackgroundopacity: textbackgroundopacity,
+    backgroundopacity: backgroundopacity,
+    backgroundcolor: backgroundcolor,
+    textbackgroundcolor: textbackgroundcolor
 
   }, {
     headers: {

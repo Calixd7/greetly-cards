@@ -41,10 +41,18 @@ function CardList ({ token }) {
         <div>
           {cards.map(card => (
             <div key={card.url} className='card-container'>
-              <div className='edit-card-main'>
+              <div className='card-container-child'>
                 <div
                   className='create-card-container'
-                  // style={cardStyle}
+                  style={{
+                    alignItems: `${card.textboxalignment}`,
+                    textAlign: `${card.alignment}`,
+                    backgroundColor: `${card.backgroundcolor}`,
+                    backgroundImage: `url(${card.image})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    opacity: `${card.backgroundopacity}`
+                  }}
                 >
                   <div
                     className='message-input-field'
@@ -54,18 +62,19 @@ function CardList ({ token }) {
                       fontSize: `${card.size}px`,
                       fontWeight: `${card.weight}`,
                       fontStyle: `${card.style}`,
-                      textAlign: `${card.alignment}`
+                      backgroundColor: `${card.textbackgroundcolor}`,
+                      opacity: `${card.textbackgroundopacity}`
 
                     }}
-                  />
-                  {card.message}
+                  >
+                    {card.message}
+                  </div>
                 </div>
               </div>
-              <div />
+
             </div>
           ))}
         </div>
-
       </div>
     </div>
   )

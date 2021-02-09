@@ -35,7 +35,7 @@ function CardList ({ token }) {
             : (<button onClick={() => setIsCreating(true)}>Create New Card</button>)}
 
         </div>
-        <div>
+        <div className='card-list-display-container'>
           {cards.map(card => (
             <div key={card.url} className='card-container'>
               <div className='card-container-child'>

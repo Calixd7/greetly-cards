@@ -8,6 +8,7 @@ from django.core.exceptions import PermissionDenied
 from rest_framework import permissions
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
      
@@ -40,6 +41,7 @@ class UserViewSet(ModelViewSet):
 class CardViewSet(ModelViewSet):
 
     serializer_class = CardSerializer
+    parser_classes = [MultiPartParser, FormParser, JSONParser ]
     permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticated]
     queryset = Card.objects.all()
     

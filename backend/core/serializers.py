@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     author = UserSerializer(read_only=True)
-    image = serializers.ImageField(max_length=None, use_url=True)
+   
     class Meta:
         model = Card
         fields = ['url', "pk", 'author', 'genre', "Access",'message', 'created_at', "size", "color", "style", "font", "weight", "alignment", "textboxalignment","image"]

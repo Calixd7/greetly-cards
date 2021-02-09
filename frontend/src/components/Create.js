@@ -34,7 +34,7 @@ function Create ({ token, handleDone }) {
 
   function handleCardCreate (event) {
     event.preventDefault()
-    createCard(token, selectedGenre, selectedAccess, message, selectedFontSize, selectedFontColor, selectedFontStyle, selectedFont, selectedFontWeight, selectedFontAlignment, selectedMessagePlacement)
+    createCard(token, selectedGenre, selectedAccess, message, selectedFontSize, selectedFontColor, selectedFontStyle, selectedFont, selectedFontWeight, selectedFontAlignment, selectedMessagePlacement, selectedImage, selectedFontBackgroundOpacity, selectedBackgroundOpacity, selectedBackgroundColor, selectedFontBackgroundColor)
       .then(card => {
         // countCards()
         if (handleDone) {

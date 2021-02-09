@@ -22,9 +22,10 @@ class Card(models.Model):
     Access = models.BooleanField(default=True)
     genre = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
-
-
+    textbackgroundopacity = models.CharField(max_length=255, blank=True, null=True)
+    backgroundopacity= models.CharField(max_length=255, blank=True, null=True)
+    backgroundcolor = models.CharField(max_length=255, blank=True, null=True)
+    textbackgroundcolor =models.CharField(max_length=255, blank=True, null=True)
 
 
 class UserFollowing(models.Model):

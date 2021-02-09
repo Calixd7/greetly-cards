@@ -12,7 +12,7 @@ class Card(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,related_name="cards" )
     message = models.TextField(blank=True, null=True)
     size = models.CharField(max_length=100,  default="", null =True)
-    color = models.CharField(max_length=100,  default="", null=True)
+    color = models.CharField(max_length=100,  blank=True, null=True)
     style = models.CharField(max_length=100, default="", null=True)
     font = models.CharField(max_length=100, default="", null=True)
     weight = models.CharField(max_length=100, default="", null=True)

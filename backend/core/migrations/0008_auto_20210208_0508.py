@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='card',
             name='size',
-            field=models.FloatField(default='', null=True),
+            field=models.FloatField(null=True),
         ),
     ]

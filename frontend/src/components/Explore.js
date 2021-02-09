@@ -17,18 +17,7 @@ function Explore ({ token }) {
   }
 
   //  touser is followee, fromuser is follower
-
   // onclick follow if not followed, unfollow if followed
-  // if not following (somehow need to use userId as unique key):
-  // follow(token, userId)
-  // .then(data => {
-  //   console.log(data)
-  // }) else {
-  //   unfollow(token, userId)
-  //   .then(data => {
-  //     console.log(data)
-  //   })
-  // }
 
   function handleFollow (event, userId) {
     event.preventDefault()
@@ -37,6 +26,22 @@ function Explore ({ token }) {
         console.log(data)
       })
   }
+
+  // function handleFollow (event, userId) {
+  //   event.preventDefault()
+  //   if (userId == card.author.id) {
+  //     follow(token, userId)
+  //       .then(data => {
+  //         console.log(data)
+  //       })
+  //     } else {
+  //     unfollow(token, userId)
+  //       .then(data => {
+  //         console.log(data)
+  //       })
+  //     }
+  //   }
+  // }
 
   return (
     <div>

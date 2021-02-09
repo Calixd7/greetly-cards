@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { getCards } from '../api'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, useHistory } from 'react-router-dom'
 import Create from './Create'
 
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
   const [cardListLength, setCardListLength] = useState(0)
+  const history = useHistory()
+  const scale = 0.4
 
   useEffect(updateCards, [token])
 
@@ -39,6 +41,7 @@ function CardList ({ token }) {
           {cards.map(card => (
 
             <div
+              onClick={() => history.push(`/view-card/${card.pk}`)}
               key={card.url}
               className='aspect-ratio-box'
               style={{
@@ -47,7 +50,8 @@ function CardList ({ token }) {
                 backgroundImage: `url(${card.image})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                opacity: `${card.backgroundopacity}`
+                opacity: `${card.backgroundopacity}`,
+                width: `${scale * 100}%`
               }}
             >
               <div className='aspect-ratio-box-inside'>
@@ -63,7 +67,7 @@ function CardList ({ token }) {
                     style={{
                       fontFamily: `${card.font}`,
                       color: `${card.color}`,
-                      fontSize: `${card.size}px`,
+                      fontSize: `${card.size * scale}px`,
                       fontWeight: `${card.weight}`,
                       fontStyle: `${card.style}`,
                       backgroundColor: `${card.textbackgroundcolor}`,

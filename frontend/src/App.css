@@ -454,15 +454,15 @@ h1 span {
 .card-list-display-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   
 }
 
 .aspect-ratio-box {
-  /* margin: 20px; */
-  width: 100%;
-  transform: scale(.5, .5)
+
+  /* width: 70%;
+  transform: scale(.7, .7) */
   
 
   
@@ -475,7 +475,7 @@ h1 span {
   transform: scale(.3, .3); */
 }
 
-[style*="--aspect-ratio"] > :first-child {
+[style*="--aspect-ratio"] > * {
   width: 100%;
 }
 [style*="--aspect-ratio"] > img {  

@@ -3,9 +3,6 @@ import { getCards } from '../api'
 import { Redirect, Link } from 'react-router-dom'
 import Create from './Create'
 
-// save for later if we need the syntax
-{ /* <Link to={`/c/${card.pk}`}>{card.message}</Link> */ }
-
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
@@ -42,34 +39,35 @@ function CardList ({ token }) {
           {cards.map(card => (
             <div key={card.url} className='card-container'>
               <div className='card-container-child'>
-                <div
-                  className='create-card-container'
-                  style={{
-                    alignItems: `${card.textboxalignment}`,
-                    textAlign: `${card.alignment}`,
-                    backgroundColor: `${card.backgroundcolor}`,
-                    backgroundImage: `url(${card.image})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    opacity: `${card.backgroundopacity}`
-                  }}
-                >
+                <Link to={`/view-card/${card.pk}`} style={{ textDecorationLine: 'none' }}>
                   <div
-                    className='message-input-field'
+                    className='create-card-container'
                     style={{
-                      fontFamily: `${card.font}`,
-                      color: `${card.color}`,
-                      fontSize: `${card.size}px`,
-                      fontWeight: `${card.weight}`,
-                      fontStyle: `${card.style}`,
-                      backgroundColor: `${card.textbackgroundcolor}`,
-                      opacity: `${card.textbackgroundopacity}`
-
+                      alignItems: `${card.textboxalignment}`,
+                      textAlign: `${card.alignment}`,
+                      backgroundColor: `${card.backgroundcolor}`,
+                      backgroundImage: `url(${card.image})`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      opacity: `${card.backgroundopacity}`
                     }}
                   >
-                    {card.message}
+                    <div
+                      className='message-input-field'
+                      style={{
+                        fontFamily: `${card.font}`,
+                        color: `${card.color}`,
+                        fontSize: `${card.size}px`,
+                        fontWeight: `${card.weight}`,
+                        fontStyle: `${card.style}`,
+                        backgroundColor: `${card.textbackgroundcolor}`,
+                        opacity: `${card.textbackgroundopacity}`
+                      }}
+                    >
+                      {card.message}
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
 
             </div>

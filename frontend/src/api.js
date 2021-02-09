@@ -65,7 +65,7 @@ export function getCards (token) {
     })
 }
 
-export function createCard (token, genre, access, message, size, color, style, font, weight, alignment, textboxalignment, image) {
+export function createCard (token, genre, access, message, size, color, style, font, weight, alignment, textboxalignment) {
   return API.post('cards/', {
     genre: genre,
     access: access,
@@ -76,17 +76,14 @@ export function createCard (token, genre, access, message, size, color, style, f
     font: font,
     weight: weight,
     alignment: alignment,
-    textboxalignment: textboxalignment,
-    image: image
+    textboxalignment: textboxalignment
+
   }, {
     headers: {
       Authorization: `Token ${token}`
     }
   })
-    .then(response => {
-      console.log('genre from API', genre)
-      return response.data
-    })
+    .then(response => response.data)
 }
 
 export function getCard (token, pk) {

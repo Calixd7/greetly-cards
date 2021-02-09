@@ -22,12 +22,6 @@ function CardList ({ token }) {
     return <Redirect to='/login' />
   }
 
-  function testing () {
-    cards.map(card => console.log('card', card.size))
-  }
-
-  testing()
-
   return (
     <div className='page-container'>
       <div className='CardList'>

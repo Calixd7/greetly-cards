@@ -21,7 +21,7 @@ class Card(models.Model):
     weight = models.CharField(max_length=100, default="", null=True)
     alignment = models.CharField (max_length=100, default="", null=True)
     textboxalignment = models.CharField(max_length=100, default="", null=True)
-    image = models.ImageField( blank=True, null=True)
+    image = models.URLField(blank=True, null=True)
     access = models.CharField(max_length=100, choices=access_options, null=True)
     genre = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -32,19 +32,19 @@ class Card(models.Model):
 
 
 class UserFollowing(models.Model):
-    user = models.ForeignKey(User, related_name="following", on_delete=models.CASCADE)
-    following_user= models.ForeignKey(User, related_name="followers", on_delete=models.CASCADE)
+    #fromuser is the logged in user who is following
+    touser = models.ForeignKey(User,related_name="followers", on_delete=models.CASCADE)
+    fromuser = models.ForeignKey(User, related_name="following", on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['user','following_user'],  name="unique_followers")
+            models.UniqueConstraint(fields=['fromuser','touser'],  name="unique_followers")
         ]
 
         ordering = ["-created"]
 
-    def __str__(self):
-        f"{self.user} follows {self.following_user}"
+    
 
 
 

@@ -37,7 +37,46 @@ function CardList ({ token }) {
         </div>
         <div className='card-list-display-container'>
           {cards.map(card => (
-            <div key={card.url} className='card-container card-list-format-card-container'>
+
+            <div
+              key={card.url}
+              className='aspect-ratio-box'
+              style={{
+                '--aspect-ratio': '16/9',
+                backgroundColor: `${card.backgroundcolor}`,
+                backgroundImage: `url(${card.image})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                opacity: `${card.backgroundopacity}`
+              }}
+            >
+              <div className='aspect-ratio-box-inside'>
+                <div
+                  className='flexbox-centering'
+                  style={{
+                    alignItems: `${card.textboxalignment}`,
+                    justifyContent: `${card.alignment}`
+                  }}
+                >
+                  <div
+                    className='viewport-sizing'
+                    style={{
+                      fontFamily: `${card.font}`,
+                      color: `${card.color}`,
+                      fontSize: `${card.size}px`,
+                      fontWeight: `${card.weight}`,
+                      fontStyle: `${card.style}`,
+                      backgroundColor: `${card.textbackgroundcolor}`,
+                      opacity: `${card.textbackgroundopacity}`
+                    }}
+                  >
+                    {card.message}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            /* <div key={card.url} className='card-container card-list-format-card-container'>
               <div className='card-container-child'>
                 <Link to={`/view-card/${card.pk}`} style={{ textDecorationLine: 'none' }}>
                   <div
@@ -70,7 +109,7 @@ function CardList ({ token }) {
                 </Link>
               </div>
 
-            </div>
+            </div> */
           ))}
         </div>
       </div>

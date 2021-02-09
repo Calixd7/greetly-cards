@@ -21,7 +21,7 @@ class UserFollowingSerializer (serializers.ModelSerializer):
     
     class Meta:
         model = UserFollowing 
-        fields = ['user', "following_user"]
-        read_only_fields = ['user']
+        fields = ['touser', "fromuser"]
+        read_only_fields = ['fromuser']
 
     

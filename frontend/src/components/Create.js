@@ -5,6 +5,7 @@ import FontPalette from './FontPalette'
 import CardBackgroundPalette from './CardBackgroundPalette'
 import CardSettingsPalette from './CardSettingsPalette'
 import ViewCard from './ViewCard'
+const FormDate = window.FormData
 // import { countCards } from './CardList'
 
 function Create ({ token, handleDone }) {

@@ -18,6 +18,7 @@ from django.conf import settings
 from django.urls import include, path
 from core import views
 from rest_framework.routers import DefaultRouter
+from django.conf.urls.static import static
 
 router = DefaultRouter()
 router.register('cards', views.CardViewSet, basename='card')
@@ -31,7 +32,9 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.authtoken')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
-]
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [

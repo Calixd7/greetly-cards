@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
-import { getCards } from '../api'
+import { Redirect, Link } from 'react-router-dom'
+import { getPublicCards, follow } from '../api'
 
 function Explore ({ token }) {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    getCards(token)
+    getPublicCards(token)
       .then(cards => setCards(cards))
   }, [token])
 
@@ -16,17 +16,56 @@ function Explore ({ token }) {
     return <Redirect to='/login' />
   }
 
+  // const user={card.author.username}
+  // const following_user= will equal user name of logged in user
+  function handleFollow (event) {
+    event.preventDefault()
+    follow(token, user, following_user)
+      .then(data => {
+        console.log(data)
+      })
+  }
+
   return (
-    <div className='page-container page-content'>
-      <h3>All users cards here by genre:</h3>
-      <ul>
-        {cards.map(card => (
-          <li key={card.url}>
-            {card.genre}
-          </li>
-        )
-        )}
-      </ul>
+    <div>
+      {cards.map(card => (
+        <div key={card.url} className='card-container'>
+          <div className='card-container-child'>
+            <Link to={`/view-card/${card.pk}`} style={{ textDecorationLine: 'none' }}>
+              <div
+                className='explore-card-container'
+                style={{
+                  alignItems: `${card.textboxalignment}`,
+                  textAlign: `${card.alignment}`,
+                  backgroundColor: `${card.backgroundcolor}`,
+                  backgroundImage: `url(${card.image})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  opacity: `${card.backgroundopacity}`
+                }}
+              >
+                <div
+                  className='message-input-field'
+                  style={{
+                    fontFamily: `${card.font}`,
+                    color: `${card.color}`,
+                    fontSize: `${card.size}px`,
+                    fontWeight: `${card.weight}`,
+                    fontStyle: `${card.style}`,
+                    backgroundColor: `${card.textbackgroundcolor}`,
+                    opacity: `${card.textbackgroundopacity}`
+                  }}
+                >
+                  {card.message}
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div onClick={handleFollow}>
+            {card.author.username}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

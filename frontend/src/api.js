@@ -77,7 +77,7 @@ export function createCard (token, genre, access, message, size, color, style, f
     weight: weight,
     alignment: alignment,
     textboxalignment: textboxalignment,
-    image: image,
+    // image: image,
     textbackgroundopacity: textbackgroundopacity,
     backgroundopacity: backgroundopacity,
     backgroundcolor: backgroundcolor,
@@ -98,6 +98,31 @@ export function getCard (token, pk) {
         Authorization: `Token ${token}`
       }
     })
+    .then(response => response.data)
+}
+
+export function getPublicCards (token) {
+  return API
+    .get('cards/all/?limit=50&offset=0',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+    .then(res => {
+      return res.data.results
+    })
+}
+
+export function follow (token, user, following_user) {
+  return API.post('followers/', {
+    user: user,
+    following_user: following_user
+  }, {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  })
     .then(response => response.data)
 }
 

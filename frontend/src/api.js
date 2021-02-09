@@ -77,7 +77,7 @@ export function createCard (token, genre, access, message, size, color, style, f
     weight: weight,
     alignment: alignment,
     textboxalignment: textboxalignment,
-    image: image,
+    // image: image,
     textbackgroundopacity: textbackgroundopacity,
     backgroundopacity: backgroundopacity,
     backgroundcolor: backgroundcolor,

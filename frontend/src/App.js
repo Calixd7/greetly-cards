@@ -1,5 +1,6 @@
 
 import './App.css'
+import { useState } from 'react'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
@@ -11,6 +12,7 @@ import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
 import Delete from './components/Delete'
 import createPersistedState from 'use-persisted-state'
+import ViewCard from './components/ViewCard'
 
 const useUsername = createPersistedState('username')
 const useToken = createPersistedState('token')
@@ -18,6 +20,7 @@ const useToken = createPersistedState('token')
 function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
+  // const [isEditing, setIsEditing] = useState(true)
 
   function setAuth (username, token) {
     setUsername(username)
@@ -107,6 +110,9 @@ function App () {
             </Route>
             <Route path='/c/:pk'>
               <Delete token={token} />
+            </Route>
+            <Route path='/view-card/:pk'>
+              <ViewCard token={token} />
             </Route>
           </Switch>
         </div>

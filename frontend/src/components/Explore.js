@@ -33,7 +33,7 @@ function Explore ({ token }) {
           <div className='card-container-child'>
             <Link to={`/view-card/${card.pk}`} style={{ textDecorationLine: 'none' }}>
               <div
-                className='create-card-container'
+                className='explore-card-container'
                 style={{
                   alignItems: `${card.textboxalignment}`,
                   textAlign: `${card.alignment}`,

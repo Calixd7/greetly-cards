@@ -14,7 +14,7 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
    
     class Meta:
         model = Card
-        fields = ['url', "pk", 'author', 'genre', "Access",'message', 'created_at', "size", "color", "style", "font", "weight", "alignment", "textboxalignment","image", "textbackgroundopacity", "backgroundopacity", "backgroundcolor","textbackgroundcolor"]
+        fields = ['url', "pk", 'author', 'genre', "access",'message', 'created_at', "size", "color", "style", "font", "weight", "alignment", "textboxalignment","image", "textbackgroundopacity", "backgroundopacity", "backgroundcolor","textbackgroundcolor"]
 
 
 class UserFollowingSerializer (serializers.ModelSerializer):

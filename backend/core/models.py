@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models import UniqueConstraint
 
+access_options = (('private','private'),
+('public', 'public'),)
+
 
 class User(AbstractUser):
     name= models.CharField(max_length=255)
@@ -19,7 +22,7 @@ class Card(models.Model):
     alignment = models.CharField (max_length=100, default="", null=True)
     textboxalignment = models.CharField(max_length=100, default="", null=True)
     image = models.ImageField( blank=True, null=True)
-    Access = models.BooleanField(default=True)
+    access = models.CharField(max_length=100, choices=access_options, null=True)
     genre = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     textbackgroundopacity = models.CharField(max_length=255, blank=True, null=True)

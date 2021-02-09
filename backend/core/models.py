@@ -19,7 +19,7 @@ class Card(models.Model):
     alignment = models.CharField (max_length=100, default="", null=True)
     textboxalignment = models.CharField(max_length=100, default="", null=True)
     image = models.ImageField( blank=True, null=True)
-    Access = models.BooleanField(default=True)
+    access = models.BooleanField(default=True)
     genre = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     textbackgroundopacity = models.CharField(max_length=255, blank=True, null=True)

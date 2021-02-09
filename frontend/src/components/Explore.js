@@ -10,18 +10,16 @@ function Explore ({ token }) {
       .then(cards => setCards(cards))
   }, [token])
 
-  console.log(cards)
+  // console.log(cards)
 
   if (!token) {
     return <Redirect to='/login' />
   }
 
-  // I need to define user and following_user.  User is followee, fu us follower
-  // might not need latter as argument since following_user already logged in
-  // where and how do i define these.  Do they need to be in state
+  //  touser is followee, fromuser is follower
+  // since fromuser logged in dont need as a parameter
   //  user={card.author.username}
-  //  following_user= will equal user name of logged in user.  put in state...or useParams?  since getting from url
-  // TOGGLE ENDPOINT: /follow?author_id=<someId> if you are not following, follow, else unfollow
+  // TOGGLE ENDPOINT: /follow/author_id=<someId> if you are not following, follow, else unfollow
   function handleFollow (event, userId) {
     event.preventDefault()
     follow(token, userId)

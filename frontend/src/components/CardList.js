@@ -37,11 +37,11 @@ function CardList ({ token }) {
         </div>
         <div className='card-list-display-container'>
           {cards.map(card => (
-            <div key={card.url} className='card-container'>
+            <div key={card.url} className='card-container card-list-format-card-container'>
               <div className='card-container-child'>
                 <Link to={`/view-card/${card.pk}`} style={{ textDecorationLine: 'none' }}>
                   <div
-                    className='create-card-container'
+                    className='card-list-card-container'
                     style={{
                       alignItems: `${card.textboxalignment}`,
                       textAlign: `${card.alignment}`,

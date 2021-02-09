@@ -63,9 +63,9 @@ function FontPalette ({ selectedFont, setSelectedFont, selectedFontColor, setSel
           <div className='object-value-container'>
             <div className='object-value'>Text Alignment</div>
             <select className='select-tag' value={selectedFontAlignment} onChange={e => setSelectedFontAlignment(e.currentTarget.value)}>
-              <option value='left'>Left</option>
+              <option value='flex-start'>Left</option>
               <option value='center'>Center</option>
-              <option value='right'>Right</option>
+              <option value='flex-end '>Right</option>
             </select>
           </div>
         </div>

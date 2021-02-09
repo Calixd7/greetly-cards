@@ -123,9 +123,7 @@ export function follow (token, user, following_user) {
       Authorization: `Token ${token}`
     }
   })
-    .then(response => {
-      return response.data
-    })
+    .then(response => response.data)
 }
 
 export function updateCard (token, pk, json) {

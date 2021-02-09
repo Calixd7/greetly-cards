@@ -16,6 +16,14 @@ function Explore ({ token }) {
     return <Redirect to='/login' />
   }
 
+  function handleFollow (event) {
+    event.preventDefault()
+    follow(token, user, following_user)
+      .then(data => {
+        console.log(data)
+      })
+  }
+
   return (
     <div>
       {cards.map(card => (
@@ -46,12 +54,14 @@ function Explore ({ token }) {
                     opacity: `${card.textbackgroundopacity}`
                   }}
                 >
-                  {card.message} -- {card.author.username}
+                  {card.message}
                 </div>
               </div>
             </Link>
           </div>
-
+          <div>
+            {card.author.username}
+          </div>
         </div>
       ))}
     </div>

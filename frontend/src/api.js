@@ -101,6 +101,33 @@ export function getCard (token, pk) {
     .then(response => response.data)
 }
 
+export function getPublicCards (token) {
+  return API
+    .get('cards/all/?limit=50&offset=0',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+    .then(res => {
+      return res.data.results
+    })
+}
+
+export function follow (token, user, following_user) {
+  return API.post('followers/', {
+    user: user,
+    following_user: following_user
+  }, {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  })
+    .then(response => {
+      return response.data
+    })
+}
+
 export function updateCard (token, pk, json) {
   return API
     .put(`cards/${pk}/`, json, {

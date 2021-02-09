@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import { getCards } from '../api'
+import { getPublicCards, follow } from '../api'
 
 function Explore ({ token }) {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    getCards(token)
+    getPublicCards(token)
       .then(cards => setCards(cards))
   }, [token])
 
@@ -46,7 +46,7 @@ function Explore ({ token }) {
                     opacity: `${card.textbackgroundopacity}`
                   }}
                 >
-                  {card.message}
+                  {card.message} -- {card.author.username}
                 </div>
               </div>
             </Link>

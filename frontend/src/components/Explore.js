@@ -16,6 +16,8 @@ function Explore ({ token }) {
     return <Redirect to='/login' />
   }
 
+  // const user={card.author.username}
+  // const following_user= will equal user name of logged in user
   function handleFollow (event) {
     event.preventDefault()
     follow(token, user, following_user)
@@ -59,7 +61,7 @@ function Explore ({ token }) {
               </div>
             </Link>
           </div>
-          <div>
+          <div onClick={handleFollow}>
             {card.author.username}
           </div>
         </div>

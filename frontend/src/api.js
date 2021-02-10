@@ -127,7 +127,7 @@ export function follow (token, id) {
 
 export function unfollow (token, id) {
   return API
-    .delete('followers/id', {
+    .delete(`followers/${id}`, {
       headers: {
         Authorization: `Token ${token}`
       }

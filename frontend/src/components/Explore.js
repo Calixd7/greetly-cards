@@ -27,19 +27,18 @@ function Explore ({ token }) {
       })
   }
 
-  // function handleFollow (event, userId) {
+  // function handleFollow (event, authorId) {
   //   event.preventDefault()
-  //   if (userId == card.author.id) {
-  //     follow(token, userId)
+  //   if (true) {
+  //     follow(token, authorId)
   //       .then(data => {
   //         console.log(data)
   //       })
-  //     } else {
-  //     unfollow(token, userId)
+  //   } else {
+  //     unfollow(token, authorId)
   //       .then(data => {
   //         console.log(data)
   //       })
-  //     }
   //   }
   // }
 

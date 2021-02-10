@@ -18,9 +18,6 @@ class UserFollowing(models.Model):
     following_user_id = models.ForeignKey(UserModel, related_name="followers", on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, db_index=True)
 
-    
-
-
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['user_id','following_user_id'],  name="unique_followers")
@@ -30,7 +27,6 @@ class UserFollowing(models.Model):
 
 class Card(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,related_name="cards" )
-    following_user_id = models.ForeignKey(to=UserFollowing, on_delete=models.CASCADE, related_name='posts')
     message = models.TextField(blank=True, null=True)
     size = models.CharField(max_length=100,  default="", null =True)
     color = models.CharField(max_length=100,  blank=True, null=True)

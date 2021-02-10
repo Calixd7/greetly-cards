@@ -55,7 +55,7 @@ class CardViewSet(ModelViewSet):
     
     
     def get_queryset(self):
-        cards = Card.objects.filter(UserFollowing__following_user_id=self.request.user) 
+        cards = Card.objects.filter(UserFollowing__following_user_id=user) 
 
     @action(detail=False, methods=['get'])
     def all(self, request):

@@ -11,6 +11,7 @@ class User(AbstractUser):
   
 class Card(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,related_name="cards" )
+    following_user_id = models.ForeignKey(to=UserFolowing, on_delete=models.CASCADE, related_name='posts')
     message = models.TextField(blank=True, null=True)
     size = models.CharField(max_length=100,  default="", null =True)
     color = models.CharField(max_length=100,  blank=True, null=True)

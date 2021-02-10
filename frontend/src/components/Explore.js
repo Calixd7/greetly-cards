@@ -5,11 +5,18 @@ import Card from './Card'
 
 function Explore ({ token, card }) {
   const [cards, setCards] = useState([])
+  const [isFollowing, setIsFollowing] = useState(false)
 
   useEffect(() => {
     getPublicCards(token)
       .then(cards => setCards(cards))
   }, [token])
+
+  const firstMap = cards.map(card => {
+    return card.author.following[0]
+  })
+  console.log('first map', firstMap)
+  console.log('second map', firstMap.map(second => second))
 
   // console.log(cards)
 
@@ -25,6 +32,10 @@ function Explore ({ token, card }) {
     follow(token, userId)
       .then(data => console.log(data)
       )
+  }
+
+  function setFollowers () {
+
   }
 
   // function handleFollow (event, authorId) {
@@ -51,6 +62,10 @@ function Explore ({ token, card }) {
             <div onClick={(event) => handleFollow(event, card.author.id)}>
               {card.author.username}
             </div>
+            {isFollowing &&
+              <div>
+                Following
+              </div>}
           </div>
         </div>
       ))}

@@ -48,7 +48,6 @@ class CardViewSet(ModelViewSet):
     serializer_class = CardSerializer
     parser_classes = [MultiPartParser, FormParser, JSONParser ]
     permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticated]
-    queryset = Card.objects.all()
     
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

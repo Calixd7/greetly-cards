@@ -55,7 +55,7 @@ class CardViewSet(ModelViewSet):
     
     
     def get_queryset(self):
-        cards = Card.objects.filter.all()
+        cards = Card.objects.all()
 
     @action(detail=False, methods=['get'])
     def all(self, request):

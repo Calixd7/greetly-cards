@@ -151,6 +151,7 @@ function Create ({ token, handleDone, card }) {
                       onSubmit={handleImgSearch}
                     >
                       <button
+                        disabled={unsplashPagination < 2}
                         className='logout-button'
                         onClick={(e) => setUnsplashPagination(unsplashPagination - 1)}
                       >

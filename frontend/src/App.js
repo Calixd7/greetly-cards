@@ -10,6 +10,7 @@ import Explore from './components/Explore'
 import Profile from './components/Profile'
 import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
+import Friends from './components/Friends'
 import Delete from './components/Delete'
 import createPersistedState from 'use-persisted-state'
 import ViewCard from './components/ViewCard'
@@ -62,6 +63,10 @@ function App () {
               <input type='radio' name='slideItem' id='slide-item-4' className='slide-toggle' />
               <label htmlFor='slide-item-4'><p className='material-icons'>search</p><span>Explore</span></label>
             </Link>
+            <Link to='/friends'>
+              <input type='radio' name='slideItem' id='slide-item-5' className='slide-toggle' />
+              <label htmlFor='slide-item-5'><p className='material-icons'>search</p><span>Friends</span></label>
+            </Link>
 
           </nav>
 
@@ -101,6 +106,9 @@ function App () {
             </Route>
             <Route path='/explore'>
               <Explore token={token} />
+            </Route>
+            <Route path='/friends'>
+              <Friends token={token} />
             </Route>
             <Route path='/card-list'>
               <CardList token={token} />

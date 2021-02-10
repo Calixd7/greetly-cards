@@ -139,6 +139,32 @@ export function deleteCard (token, pk) {
 }
 
 // *********************************
+//      Friends API Request
+// *********************************
+
+export function getFriendsIds (token) {
+  return API
+    .get('users/3/?limit=50&ofset=0',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+    .then(res => res.data)
+}
+
+export function getFriendsCards (token, id) {
+  return API
+    .get('cards/all/?limit=50&ofset=0',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+    .then(res => res.data.results)
+}
+
+// *********************************
 //      Unsplash API Request
 // *********************************
 

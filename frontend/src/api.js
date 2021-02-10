@@ -99,7 +99,7 @@ export function getPublicCards (token) {
 
 export function follow (token, id) {
   return API.post('friends/', {
-    touser: id
+    following_user_id: id
   }, {
     headers: {
       Authorization: `Token ${token}`

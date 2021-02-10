@@ -1,11 +1,34 @@
 from rest_framework import serializers
 from .models import User, Card, UserFollowing
-  
+from rest_framework import serializers
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
+
+    following = serializers.SerializerMethodField()
+    followers = serializers.SerializerMethodField()
+    
+
     class Meta:
         model = User
-        fields = ['id', 'username', 'name' ]
+        fields = (
+            "id",
+            "email",
+            "name",
+            "username",
+            "following",
+            "followers",
+        )
+        extra_kwargs = {"password": {"write_only": True}}
+
+    def get_following(self, obj):
+        return FollowingSerializer(obj.following.all(), many=True).data
+
+    def get_followers(self, obj):
+        return FollowersSerializer(obj.followers.all(), many=True).data
 
     
 
@@ -16,12 +39,21 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
         model = Card
         fields = ['url', "pk", 'author', 'genre', "access",'message', 'created_at', "size", "color", "style", "font", "weight", "alignment", "textboxalignment","image", "textbackgroundopacity", "backgroundopacity", "backgroundcolor","textbackgroundcolor"]
 
-
-class UserFollowingSerializer (serializers.ModelSerializer):
-    
+class FollowingSerializer(serializers.ModelSerializer):
+    following_user_id = serializers.SlugRelatedField(slug_field="username", queryset=User.objects.all())
     class Meta:
-        model = UserFollowing 
-        fields = ['touser', "fromuser"]
-        read_only_fields = ['fromuser']
+        model = UserFollowing
+        fields = ("id", "following_user_id", "created")
+class FollowersSerializer(serializers.ModelSerializer):
+    user_id = serializers.SlugRelatedField(slug_field="username", queryset=User.objects.all())
+    class Meta:
+        model = UserFollowing
+        fields = ("id", "user_id", "created")
+
+class UserFollowingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserFollowing
+        fields = '__all__'
+
 
     

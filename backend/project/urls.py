@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 router = DefaultRouter()
 router.register('cards', views.CardViewSet, basename='card')
 router.register('users',views.UserViewSet, basename='user'),
-router.register("followers", views.UserFollowingViewSet, basename="follower")
+router.register("friends", views.UserFollowingViewSet, basename="friend")
 
 
 urlpatterns = [

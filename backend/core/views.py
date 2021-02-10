@@ -74,16 +74,11 @@ class CardViewSet(ModelViewSet):
         return Response(serializer.data)
 
 class UserFollowingViewSet(ModelViewSet):
+
     serializer_class = UserFollowingSerializer
+    queryset = UserFollowing.objects.all()
 
-    def get_queryset(self):
-        return self.request.user.following.all()
 
-    def get_queryset(self):
-        return self.request.user.followers.all()
-
-    def perform_create(self, serializer):
-        return serializer.save(fromuser=self.request.user)
 
 
     

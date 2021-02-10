@@ -98,8 +98,8 @@ export function getPublicCards (token) {
 }
 
 export function follow (token, id) {
-  return API.post('followers/', {
-    touser: id
+  return API.post('friends/', {
+    following_user_id: id
   }, {
     headers: {
       Authorization: `Token ${token}`
@@ -110,7 +110,7 @@ export function follow (token, id) {
 
 export function unfollow (token, id) {
   return API
-    .delete('followers/id', {
+    .delete(`friends/${id}`, {
       headers: {
         Authorization: `Token ${token}`
       }

@@ -1,14 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { getPublicCards, follow, unfollow } from '../api'
+import Card from './Card'
 
-function Explore ({ token }) {
+function Explore ({ token, card }) {
   const [cards, setCards] = useState([])
+  const [isFollowing, setIsFollowing] = useState(false)
 
   useEffect(() => {
     getPublicCards(token)
       .then(cards => setCards(cards))
   }, [token])
+
+  const firstMap = cards.map(card => {
+    return card.author.following[0]
+  })
+  console.log('first map', firstMap)
+  console.log('second map', firstMap.map(second => second))
 
   // console.log(cards)
 
@@ -22,24 +30,26 @@ function Explore ({ token }) {
   function handleFollow (event, userId) {
     event.preventDefault()
     follow(token, userId)
-      .then(data => {
-        console.log(data)
-      })
+      .then(data => console.log(data)
+      )
   }
 
-  // function handleFollow (event, userId) {
+  function setFollowers () {
+
+  }
+
+  // function handleFollow (event, authorId) {
   //   event.preventDefault()
-  //   if (userId == card.author.id) {
-  //     follow(token, userId)
+  //   if (true) {
+  //     follow(token, authorId)
   //       .then(data => {
   //         console.log(data)
   //       })
-  //     } else {
-  //     unfollow(token, userId)
+  //   } else {
+  //     unfollow(token, authorId)
   //       .then(data => {
   //         console.log(data)
   //       })
-  //     }
   //   }
   // }
 
@@ -47,39 +57,15 @@ function Explore ({ token }) {
     <div>
       {cards.map(card => (
         <div key={card.url} className='card-container'>
-          <div className='card-container-child'>
-            <Link to={`/view-card/${card.pk}`} style={{ textDecorationLine: 'none' }}>
-              <div
-                className='explore-card-container'
-                style={{
-                  alignItems: `${card.textboxalignment}`,
-                  textAlign: `${card.alignment}`,
-                  backgroundColor: `${card.backgroundcolor}`,
-                  backgroundImage: `url(${card.image})`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  opacity: `${card.backgroundopacity}`
-                }}
-              >
-                <div
-                  className='message-input-field'
-                  style={{
-                    fontFamily: `${card.font}`,
-                    color: `${card.color}`,
-                    fontSize: `${card.size}px`,
-                    fontWeight: `${card.weight}`,
-                    fontStyle: `${card.style}`,
-                    backgroundColor: `${card.textbackgroundcolor}`,
-                    opacity: `${card.textbackgroundopacity}`
-                  }}
-                >
-                  {card.message}
-                </div>
-              </div>
-            </Link>
-          </div>
-          <div onClick={(event) => handleFollow(event, card.author.id)}>
-            {card.author.username}
+          <div className='explore-card-container'>
+            <Card card={card} scale={0.6} />
+            <div onClick={(event) => handleFollow(event, card.author.id)}>
+              {card.author.username}
+            </div>
+            {isFollowing &&
+              <div>
+                Following
+              </div>}
           </div>
         </div>
       ))}

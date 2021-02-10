@@ -27,7 +27,7 @@ function CardList ({ token }) {
       <div className='CardList'>
         <h2>My Cards</h2>
         <div>Number of Cards: {cardListLength}</div>
-        <div>
+        {/* <div>
           {isCreating
             ? <Create
                 token={token} handleDone={(newCard) => {
@@ -37,7 +37,7 @@ function CardList ({ token }) {
               />
             : (<button onClick={() => setIsCreating(true)}>Create New Card</button>)}
 
-        </div>
+        </div> */}
         <div className='card-list-display-container'>
           {cards.map(card => (
 

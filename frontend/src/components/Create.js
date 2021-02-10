@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Redirect, useHistory, useParams } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { createCard, unsplashApi, updateCard } from '../api'
 import Card from './Card'
 import FontPalette from './FontPalette'
@@ -29,12 +29,13 @@ function handleCardCreate (event, history, token, handleDone, card) {
 }
 
 function Create ({ token, handleDone, card }) {
-  // const { pk } = useParams()
+  const [unsplashPagination, setUnsplashPagination] = useState(1)
   // safeCard is a fallback for create mode if it has no card
   const safeCard = card || {}
   const [message, setMessage] = useState(safeCard.message || '')
   const [imageQuery, setImageQuery] = useState('')
   const [imageDisplay, setImageDisplay] = useState([])
+  const [isDisplaying, setIsDisplaying] = useState(false)
   const [font, setSelectedFont] = useState(safeCard.font || 'Playfair Display, serif')
   const [color, setSelectedFontColor] = useState(safeCard.color || 'black')
   const [size, setSelectedFontSize] = useState(safeCard.size || 16)
@@ -45,7 +46,7 @@ function Create ({ token, handleDone, card }) {
   const [textbackgroundopacity, setSelectedFontBackgroundOpacity] = useState(safeCard.textbackgroundopacity || 'none')
   const [textboxalignment, setSelectedMessagePlacement] = useState(safeCard.textboxalignment || 'center')
   const [image, setSelectedImage] = useState(safeCard.image || '')
-  const [backgroundcolor, setSelectedBackgroundColor] = useState(safeCard.backgroundcolor || 'none')
+  const [backgroundcolor, setSelectedBackgroundColor] = useState(safeCard.backgroundcolor || 'white')
   const [backgroundopacity, setSelectedBackgroundOpacity] = useState(safeCard.backgroundopacity || 'none')
   const [access, setSelectedAccess] = useState(safeCard.access || 'private')
   const [genre, setSelectedGenre] = useState(safeCard.genre || 'none')
@@ -75,7 +76,7 @@ function Create ({ token, handleDone, card }) {
 
   function handleImgSearch (event) {
     event.preventDefault()
-    unsplashApi(imageQuery).then(data => { setImageDisplay(data.results); setImageQuery('') })
+    unsplashApi(imageQuery, unsplashPagination).then(data => { setImageDisplay(data.results); setIsDisplaying(true) })
   }
 
   const cardStyle = {
@@ -106,7 +107,7 @@ function Create ({ token, handleDone, card }) {
               >
                 <Card
                   card={pendingCard}
-                  scale={0.4}
+                  scale={0.7}
                   isEditing
                   setMessage={setMessage}
                 />
@@ -127,7 +128,7 @@ function Create ({ token, handleDone, card }) {
             <div className='side-palette'>
               <FontPalette font={font} setSelectedFont={setSelectedFont} color={color} setSelectedFontColor={setSelectedFontColor} size={size} setSelectedFontSize={setSelectedFontSize} weight={weight} setSelectedFontWeight={setSelectedFontWeight} style={style} setSelectedFontStyle={setSelectedFontStyle} alignment={alignment} setSelectedFontAlignment={setSelectedFontAlignment} textbackgroundcolor={textbackgroundcolor} setSelectedFontBackgroundColor={setSelectedFontBackgroundColor} textbackgroundopacity={textbackgroundopacity} setSelectedFontBackgroundOpacity={setSelectedFontBackgroundOpacity} textboxalignment={textboxalignment} setSelectedMessagePlacement={setSelectedMessagePlacement} />
 
-              <CardBackgroundPalette backgroundcolor={backgroundcolor} setSelectedBackgroundColor={setSelectedBackgroundColor} setSelectedImage={setSelectedImage} imageQuery={imageQuery} setImageQuery={setImageQuery} backgroundopacity={backgroundopacity} setSelectedBackgroundOpacity={setSelectedBackgroundOpacity} handleImgSearch={handleImgSearch} />
+              <CardBackgroundPalette backgroundcolor={backgroundcolor} setSelectedBackgroundColor={setSelectedBackgroundColor} setSelectedImage={setSelectedImage} imageQuery={imageQuery} setImageQuery={setImageQuery} backgroundopacity={backgroundopacity} setSelectedBackgroundOpacity={setSelectedBackgroundOpacity} handleImgSearch={handleImgSearch} setUnsplashPagination={setUnsplashPagination} setImageDisplay={setImageDisplay} setIsDisplaying={setIsDisplaying} />
 
               <CardSettingsPalette selectedGenre={genre} setSelectedGenre={setSelectedGenre} selectedAccess={access} setSelectedAccess={setSelectedAccess} />
 
@@ -142,6 +143,33 @@ function Create ({ token, handleDone, card }) {
                   <img src={image.urls.small} alt='images' />
                 </div>
               ))}
+              {isDisplaying &&
+                <div>
+                  <div className='unsplash-page-btns-container'>
+                    <form
+                      className='unsplash-page-btns'
+                      onSubmit={handleImgSearch}
+                    >
+                      <button
+                        className='logout-button'
+                        onClick={(e) => setUnsplashPagination(unsplashPagination - 1)}
+                      >
+                        Prev
+                      </button>
+                      <button
+                        className='logout-button'
+                      >
+                        Page {unsplashPagination}
+                      </button>
+                      <button
+                        className='logout-button'
+                        onClick={(e) => setUnsplashPagination(unsplashPagination + 1)}
+                      >
+                        Next
+                      </button>
+                    </form>
+                  </div>
+                </div>}
 
             </div>
           </div>

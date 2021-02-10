@@ -1,6 +1,6 @@
 import { calculateOpacityOptions } from '../functions'
 
-function CardBackgroundPalette ({ selectedBackgroundColor, setSelectedBackgroundColor, setSelectedImage, imageQuery, setImageQuery, selectedBackgroundOpacity, setSelectedBackgroundOpacity, handleImgSearch }) {
+function CardBackgroundPalette ({ selectedBackgroundColor, setSelectedBackgroundColor, setSelectedImage, imageQuery, setImageQuery, selectedBackgroundOpacity, setSelectedBackgroundOpacity, handleImgSearch, setUnsplashPagination, setImageDisplay, setIsDisplaying }) {
   return (
     <div className='palette-object'>
       <div className='object-title'>Card Background</div>
@@ -20,6 +20,12 @@ function CardBackgroundPalette ({ selectedBackgroundColor, setSelectedBackground
                 type='submit'
               >Search
               </button>
+              <button
+                onClick={() => { setImageQuery(''); setUnsplashPagination(1); setImageDisplay([]); setIsDisplaying(false) }}
+                className='img-search-btn'
+                type='button'
+              >Clear
+              </button>
             </form>
           </div>
         </div>
@@ -28,7 +34,7 @@ function CardBackgroundPalette ({ selectedBackgroundColor, setSelectedBackground
             <div className='palette-left-side'>
               <div className='object-value-container'>
                 <div className='object-value'>Color
-                  <select className='select-tag' value={selectedBackgroundColor} onChange={e => { setSelectedBackgroundColor(e.currentTarget.value); setSelectedImage([]) }}>
+                  <select className='select-tag' value={selectedBackgroundColor} onChange={e => { setSelectedBackgroundColor(e.currentTarget.value); setSelectedImage('') }}>
                     <option value='none'>none</option>
                     <option value='#678'>Grey</option>
                     <option value='#F1FAEE'>Honeydew</option>

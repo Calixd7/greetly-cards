@@ -161,7 +161,7 @@ h1 span {
 
 .edit-card-main{
   display: flex;
-
+  margin: 30px;
 }
 
 .create-card-container {
@@ -190,17 +190,12 @@ h1 span {
 }
 
 .side-palette {
-  /* border: 2px solid; */
   position: absolute;
   right: 20px;
-  top: 400px;
-  height: 60%;
+  top: 475px;
+  height: 50%;
   width: 35%;
   border-radius: 5px;
-  /* background-image: url('./images-dan/card-envelope.jpeg');
-  background-repeat: no-repeat;
-  background-blend-mode: screen;
-  background-color: green; */
   background-color: rgb(127, 138, 153);
   opacity: .8;
 }
@@ -306,14 +301,15 @@ h1 span {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
   left: 0%;
-  background-color: rgba(245, 222, 179, 0.082);
+  background-color: #36454F;
 }
 
 .home-page-container {
   position: relative;
   z-index: 1;
+  background-color: #36454F;
 }
 
 .home-page-container .background {
@@ -369,6 +365,10 @@ h1 span {
   border-radius: 20px;
 }
 
+p {
+  color: whitesmoke;
+}
+
 .p1{
   margin-top: 110px;
   margin-bottom:25px;
@@ -422,20 +422,24 @@ h1 span {
 /* ************************ */
 
 
+
 .view-card-container{
-  
+  background-color: #36454F;
   width: 100%;
+  height: 100%;
 }
 
 .view-card-container > .card {
-  margin: 40px auto;
+  margin: 0 auto;
+  top: 20px;
+  
 }
 
 .view-card-container > .buttons {
   display: flex;
-  justify-content: space-around;
-  margin: 20px;
-
+  justify-content: space-evenly;
+  margin: 40px;
+  padding: 20px;
 }
 
 .card-list-display-container {
@@ -446,7 +450,9 @@ h1 span {
   
 }
 
-
+.card-list-display-container > .card {
+  margin: 10px 0;
+}
 
 [style*="--aspect-ratio"] > * {
   width: 100%;
@@ -487,6 +493,24 @@ h1 span {
 }
 .viewport-sizing {
   font-size: 5vw;
+}
+
+.unsplash-page-btns-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 2px solid red; */
+  height: 300px;
+  width: 400px;
+}
+
+.unsplash-page-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* border: 2px solid; */
+  width: 400px;
+
 }
 
 /* ************************ */

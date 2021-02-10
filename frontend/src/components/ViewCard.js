@@ -32,13 +32,20 @@ function ViewCard ({ token, setMessage }) {
   if (card) {
     return (
       <div className='view-card-container'>
-        <Card card={card} scale={1} />
+        <Card card={card} scale={0.7} />
         <div className='buttons'>
           <button
+            className='logout-button'
             onClick={() => setIsEditing(true)}
           >Edit
           </button>
           <button
+            className='logout-button'
+            onClick={() => history.push('/card-list')}
+          >Back to Cards
+          </button>
+          <button
+            className='logout-button'
             onClick={(e) => handleDeleteCard(e, card.pk)}
           >
             Delete

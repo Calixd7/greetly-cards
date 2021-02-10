@@ -9,6 +9,8 @@ from rest_framework import permissions
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
      
@@ -30,6 +32,9 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
 class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
+    permission_classes = [
+        IsAuthenticated,
+    ]
     
     def get_queryset(self):
         return User.objects.all()
@@ -75,8 +80,18 @@ class CardViewSet(ModelViewSet):
 
 class UserFollowingViewSet(ModelViewSet):
 
+    permission_class = [IsAuthorOrReadOnly]
+
     serializer_class = UserFollowingSerializer
     queryset = UserFollowing.objects.all()
+
+    def perform_create(self, serializer):
+        return serializer.save(user_id=self.request.user)
+
+        
+
+
+
 
 
 

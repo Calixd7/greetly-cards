@@ -37,6 +37,9 @@ class UserFollowing(models.Model):
     following_user_id = models.ForeignKey(UserModel, related_name="followers", on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, db_index=True)
 
+    
+
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['user_id','following_user_id'],  name="unique_followers")

@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { getCards } from '../api'
 import { Redirect, Link, useHistory } from 'react-router-dom'
 import Create from './Create'
+import Card from './Card'
 
 function CardList ({ token }) {
   const [cards, setCards] = useState([])
   const [isCreating, setIsCreating] = useState(false)
   const [cardListLength, setCardListLength] = useState(0)
   const history = useHistory()
-  const scale = 0.4
+  const scale = 0.5
 
   useEffect(updateCards, [token])
 
@@ -40,45 +41,7 @@ function CardList ({ token }) {
         <div className='card-list-display-container'>
           {cards.map(card => (
 
-            <div
-              onClick={() => history.push(`/view-card/${card.pk}`)}
-              key={card.url}
-              className='aspect-ratio-box'
-              style={{
-                '--aspect-ratio': '16/9',
-                backgroundColor: `${card.backgroundcolor}`,
-                backgroundImage: `url(${card.image})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                opacity: `${card.backgroundopacity}`,
-                width: `${scale * 100}%`
-              }}
-            >
-              <div className='aspect-ratio-box-inside'>
-                <div
-                  className='flexbox-centering'
-                  style={{
-                    alignItems: `${card.textboxalignment}`,
-                    justifyContent: `${card.alignment}`
-                  }}
-                >
-                  <div
-                    className='viewport-sizing'
-                    style={{
-                      fontFamily: `${card.font}`,
-                      color: `${card.color}`,
-                      fontSize: `${card.size * scale}px`,
-                      fontWeight: `${card.weight}`,
-                      fontStyle: `${card.style}`,
-                      backgroundColor: `${card.textbackgroundcolor}`,
-                      opacity: `${card.textbackgroundopacity}`
-                    }}
-                  >
-                    {card.message}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Card key={card.url} card={card} scale={scale} />
 
             /* <div key={card.url} className='card-container card-list-format-card-container'>
               <div className='card-container-child'>

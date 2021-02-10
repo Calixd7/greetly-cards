@@ -1,40 +1,22 @@
 import { useState } from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
-import { createCard, unsplashApi } from '../api'
+import { createCard, unsplashApi, updateCard } from '../api'
+import Card from './Card'
 import FontPalette from './FontPalette'
 import CardBackgroundPalette from './CardBackgroundPalette'
 import CardSettingsPalette from './CardSettingsPalette'
-import ViewCard from './ViewCard'
-const FormDate = window.FormData
+
 // import { countCards } from './CardList'
 
-function Create ({ token, handleDone }) {
-  const [message, setMessage] = useState('')
-  const [imageQuery, setImageQuery] = useState('')
-  const [imageDisplay, setImageDisplay] = useState([])
-  const [selectedFont, setSelectedFont] = useState('Playfair Display, serif')
-  const [selectedFontColor, setSelectedFontColor] = useState('Black')
-  const [selectedFontSize, setSelectedFontSize] = useState(16)
-  const [selectedFontWeight, setSelectedFontWeight] = useState('Regular')
-  const [selectedFontStyle, setSelectedFontStyle] = useState('Regular')
-  const [selectedFontAlignment, setSelectedFontAlignment] = useState('Left')
-  const [selectedFontBackgroundColor, setSelectedFontBackgroundColor] = useState('none')
-  const [selectedFontBackgroundOpacity, setSelectedFontBackgroundOpacity] = useState('none')
-  const [selectedMessagePlacement, setSelectedMessagePlacement] = useState('center')
-  const [selectedImage, setSelectedImage] = useState([])
-  const [selectedBackgroundColor, setSelectedBackgroundColor] = useState('none')
-  const [selectedBackgroundOpacity, setSelectedBackgroundOpacity] = useState('none')
-  const [selectedAccess, setSelectedAccess] = useState('private')
-  const [selectedGenre, setSelectedGenre] = useState('none')
-  const history = useHistory()
-
-  if (!token) {
-    return <Redirect to='/login' />
-  }
-
-  function handleCardCreate (event) {
-    event.preventDefault()
-    createCard(token, selectedGenre, selectedAccess, message, selectedFontSize, selectedFontColor, selectedFontStyle, selectedFont, selectedFontWeight, selectedFontAlignment, selectedMessagePlacement, selectedImage, selectedFontBackgroundOpacity, selectedBackgroundOpacity, selectedBackgroundColor, selectedFontBackgroundColor)
+function handleCardCreate (event, history, token, handleDone, card) {
+  event.preventDefault()
+  if (card.pk) {
+    updateCard(token, card.pk, card)
+      .then(card => {
+        history.push('/card-list')
+      })
+  } else {
+    createCard(token, card)
       .then(card => {
         // countCards()
         if (handleDone) {
@@ -44,67 +26,111 @@ function Create ({ token, handleDone }) {
         }
       })
   }
+}
+
+function Create ({ token, handleDone, card }) {
+  const [unsplashPagination, setUnsplashPagination] = useState(1)
+  // safeCard is a fallback for create mode if it has no card
+  const safeCard = card || {}
+  const [message, setMessage] = useState(safeCard.message || '')
+  const [imageQuery, setImageQuery] = useState('')
+  const [imageDisplay, setImageDisplay] = useState([])
+  const [isDisplaying, setIsDisplaying] = useState(false)
+  const [font, setSelectedFont] = useState(safeCard.font || 'Playfair Display, serif')
+  const [color, setSelectedFontColor] = useState(safeCard.color || 'black')
+  const [size, setSelectedFontSize] = useState(safeCard.size || 16)
+  const [weight, setSelectedFontWeight] = useState(safeCard.weight || 'regular')
+  const [style, setSelectedFontStyle] = useState(safeCard.style || 'regular')
+  const [alignment, setSelectedFontAlignment] = useState(safeCard.alignment || 'left')
+  const [textbackgroundcolor, setSelectedFontBackgroundColor] = useState(safeCard.textbackgroundcolor || 'none')
+  const [textbackgroundopacity, setSelectedFontBackgroundOpacity] = useState(safeCard.textbackgroundopacity || 'none')
+  const [textboxalignment, setSelectedMessagePlacement] = useState(safeCard.textboxalignment || 'center')
+  const [image, setSelectedImage] = useState(safeCard.image || '')
+  const [backgroundcolor, setSelectedBackgroundColor] = useState(safeCard.backgroundcolor || 'white')
+  const [backgroundopacity, setSelectedBackgroundOpacity] = useState(safeCard.backgroundopacity || 'none')
+  const [access, setSelectedAccess] = useState(safeCard.access || 'private')
+  const [genre, setSelectedGenre] = useState(safeCard.genre || 'none')
+  const history = useHistory()
+  const pendingCard = {
+    pk: safeCard.pk,
+    genre: genre,
+    access: access,
+    message: message,
+    size: size,
+    color: color,
+    style: style,
+    font: font,
+    weight: weight,
+    alignment: alignment,
+    textboxalignment: textboxalignment,
+    image: image,
+    textbackgroundopacity: textbackgroundopacity,
+    backgroundopacity: backgroundopacity,
+    backgroundcolor: backgroundcolor,
+    textbackgroundcolor: textbackgroundcolor
+  }
+
+  if (!token) {
+    return <Redirect to='/login' />
+  }
 
   function handleImgSearch (event) {
     event.preventDefault()
-    unsplashApi(imageQuery).then(data => { setImageDisplay(data.results); setImageQuery('') })
+    unsplashApi(imageQuery, unsplashPagination).then(data => { setImageDisplay(data.results); setIsDisplaying(true) })
   }
 
   const cardStyle = {
-    alignItems: selectedMessagePlacement
+    alignItems: textboxalignment
   }
 
-  if (selectedBackgroundColor !== 'none') {
-    cardStyle.backgroundColor = selectedBackgroundColor
+  if (backgroundcolor !== 'none') {
+    cardStyle.backgroundColor = backgroundcolor
   } else {
-    cardStyle.backgroundImage = `url(${selectedImage})`
+    cardStyle.backgroundImage = `url(${image})`
     cardStyle.backgroundRepeat = 'no-repeat'
     cardStyle.backgroundSize = 'cover'
-    cardStyle.opacity = selectedBackgroundOpacity
+    cardStyle.opacity = backgroundopacity
   }
 
   return (
 
     <div className='create-content-images-container'>
-      {/* {isEditing && */}
       <div>
         <div className='page-content create-card-content'>
           <div className='card-editor-side-palette-container'>
             <div className='edit-card-main'>
-              <form onSubmit={handleCardCreate}>
-                <div
-                  className='create-card-container'
-                  style={cardStyle}
-                >
-                  <label htmlFor='message' />
-                  <input
-                    className='message-input-field'
-                    style={{
-                      fontFamily: `${selectedFont}`,
-                      color: `${selectedFontColor}`,
-                      fontSize: `${selectedFontSize}px`,
-                      fontWeight: `${selectedFontWeight}`,
-                      fontStyle: `${selectedFontStyle}`,
-                      textAlign: `${selectedFontAlignment}`,
-                      border: 'none',
-                      background: `${selectedFontBackgroundColor}`,
-                      opacity: `${selectedFontBackgroundOpacity}`
-                    }}
-                    type='text'
-                    value={message}
-                    placeholder='Message'
-                    onChange={e => setMessage(e.target.value)}
-                  />
-                </div>
+
+              <form onSubmit={(e) => {
+                e.preventDefault()
+                handleCardCreate(e, history, token, handleDone, pendingCard)
+              }}
+              >
+                <Card
+                  card={pendingCard}
+                  scale={0.7}
+                  isEditing
+                  setMessage={setMessage}
+                />
+                <label htmlFor='message' />
+                <input
+                  className='message-input-field'
+                  type='text'
+                  value={message}
+                  placeholder='Message'
+                  onChange={e => {
+                    e.preventDefault()
+                    setMessage(e.target.value)
+                  }}
+                />
                 <button type='submit'>Save Card</button>
               </form>
             </div>
             <div className='side-palette'>
-              <FontPalette selectedFont={selectedFont} setSelectedFont={setSelectedFont} selectedFontColor={selectedFontColor} setSelectedFontColor={setSelectedFontColor} selectedFontSize={selectedFontSize} setSelectedFontSize={setSelectedFontSize} selectedFontWeight={selectedFontWeight} setSelectedFontWeight={setSelectedFontWeight} selectedFontStyle={selectedFontStyle} setSelectedFontStyle={setSelectedFontStyle} selectedFontAlignment={selectedFontAlignment} setSelectedFontAlignment={setSelectedFontAlignment} selectedFontBackgroundColor={selectedFontBackgroundColor} setSelectedFontBackgroundColor={setSelectedFontBackgroundColor} selectedFontBackgroundOpacity={selectedFontBackgroundOpacity} setSelectedFontBackgroundOpacity={setSelectedFontBackgroundOpacity} selectedMessagePlacement={selectedMessagePlacement} setSelectedMessagePlacement={setSelectedMessagePlacement} />
+              <FontPalette font={font} setSelectedFont={setSelectedFont} color={color} setSelectedFontColor={setSelectedFontColor} size={size} setSelectedFontSize={setSelectedFontSize} weight={weight} setSelectedFontWeight={setSelectedFontWeight} style={style} setSelectedFontStyle={setSelectedFontStyle} alignment={alignment} setSelectedFontAlignment={setSelectedFontAlignment} textbackgroundcolor={textbackgroundcolor} setSelectedFontBackgroundColor={setSelectedFontBackgroundColor} textbackgroundopacity={textbackgroundopacity} setSelectedFontBackgroundOpacity={setSelectedFontBackgroundOpacity} textboxalignment={textboxalignment} setSelectedMessagePlacement={setSelectedMessagePlacement} />
 
-              <CardBackgroundPalette selectedBackgroundColor={selectedBackgroundColor} setSelectedBackgroundColor={setSelectedBackgroundColor} setSelectedImage={setSelectedImage} imageQuery={imageQuery} setImageQuery={setImageQuery} selectedBackgroundOpacity={selectedBackgroundOpacity} setSelectedBackgroundOpacity={setSelectedBackgroundOpacity} handleImgSearch={handleImgSearch} />
+              <CardBackgroundPalette backgroundcolor={backgroundcolor} setSelectedBackgroundColor={setSelectedBackgroundColor} setSelectedImage={setSelectedImage} imageQuery={imageQuery} setImageQuery={setImageQuery} backgroundopacity={backgroundopacity} setSelectedBackgroundOpacity={setSelectedBackgroundOpacity} handleImgSearch={handleImgSearch} setUnsplashPagination={setUnsplashPagination} setImageDisplay={setImageDisplay} setIsDisplaying={setIsDisplaying} />
 
-              <CardSettingsPalette selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} selectedAccess={selectedAccess} setSelectedAccess={setSelectedAccess} />
+              <CardSettingsPalette selectedGenre={genre} setSelectedGenre={setSelectedGenre} selectedAccess={access} setSelectedAccess={setSelectedAccess} />
 
             </div>
           </div>
@@ -117,14 +143,37 @@ function Create ({ token, handleDone }) {
                   <img src={image.urls.small} alt='images' />
                 </div>
               ))}
+              {isDisplaying &&
+                <div>
+                  <div className='unsplash-page-btns-container'>
+                    <form
+                      className='unsplash-page-btns'
+                      onSubmit={handleImgSearch}
+                    >
+                      <button
+                        className='logout-button'
+                        onClick={(e) => setUnsplashPagination(unsplashPagination - 1)}
+                      >
+                        Prev
+                      </button>
+                      <button
+                        className='logout-button'
+                      >
+                        Page {unsplashPagination}
+                      </button>
+                      <button
+                        className='logout-button'
+                        onClick={(e) => setUnsplashPagination(unsplashPagination + 1)}
+                      >
+                        Next
+                      </button>
+                    </form>
+                  </div>
+                </div>}
 
             </div>
           </div>
         </div>
-      </div>
-      {/* } */}
-      <div>
-        {/* <ViewCard /> */}
       </div>
     </div>
   )

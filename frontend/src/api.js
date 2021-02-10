@@ -65,25 +65,8 @@ export function getCards (token) {
     })
 }
 
-export function createCard (token, genre, access, message, size, color, style, font, weight, alignment, textboxalignment, image, textbackgroundopacity, backgroundopacity, backgroundcolor, textbackgroundcolor) {
-  return API.post('cards/', {
-    genre: genre,
-    access: access,
-    message: message,
-    size: size,
-    color: color,
-    style: style,
-    font: font,
-    weight: weight,
-    alignment: alignment,
-    textboxalignment: textboxalignment,
-    image: image,
-    textbackgroundopacity: textbackgroundopacity,
-    backgroundopacity: backgroundopacity,
-    backgroundcolor: backgroundcolor,
-    textbackgroundcolor: textbackgroundcolor
-
-  }, {
+export function createCard (token, card) {
+  return API.post('cards/', card, {
     headers: {
       Authorization: `Token ${token}`
     }
@@ -135,9 +118,9 @@ export function unfollow (token, id) {
     .then(response => response.data)
 }
 
-export function updateCard (token, pk, json) {
+export function updateCard (token, pk, card) {
   return API
-    .put(`cards/${pk}/`, json, {
+    .put(`cards/${pk}/`, card, {
       headers: {
         Authorization: `Token ${token}`
       }
@@ -162,7 +145,7 @@ export function deleteCard (token, pk) {
 const accessKey = 'TlQHhYwlF1gKtsQqX6twCM-WUusQSXgDFW1AhVOgat8'
 const secretKey = 'mo2cz5JNJfiM6W-HpVMUfMMQa7P_48maYN_e9r8HBIU'
 
-export function unsplashApi (input) {
-  return axios.get(`https://api.unsplash.com/search/photos/?client_id=${accessKey}&query=${input}&orientation=landscape`)
+export function unsplashApi (query, page) {
+  return axios.get(`https://api.unsplash.com/search/photos/?page=${page}&client_id=${accessKey}&query=${query}&orientation=landscape`)
     .then(res => res.data)
 }

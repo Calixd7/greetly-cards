@@ -422,33 +422,20 @@ h1 span {
 /* ************************ */
 
 
-
-/* .card-container{
-  transform: scale(.5, .5);
-}
-
-.card-list-format-card-container {
-  display: flex;
-  margin: 10px;
-}
-
-.card-list-card-container{
-  margin: 10px;
-  padding: 56.2% 100%;
-  padding-top: 56.2%;
-
-  width: 43rem;
-  height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  box-shadow: 3px 3px 5px 1px #678;
-  border-radius: 5px;
-} */
-
 .view-card-container{
-  /* transform: scale(.5, .5); */
+  
+  width: 100%;
+}
+
+.view-card-container > .card {
+  margin: 40px auto;
+}
+
+.view-card-container > .buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+
 }
 
 .card-list-display-container {
@@ -459,21 +446,7 @@ h1 span {
   
 }
 
-.aspect-ratio-box {
 
-  /* width: 70%;
-  transform: scale(.7, .7) */
-  
-
-  
-  /* height: 0;
-  overflow: hidden;
-  padding-top: calc(591.44 / 1127.34 * 100%);
-  background: white;
-  position: relative;
-  border: 2px solid;
-  transform: scale(.3, .3); */
-}
 
 [style*="--aspect-ratio"] > * {
   width: 100%;

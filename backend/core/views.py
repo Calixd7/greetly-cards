@@ -55,7 +55,7 @@ class CardViewSet(ModelViewSet):
     
     
     def get_queryset(self):
-        return Card.objects.filter(author=self.request.user)
+        cards = Card.objects.filter(UserFollowing__following_user_id=self.request.user) 
 
     @action(detail=False, methods=['get'])
     def all(self, request):
@@ -77,6 +77,11 @@ class CardViewSet(ModelViewSet):
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+    
+    
+
+     
 
 class UserFollowingViewSet(ModelViewSet):
 

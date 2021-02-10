@@ -55,7 +55,8 @@ class CardViewSet(ModelViewSet):
     
     
     def get_queryset(self):
-        cards = Card.objects.all()
+        return Card.objects.filter(author=self.request.user)
+
 
     @action(detail=False, methods=['get'])
     def all(self, request):

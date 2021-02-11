@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { getFriendsCards, getPublicCards, getFriendsIds } from '../api'
+
 import Card from './Card'
 
 function Friends ({ token, card }) {
   const [cards, setCards] = useState([])
-  const [friendsCount, setFriendsCount] = useState(0)
-  const [friendsIds, setFriendsIds] = useState([])
 
   console.log('cards', cards)
   //   get Friend Count
@@ -27,13 +26,17 @@ function Friends ({ token, card }) {
   //     }, [token])
   //   })
 
+
   return (
     <div className='view-card-container'>
-      <div>Number of friends {friendsCount} </div>
+
       {cards.map(card => (
         <div key={card.url} className='card-container'>
           <div className='explore-card-container'>
-            <Card card={card} scale={0.6} />
+            <div className='card-matte'>
+              <Card card={card} scale={0.5} />
+              {card.author.username}
+            </div>
           </div>
         </div>
       ))}

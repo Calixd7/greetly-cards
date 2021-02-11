@@ -21,7 +21,6 @@ const useToken = createPersistedState('token')
 function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
-  // const [isEditing, setIsEditing] = useState(true)
 
   function setAuth (username, token) {
     setUsername(username)

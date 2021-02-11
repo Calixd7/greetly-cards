@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Card from './Card'
 import { useParams, useHistory } from 'react-router-dom'
-import { getCard, deleteCard } from '../api'
+import { getCard, deleteCard, getLoggedInUser } from '../api'
 import { getUserInfo } from '../functions'
 import Create from './Create'
 
@@ -16,9 +16,7 @@ function ViewCard ({ token, setMessage }) {
       .then(c => setCard(c))
   }, [])
 
-  console.log('card.author', card)
-
-  const cardAuthor = card
+  console.log('', card)
 
   function handleDeleteCard (event, pk) {
     event.preventDefault()
@@ -26,7 +24,22 @@ function ViewCard ({ token, setMessage }) {
       .then(card => history.push('/card-list'))
   }
 
-  const loggedInUser = getUserInfo(token)
+  // *******************
+  // Get User Name
+  // *******************
+  let userName = ''
+  getLoggedInUser(token)
+    .then(data => {
+      userName = data.username
+    })
+  console.log('user info', userName)
+
+  // *******************
+  // Get Card Author Name
+  // *******************
+  const cardAuthor = card
+
+  console.log('card AUTHOR', cardAuthor)
 
   if (isEditing) {
     return (

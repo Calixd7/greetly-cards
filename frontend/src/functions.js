@@ -25,7 +25,7 @@ export function getUserInfo (token) {
   getLoggedInUser(token)
     .then(data => {
       userName = data.username
-      console.log('user info', userName)
+      // console.log('user info', userName)
     })
 
   return userName

@@ -8,7 +8,7 @@ function Explore ({ token, card }) {
   const [loggedInUser, setUser] = useState([])
   const [author, setAuthor] = useState([])
 
-  console.log('set user', loggedInUser)
+  // console.log('set user', loggedInUser)
   // useEffect(() => {
   //   const user = getLoggedInUser(token).then(data => data.following.map(followee => (followee.following_user_id)))
   //   console.log('user', user)

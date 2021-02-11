@@ -150,6 +150,9 @@ h1 span {
   border-radius: 50%;
 }
 
+.material-icons:hover {
+  color: black;
+}
 /* ************************ */
 /* Create card styles on Create.js */
 /* ************************ */

@@ -84,6 +84,18 @@ export function getCard (token, pk) {
     .then(response => response.data)
 }
 
+export function getLoggedInUser (token) {
+  return API
+    .get('users/me/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(response => {
+      return response.data
+    })
+}
+
 export function getPublicCards (token) {
   return API
     .get('cards/all/?limit=50&offset=0',

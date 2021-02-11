@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react'
-import { getFriendsCards, getPublicCards, getFriendsIds } from '../api'
+import { getFriendsCards } from '../api'
+import { Redirect } from 'react-router-dom'
 
 import Card from './Card'
 
 function Friends ({ token, card }) {
   const [cards, setCards] = useState([])
 
-  console.log('cards', cards)
-  //   get Friend Count
   useEffect(() => {
     getFriendsCards(token)
       .then(cards => setCards(cards))
   }, [token])
 
+  if (!token) {
+    return <Redirect to='/login' />
+  }
   //  set id state
   //   useEffect(() => {
   //     getFriendsIds(token)
@@ -25,7 +27,6 @@ function Friends ({ token, card }) {
   //       return getFriendsCards(token, singleId).then(newCards => console.log('new cards', newCards))
   //     }, [token])
   //   })
-
 
   return (
     <div className='view-card-container'>

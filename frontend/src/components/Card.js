@@ -7,9 +7,8 @@ function Card ({ card, scale, isEditing }) {
     <div
       onClick={() => !isEditing && history.push(`/view-card/${card.pk}`)}
       key={card.url}
-      className='card'
+      className='card sixteen-by-nine'
       style={{
-        '--aspect-ratio': '16/9',
         backgroundColor: `${card.backgroundcolor}`,
         backgroundImage: `url(${card.image})`,
         backgroundRepeat: 'no-repeat',

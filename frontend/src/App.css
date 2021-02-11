@@ -1,15 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
 
-
 * {
-	margin: 0;
+  margin: 0;
   padding: 0;
-  
 }
 
 .register-and-login {
-  position:absolute;
-  top:10px;
+  position: absolute;
+  top: 10px;
   right: 10px;
 }
 
@@ -47,7 +45,8 @@
   border-radius: 8px;
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -63,46 +62,66 @@ input[type=text], input[type=password] {
   padding: 10px;
   margin: 10px;
   margin-left: 0px;
-
 }
 
 .header {
-	height: 60vh;
-	background: linear-gradient(45deg, rgba(255,175,189,.7), rgba(100,216,243,.7), rgba(234,236,198,.7), rgba(245,146,176,.7), rgba(52,219,216,.7)) 0 0 / 1000% no-repeat, url('./images/ribbonTable.jpg') 0 0 / cover no-repeat;  
-	-webkit-animation: gradientAnimation 90s ease infinite;
-	animation: gradientAnimation 90s ease infinite;
+  height: 60vh;
+  background: linear-gradient(
+        45deg,
+        rgba(255, 175, 189, 0.7),
+        rgba(100, 216, 243, 0.7),
+        rgba(234, 236, 198, 0.7),
+        rgba(245, 146, 176, 0.7),
+        rgba(52, 219, 216, 0.7)
+      )
+      0 0 / 1000% no-repeat,
+    url("./images/ribbonTable.jpg") 0 0 / cover no-repeat;
+  -webkit-animation: gradientAnimation 90s ease infinite;
+  animation: gradientAnimation 90s ease infinite;
 }
 /* https://picsum.photos/g/2000/1200?image=443 */
 
 @-webkit-keyframes gradientAnimation {
-	0%   { background-position: 0% 30%, 0 0;}
-	50%  { background-position: 100% 70%, 0 0;}
-	100% { background-position: 0% 30%, 0 0;}
+  0% {
+    background-position: 0% 30%, 0 0;
+  }
+  50% {
+    background-position: 100% 70%, 0 0;
+  }
+  100% {
+    background-position: 0% 30%, 0 0;
+  }
 }
 
 @keyframes gradientAnimation {
-	0%   { background-position: 0% 30%, 0 0;}
-	50%  { background-position: 100% 70%, 0 0;}
-	100% { background-position: 0% 30%, 0 0;}
+  0% {
+    background-position: 0% 30%, 0 0;
+  }
+  50% {
+    background-position: 100% 70%, 0 0;
+  }
+  100% {
+    background-position: 0% 30%, 0 0;
+  }
 }
 
 h1 {
-	position: absolute;
-	top: 15%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	color: #fff;
-	font : normal 600 72px/1 'Open Sans', sans-serif;
-	text-align: center;
-	white-space: nowrap;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font: normal 600 72px/1 "Open Sans", sans-serif;
+  text-align: center;
+  white-space: nowrap;
 }
 
 h1 span {
-	display: block;
-	margin-top: 1em;
-	font-size: 20px;
-	font-weight: 300;
+  display: block;
+  margin-top: 1em;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .slide-toggle {
@@ -123,19 +142,18 @@ h1 span {
   display: block;
   float: left;
   color: #333;
-  opacity: .3;
-
+  opacity: 0.3;
 }
 
 .slidemenu label:hover {
   cursor: pointer;
-  color:black; 
+  color: black;
   opacity: 1;
 }
 
 .slidemenu label span {
   display: block;
-  padding: 10px;    
+  padding: 10px;
 }
 
 .slidemenu label .material-icons {
@@ -159,10 +177,10 @@ h1 span {
 
 .card-editor-side-palette-container {
   display: flex;
-  background-color: #36454F;
+  background-color: #36454f;
 }
 
-.edit-card-main{
+.edit-card-main {
   display: flex;
   margin: 30px;
 }
@@ -181,10 +199,6 @@ h1 span {
   border-radius: 5px;
 }
 
-.message-input-field {
-  
-}
-
 .input-btn-form {
   display: flex;
   margin: 20px;
@@ -200,7 +214,7 @@ h1 span {
   width: 35%;
   border-radius: 5px;
   background-color: rgb(127, 138, 153);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 /* ************************ */
@@ -275,7 +289,7 @@ h1 span {
   align-items: center;
 }
 
-.img-search-input{
+.img-search-input {
   margin-right: 10px;
   height: fit-content;
 }
@@ -292,12 +306,11 @@ h1 span {
 .display-images-container {
   display: flex;
   flex-wrap: wrap;
-  background-color: #36454F;
+  background-color: #36454f;
 }
 
 .images {
   margin: 10px;
-
 }
 
 .page-container {
@@ -306,13 +319,13 @@ h1 span {
   position: absolute;
   /* top: 50%; */
   left: 0%;
-  background-color: #36454F;
+  background-color: #36454f;
 }
 
 .home-page-container {
   position: relative;
   z-index: 1;
-  background-color: #36454F;
+  background-color: #36454f;
 }
 
 .home-page-container .background {
@@ -320,7 +333,7 @@ h1 span {
   z-index: -1;
   /* background: url('./images/gratefulCard.jpg'); */
   background-size: 1500px;
-  opacity: .20;
+  opacity: 0.2;
   width: 100%;
   height: 100%;
   background-color: rgba(245, 222, 179, 0.082);
@@ -330,7 +343,6 @@ h1 span {
   padding-top: 40px;
   padding-left: 50px;
   font-size: 200%;
-  
 }
 
 .image-hp-card {
@@ -372,9 +384,9 @@ p {
   color: whitesmoke;
 }
 
-.p1{
+.p1 {
   margin-top: 110px;
-  margin-bottom:25px;
+  margin-bottom: 25px;
   margin-left: 120px;
   font-size: 140%;
 }
@@ -413,7 +425,7 @@ p {
 .number {
   border-radius: 50%;
   padding: 5px 10px 5px 10px;
-  text-align:center;
+  text-align: center;
   font-size: large;
   /* background-color: rgba(0, 0, 0, 0.644); */
   background-color: rgb(85, 12, 85);
@@ -424,10 +436,8 @@ p {
 /* Display cards on CardList.js */
 /* ************************ */
 
-
-
-.view-card-container{
-  background-color: #36454F;
+.view-card-container {
+  background-color: #36454f;
   width: 100%;
   height: 100%;
 }
@@ -435,7 +445,6 @@ p {
 .view-card-container > .card {
   margin: 0 auto;
   top: 20px;
-  
 }
 
 .view-card-container > .buttons {
@@ -450,7 +459,6 @@ p {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  
 }
 
 .card-list-display-container > .card {
@@ -460,10 +468,10 @@ p {
 [style*="--aspect-ratio"] > * {
   width: 100%;
 }
-[style*="--aspect-ratio"] > img {  
+[style*="--aspect-ratio"] > img {
   height: auto;
-} 
-@supports (--custom:property) {
+}
+@supports (--custom: property) {
   [style*="--aspect-ratio"] {
     position: relative;
   }
@@ -471,13 +479,35 @@ p {
     content: "";
     display: block;
     padding-bottom: calc(100% / (var(--aspect-ratio)));
-  }  
+  }
   [style*="--aspect-ratio"] > :first-child {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-  }  
+  }
+}
+
+.sixteen-by-nine > * {
+  width: 100%;
+}
+.sixteen-by-nine > img {
+  height: auto;
+}
+
+.sixteen-by-nine {
+  position: relative;
+}
+.sixteen-by-nine::before {
+  content: "";
+  display: block;
+  padding-bottom: calc(100% / (16 / 9));
+}
+.sixteen-by-nine > :first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
 
 .aspect-ratio-box-inside {
@@ -513,7 +543,6 @@ p {
   justify-content: space-evenly;
   /* border: 2px solid; */
   width: 400px;
-
 }
 
 /* ************************ */
@@ -526,7 +555,6 @@ p {
 }
 
 .explore-card-container {
-
   width: 100%;
   height: 100%;
   display: flex;
@@ -543,21 +571,15 @@ p {
   height: 255px;
   align-items: center;
   justify-content: center;
-  background-color: #F1FAEE;
+  background-color: #f1faee;
   border-radius: 5px;
-
 }
 
 .author-followers-container {
   display: flex;
-   
 }
 
-
-
-
 .main-content {
-  background-color: #36454F;
+  background-color: #36454f;
   /* width: 100%; */
-
 }

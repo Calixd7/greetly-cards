@@ -64,6 +64,12 @@ class CardViewSet(ModelViewSet):
     
     def get_queryset(self):
         return Card.objects.filter(author__followers__user_id=self.request.user)
+        
+    def retrieve(self, request, pk=None):
+        queryset = User.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 
     @action(detail=False, methods=['get'])

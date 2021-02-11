@@ -11,6 +11,8 @@ from rest_framework.decorators import action
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import get_user_model
+
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
      
@@ -41,6 +43,13 @@ class UserViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         return serializer.save(self.request.user)
+    
+    @action(permission_classes=[IsAuthenticated], detail=False)
+    def me(self, request, *args, **kwargs):
+        User = get_user_model()
+        self.object = get_object_or_404(User, pk=request.user.id)
+        serializer = self.get_serializer(self.object)
+        return Response(serializer.data)
 
 
 class CardViewSet(ModelViewSet):
@@ -77,6 +86,8 @@ class CardViewSet(ModelViewSet):
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+    
+
     
 
 

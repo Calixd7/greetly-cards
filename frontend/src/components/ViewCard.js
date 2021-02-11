@@ -15,7 +15,7 @@ function ViewCard ({ token, setMessage, scale }) {
   useEffect(() => {
     getCard(token, pk)
       .then(c => setCard(c))
-  }, [])
+  }, [token, pk])
   console.log('', card)
 
   function handleDeleteCard (event, pk) {
@@ -33,7 +33,7 @@ function ViewCard ({ token, setMessage, scale }) {
       .then(data => {
         setUserName(data.username)
       })
-  }, [])
+  }, [token])
 
   // *******************
   // Get Card Author Name
@@ -45,9 +45,9 @@ function ViewCard ({ token, setMessage, scale }) {
 
   console.log('scale', scale)
 
-  function increaseImageSize () {
-    // scale + 1
-  }
+  // function increaseImageSize () {
+  //   // scale + 1
+  // }
 
   if (isEditing) {
     return (

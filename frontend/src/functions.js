@@ -1,5 +1,4 @@
 import { getLoggedInUser } from './api'
-import App from './App'
 
 export function calculateFontSizes () {
   const sizeOptions = []

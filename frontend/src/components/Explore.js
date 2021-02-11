@@ -5,8 +5,8 @@ import Card from './Card'
 
 function Explore ({ token, card }) {
   const [cards, setCards] = useState([])
-  const [loggedInUser, setUser] = useState([])
-  const [author, setAuthor] = useState([])
+  // const [loggedInUser, setUser] = useState([])
+  // const [author, setAuthor] = useState([])
 
   // console.log('set user', loggedInUser)
   // useEffect(() => {

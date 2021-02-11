@@ -1,13 +1,11 @@
 
 import './App.css'
-import { useState } from 'react'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home'
 import Create from './components/Create'
 import Explore from './components/Explore'
-import Profile from './components/Profile'
 import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
 import Friends from './components/Friends'

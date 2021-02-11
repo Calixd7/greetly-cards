@@ -10,12 +10,12 @@ function ViewCard ({ token, setMessage }) {
   const [card, setCard] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
   const history = useHistory()
+  const [loggedInUserName, setUserName] = useState('')
 
   useEffect(() => {
     getCard(token, pk)
       .then(c => setCard(c))
   }, [])
-
   console.log('', card)
 
   function handleDeleteCard (event, pk) {
@@ -27,17 +27,25 @@ function ViewCard ({ token, setMessage }) {
   // *******************
   // Get User Name
   // *******************
-  let userName = ''
-  getLoggedInUser(token)
-    .then(data => {
-      userName = data.username
-    })
-  console.log('user info', userName)
+  //   let userName = ''
+
+  console.log('user name', loggedInUserName)
+
+  useEffect(() => {
+    getLoggedInUser(token)
+      .then(data => {
+        setUserName(data.username)
+      })
+  }, [])
 
   // *******************
   // Get Card Author Name
   // *******************
-  const cardAuthor = card
+  if (!card || !loggedInUserName) {
+    return 'loading'
+  }
+
+  const cardAuthor = card.author.username
 
   console.log('card AUTHOR', cardAuthor)
 
@@ -51,25 +59,32 @@ function ViewCard ({ token, setMessage }) {
 
   if (card) {
     return (
+
       <div className='view-card-container'>
         <Card card={card} scale={0.7} />
         <div className='buttons'>
+          {loggedInUserName === cardAuthor && (
+            <button
+              className='logout-button'
+              onClick={() => setIsEditing(true)}
+            >Edit
+            </button>)}
           <button
             className='logout-button'
-            onClick={() => setIsEditing(true)}
-          >Edit
-          </button>
-          <button
-            className='logout-button'
-            onClick={() => history.push('/card-list')}
+            onClick={
+              loggedInUserName === cardAuthor
+                ? () => history.push('/card-list')
+                : () => history.push('/friends')
+              }
           >Back to Cards
           </button>
-          <button
-            className='logout-button'
-            onClick={(e) => handleDeleteCard(e, card.pk)}
-          >
-            Delete
-          </button>
+          {loggedInUserName === cardAuthor && (
+            <button
+              className='logout-button'
+              onClick={(e) => handleDeleteCard(e, card.pk)}
+            >
+              Delete
+            </button>)}
         </div>
       </div>
 

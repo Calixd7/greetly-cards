@@ -45,7 +45,7 @@ function App () {
 
             <Link to='/card-list'>
               <input type='radio' name='slideItem' id='slide-item-4' className='slide-toggle' />
-              <label htmlFor='slide-item-4'><p className='material-icons'>search</p><span>My Cards</span></label>
+              <label htmlFor='slide-item-4'><p className='material-icons'>person</p><span>My Cards</span></label>
             </Link>
 
             <Link to='/create'>
@@ -60,7 +60,7 @@ function App () {
 
             <Link to='/friends'>
               <input type='radio' name='slideItem' id='slide-item-5' className='slide-toggle' />
-              <label htmlFor='slide-item-5'><p className='material-icons'>search</p><span>Friends</span></label>
+              <label htmlFor='slide-item-5'><p className='material-icons'>people</p><span>Friends</span></label>
             </Link>
 
           </nav>

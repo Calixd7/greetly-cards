@@ -48,11 +48,6 @@ function App () {
               <label htmlFor='slide-item-4'><p className='material-icons'>search</p><span>My Cards</span></label>
             </Link>
 
-            {/* <Link to='/profile'>
-              <input type='radio' name='slideItem' id='slide-item-2' className='slide-toggle' />
-              <label htmlFor='slide-item-2'><p className='material-icons'>face</p><span>My Cards</span></label>
-            </Link> */}
-
             <Link to='/create'>
               <input type='radio' name='slideItem' id='slide-item-3' className='slide-toggle' />
               <label htmlFor='slide-item-3'><p className='material-icons'>create</p><span>Create</span></label>
@@ -62,6 +57,7 @@ function App () {
               <input type='radio' name='slideItem' id='slide-item-4' className='slide-toggle' />
               <label htmlFor='slide-item-4'><p className='material-icons'>search</p><span>Explore</span></label>
             </Link>
+
             <Link to='/friends'>
               <input type='radio' name='slideItem' id='slide-item-5' className='slide-toggle' />
               <label htmlFor='slide-item-5'><p className='material-icons'>search</p><span>Friends</span></label>
@@ -97,9 +93,6 @@ function App () {
             <Route path='/home'>
               <Home isLoggedIn={isLoggedIn} />
             </Route>
-            {/* <Route path='/profile'>
-              <Profile />
-            </Route> */}
             <Route path='/create'>
               <Create token={token} username={username} />
             </Route>

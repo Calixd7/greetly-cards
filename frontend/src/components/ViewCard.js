@@ -37,7 +37,7 @@ function ViewCard ({ token, setMessage }) {
   // *******************
   // Get Card Author Name
   // *******************
-  const cardAuthor = card
+  const cardAuthor = card.author.username
 
   console.log('card AUTHOR', cardAuthor)
 

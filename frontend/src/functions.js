@@ -1,3 +1,6 @@
+import { getLoggedInUser } from './api'
+import App from './App'
+
 export function calculateFontSizes () {
   const sizeOptions = []
 
@@ -15,6 +18,20 @@ export function calculateOpacityOptions () {
   }
   return opacityOptions
 }
+
+// got logged in user
+export function getUserInfo (token) {
+  let userName = ''
+  getLoggedInUser(token)
+    .then(data => {
+      userName = data.username
+      console.log('user info', userName)
+    })
+
+  return userName
+}
+
+//   console.log('user', user)
 
 // export function CountCards (cards) {
 //   setCardListLength(cards.length)

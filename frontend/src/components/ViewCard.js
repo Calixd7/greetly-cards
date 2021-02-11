@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import Card from './Card'
 import { useParams, useHistory } from 'react-router-dom'
 import { getCard, deleteCard, getLoggedInUser } from '../api'
-import { getUserInfo } from '../functions'
 import Create from './Create'
+// import CardList from './CardList'
 
-function ViewCard ({ token, setMessage }) {
+function ViewCard ({ token, setMessage, scale }) {
   const { pk } = useParams()
   const [card, setCard] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
@@ -27,9 +27,6 @@ function ViewCard ({ token, setMessage }) {
   // *******************
   // Get User Name
   // *******************
-  //   let userName = ''
-
-  console.log('user name', loggedInUserName)
 
   useEffect(() => {
     getLoggedInUser(token)
@@ -44,10 +41,13 @@ function ViewCard ({ token, setMessage }) {
   if (!card || !loggedInUserName) {
     return 'loading'
   }
-
   const cardAuthor = card.author.username
 
-  console.log('card AUTHOR', cardAuthor)
+  console.log('scale', scale)
+
+  function increaseImageSize () {
+    // scale + 1
+  }
 
   if (isEditing) {
     return (
@@ -59,33 +59,40 @@ function ViewCard ({ token, setMessage }) {
 
   if (card) {
     return (
-
-      <div className='view-card-container'>
-        <Card card={card} scale={0.7} />
-        <div className='buttons'>
-          {loggedInUserName === cardAuthor && (
+      <div>
+        <div className='view-card-container'>
+          <Card card={card} scale={0.7} />
+          <div className='buttons'>
+            {loggedInUserName === cardAuthor && (
+              <button
+                className='logout-button'
+                onClick={() => setIsEditing(true)}
+              >Edit
+              </button>)}
             <button
               className='logout-button'
-              onClick={() => setIsEditing(true)}
-            >Edit
-            </button>)}
-          <button
-            className='logout-button'
-            onClick={
+              onClick={
               loggedInUserName === cardAuthor
                 ? () => history.push('/card-list')
                 : () => history.push('/friends')
               }
-          >Back to Cards
-          </button>
-          {loggedInUserName === cardAuthor && (
-            <button
-              className='logout-button'
-              onClick={(e) => handleDeleteCard(e, card.pk)}
-            >
-              Delete
-            </button>)}
+            >Back to Cards
+            </button>
+            {loggedInUserName === cardAuthor && (
+              <button
+                className='logout-button'
+                onClick={(e) => handleDeleteCard(e, card.pk)}
+              >
+                Delete
+              </button>)}
+          </div>
         </div>
+        {/* <div>
+          <button>increase
+          </button>
+          <button>decrease
+          </button>
+        </div> */}
       </div>
 
     )

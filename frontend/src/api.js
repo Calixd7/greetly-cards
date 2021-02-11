@@ -155,7 +155,7 @@ export function getFriendsIds (token) {
 
 export function getFriendsCards (token, id) {
   return API
-    .get('cards/all/?limit=50&ofset=0',
+    .get('cards/?limit=50&ofset=0',
       {
         headers: {
           Authorization: `Token ${token}`

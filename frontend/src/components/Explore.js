@@ -15,8 +15,7 @@ function Explore ({ token, card }) {
     return <Redirect to='/login' />
   }
 
-  //  touser is followee, fromuser is follower
-  // onclick follow if not followed, unfollow if followed
+  // const isFollowing = ( )
 
   function handleFollow (event, userToFollow) {
     event.preventDefault()
@@ -43,26 +42,6 @@ function Explore ({ token, card }) {
         }
       })
   }
-
-  // console.log(user_id.following.id)
-
-  // 1)convert following to array of objexts
-  // 2)
-
-  // function handleFollow (event, authorId) {
-  //   event.preventDefault()
-  //   if  {
-  //     follow(token, authorId)
-  //       .then(data => {
-  //         console.log(data)
-  //       })
-  //   } else {
-  //     unfollow(token, authorId)
-  //       .then(data => {
-  //         console.log(data)
-  //       })
-  //   }
-  // }
 
   return (
     <div>

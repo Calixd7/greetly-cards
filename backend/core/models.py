@@ -8,7 +8,23 @@ access_options = (('private','private'),
 
 class User(AbstractUser):
     name= models.CharField(max_length=255)
-  
+
+from django.contrib.auth import get_user_model
+UserModel = get_user_model()
+
+class UserFollowing(models.Model):
+
+    user_id = models.ForeignKey(UserModel, related_name="following", on_delete=models.CASCADE)
+    following_user_id = models.ForeignKey(UserModel, related_name="followers", on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user_id','following_user_id'],  name="unique_followers")
+        ]
+
+        ordering = ["-created"]
+
 class Card(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,related_name="cards" )
     message = models.TextField(blank=True, null=True)
@@ -27,25 +43,6 @@ class Card(models.Model):
     backgroundopacity= models.CharField(max_length=255, blank=True, null=True)
     backgroundcolor = models.CharField(max_length=255, blank=True, null=True)
     textbackgroundcolor =models.CharField(max_length=255, blank=True, null=True)
-
-from django.contrib.auth import get_user_model
-UserModel = get_user_model()
-
-class UserFollowing(models.Model):
-
-    user_id = models.ForeignKey(UserModel, related_name="following", on_delete=models.CASCADE)
-    following_user_id = models.ForeignKey(UserModel, related_name="followers", on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True, db_index=True)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user_id','following_user_id'],  name="unique_followers")
-        ]
-
-        ordering = ["-created"]
-
-
-    
 
 
 

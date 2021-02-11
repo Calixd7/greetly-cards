@@ -51,9 +51,11 @@ class FollowersSerializer(serializers.ModelSerializer):
         fields = ("id", "user_id", "created")
 
 class UserFollowingSerializer(serializers.ModelSerializer):
+    user_id = UserSerializer(read_only=True)
+    following_user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all()) 
     class Meta:
-        model = UserFollowing
-        fields = '__all__'
+         model = UserFollowing
+         fields = ("user_id", "following_user_id")
 
 
     

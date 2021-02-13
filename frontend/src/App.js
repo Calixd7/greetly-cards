@@ -36,7 +36,7 @@ function App () {
 
           <nav className='slidemenu'>
 
-            <Link to='/home'>
+            <Link to='/'>
               <input type='radio' name='slideItem' id='slide-item-1' className='slide-toggle' />
               <label htmlFor='slide-item-1'><p className='material-icons'>home</p><span>Home</span></label>
             </Link>
@@ -88,9 +88,7 @@ function App () {
             <Route path='/register'>
               <Register isLoggedIn={isLoggedIn} setAuth={setAuth} />
             </Route>
-            <Route path='/home'>
-              <Home isLoggedIn={isLoggedIn} />
-            </Route>
+
             <Route path='/create'>
               <Create token={token} username={username} />
             </Route>
@@ -111,6 +109,9 @@ function App () {
             </Route>
             <Route path='/view-card/:pk'>
               <ViewCard token={token} />
+            </Route>
+            <Route path='/'>
+              <Home isLoggedIn={isLoggedIn} />
             </Route>
           </Switch>
         </div>

@@ -8,7 +8,7 @@ function Login ({ isLoggedIn, setAuth }) {
   const [errors, setErrors] = useState()
 
   if (isLoggedIn) {
-    return <Redirect to='/home' />
+    return <Redirect to='/' />
   }
 
   function handleSubmit (event, isLoggedIn) {

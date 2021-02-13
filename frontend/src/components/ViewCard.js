@@ -87,7 +87,7 @@ function ViewCard ({ token, setMessage, scale }) {
               onClick={(e) => handleDeleteCard(e, card.pk)}
             >
               Delete
-            </button>)
+            </button>
           </div>
         </div>
         {/* <div>
@@ -97,7 +97,6 @@ function ViewCard ({ token, setMessage, scale }) {
           </button>
         </div> */}
       </div>
-
     )
   }
   return 'This is where I will put a loading spinner'

@@ -45,14 +45,23 @@ function ViewCard ({ token, setMessage, scale }) {
 
   console.log('scale', scale)
 
-  // function increaseImageSize () {
-  //   // scale + 1
-  // }
-
   if (isEditing) {
     return (
       <div>
         <Create token={token} card={card} pk={card.pk} />
+      </div>
+    )
+  }
+
+  if (loggedInUserName !== cardAuthor) {
+    return (
+      <div className='view-card-container'>
+        <Card card={card} scale={0.7} />
+        <button
+          className='logout-button'
+          onClick={() => history.goBack(-1)}
+        >Back to Cards
+        </button>
       </div>
     )
   }
@@ -63,28 +72,22 @@ function ViewCard ({ token, setMessage, scale }) {
         <div className='view-card-container'>
           <Card card={card} scale={0.7} />
           <div className='buttons'>
-            {loggedInUserName === cardAuthor && (
-              <button
-                className='logout-button'
-                onClick={() => setIsEditing(true)}
-              >Edit
-              </button>)}
             <button
               className='logout-button'
-              onClick={
-              loggedInUserName === cardAuthor
-                ? () => history.push('/card-list')
-                : () => history.push('/friends')
-              }
+              onClick={() => setIsEditing(true)}
+            >Edit
+            </button>
+            <button
+              className='logout-button'
+              onClick={() => history.goBack()}
             >Back to Cards
             </button>
-            {loggedInUserName === cardAuthor && (
-              <button
-                className='logout-button'
-                onClick={(e) => handleDeleteCard(e, card.pk)}
-              >
-                Delete
-              </button>)}
+            <button
+              className='logout-button'
+              onClick={(e) => handleDeleteCard(e, card.pk)}
+            >
+              Delete
+            </button>)
           </div>
         </div>
         {/* <div>

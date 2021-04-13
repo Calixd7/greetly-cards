@@ -18,6 +18,7 @@ django-on-heroku = "*"
 gunicorn = "*"
 pillow = "*"
 djoser = "*"
+django-registration = "*"
 
 [requires]
 python_version = "3.8"

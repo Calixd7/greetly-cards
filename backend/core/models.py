@@ -7,7 +7,7 @@ access_options = (('private','private'),
 
 
 class User(AbstractUser):
-    name= models.CharField(max_length=255)
+    age= models.CharField(max_length=255)
 
 from django.contrib.auth import get_user_model
 UserModel = get_user_model()
